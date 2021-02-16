@@ -11,12 +11,14 @@ struct FileData: Codable {
     var name: String?
     var description: String?
     var size: Int64?
-    var url: String?
+    var url: String
+    var fileName: String?
     
     enum CodingKeys: String, CodingKey {
         case name
         case description
         case size
         case url
+        case fileName
     }
 }

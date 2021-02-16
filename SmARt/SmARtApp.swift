@@ -19,12 +19,11 @@ struct SmARtApp: App {
     init() {
         DIContainerConfigurator.initiate()
         initCrashlytics()
-        initializeStartView()
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MenuView()
         }
         .onChange(of: scenePhase) { (newScenePhase) in
             switch newScenePhase {
@@ -37,10 +36,7 @@ struct SmARtApp: App {
     }
     
     private func initCrashlytics() {
-        AppCenter.start(withAppSecret: appCenterAppSecret,
-                        services: [Analytics.self, Crashes.self])
-    }
-    
-    private func initializeStartView() {
+//        AppCenter.start(withAppSecret: appCenterAppSecret,
+//                        services: [Analytics.self, Crashes.self])
     }
 }

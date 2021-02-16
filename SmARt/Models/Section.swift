@@ -13,12 +13,12 @@ struct Section: Codable {
     var description: String?
     var complexDescription: ComplexDescription?
     var logo2d: ImageData?
-    var logo3d: FileData?
+    var logo3d: FileData
     var typeSection: String?
     var sections: [Section]?
     var objects: [ObjectData]?
-    var menuName: String?
-    var menuDescription: String?
+    var menuName: String
+    var menuDescription: String
     
     enum CodingKeys: String, CodingKey {
         case id

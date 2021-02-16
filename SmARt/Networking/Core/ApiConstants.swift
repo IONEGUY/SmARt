@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 struct ApiConstants {
-    static let baseUrl = ""
+    static let baseUrl = "http://34.105.234.21:8080/"
 
     struct Parameters {
 

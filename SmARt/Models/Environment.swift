@@ -11,7 +11,7 @@ struct EnvironmentOut: Codable {
     var id: String
     var name: String?
     var description: String?
-    var sections: [Section]?
+    var sections: [Section]
     
     enum CodingKeys: String, CodingKey {
         case id
