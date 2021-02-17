@@ -6,61 +6,49 @@
 //
 
 import Foundation
-import RealityKit
+import SceneKit
 import ARKit
 import UIKit
-import SwiftUI
-import Alamofire
-import Combine
+import GLTFSceneKit
 
-class Menu3DItem: Entity, HasAnchoring {
-    private var cancellables = Set<AnyCancellable>()
-    
-    func initData(_ menuItemData: SectionsList3DItemData) {
+class Menu3DItem: SCNNode {
+    func initData(_ menuItemData: MenuItemData) {
         name = menuItemData.id
-        Entity.loadModelAsync(contentsOf: menuItemData.object3DFileUrl)
-            .sink { _ in }
-            receiveValue: { [unowned self] model in
-                model.scale = SIMD3<Float>(x: 0.0005, y: 0.0005, z: 0.0005)
-                model.position.x += -0.09
-                model.position.z += 0.05
-                
-                addChild(createPlaneInfo(menuItemData))
-                addChild(model)
-            }
-            .store(in: &cancellables)
+        
+        addChildNode(create3DObject(menuItemData.object3DData))
+        DispatchQueue.main.async { [unowned self] in
+            addChildNode(createPlaneInfo(menuItemData.name, menuItemData.description))
+        }
     }
     
-    private func createPlaneInfo(_ menuItemData: SectionsList3DItemData) -> ModelEntity {
-        let image = createPlaneInfoImage(menuItemData.sectionName, menuItemData.sectionDescription)
-        let documentsDirectory =
-            FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
-        guard let data = image.pngData(),
-              let filePath = documentsDirectory?.appendingPathComponent("\(menuItemData.object3DName).png"),
-            (try? data.write(to: filePath)) != nil else { return ModelEntity() }
-
-        var material = SimpleMaterial()
-        material.baseColor = try! .texture(.load(contentsOf: filePath))
-        material.metallic = .float(0.01)
-        material.roughness = .float(1)
-
-        try? FileManager.default.removeItem(atPath: filePath.absoluteString)
+    private func create3DObject(_ data: Data) -> SCNNode {
+        guard let node = try? GLTFSceneSource(data: data).scene().rootNode
+        else { return SCNNode() }
         
-        let model = ModelEntity(mesh: .generatePlane(width: 0.4,
-                                                     height: 0.1,
-                                                     cornerRadius: 0.04),
-                                materials: [material])
-        
-        return model
+        node.scale = SCNVector3(x: 0.1, y: 0.1, z: 0.1)
+        node.position.x += -0.18
+        node.position.z += 0.1
+        node.eulerAngles.y = .pi / 2
+        return node
+    }
+    
+    private func createPlaneInfo(_ name: String,_ description: String) -> SCNNode {
+        let plane = SCNPlane(width: 0.8, height: 0.2)
+        let image = createPlaneInfoImage(name, description)
+        plane.materials.first?.diffuse.contents = image
+        return SCNNode(geometry: plane)
     }
 
     private func createPlaneInfoImage(_ name: String,_ description: String) -> UIImage {
         let container = UIImageView(frame: CGRect(x: 0, y: 0, width: 400, height: 100))
 
         container.image = UIImage(named: "container_gradient")
+        container.layer.cornerRadius = 30
+        container.isOpaque = false
+        container.backgroundColor = .black
 
         let radialGradientImageView =
-            UIImageView(frame: CGRect(x: 30, y: -50, width: 200, height: 200))
+            UIImageView(frame: CGRect(x: 0, y: -50, width: 200, height: 200))
         radialGradientImageView.image = UIImage(named: "radial_gradient")
         radialGradientImageView.contentMode = .scaleToFill
 
@@ -82,16 +70,6 @@ class Menu3DItem: Entity, HasAnchoring {
         container.addSubview(sectionName)
         container.addSubview(sectionDescription)
 
-        return increaseContrast(container.toImage())
-    }
-
-    func increaseContrast(_ image: UIImage) -> UIImage {
-        let inputImage = CIImage(image: image)!
-        let parameters = ["inputContrast": NSNumber(value: 0.7)]
-        let outputImage = inputImage.applyingFilter("CIColorControls", parameters: parameters)
-
-        let context = CIContext(options: nil)
-        let img = context.createCGImage(outputImage, from: outputImage.extent)!
-        return UIImage(cgImage: img)
+        return container.toImage()
     }
 }

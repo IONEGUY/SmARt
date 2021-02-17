@@ -31,10 +31,4 @@ extension UIView {
     
         return image ?? UIImage()
     }
-    
-    func toImage1() -> UIImage {
-        return UIGraphicsImageRenderer(bounds: bounds).image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
-    }
 }

@@ -9,5 +9,8 @@ target 'SmARt' do
   pod 'SwinjectAutoregistration'
   pod 'AppCenter'
   pod 'Closures'
+  pod 'SmartHitTest'
+  pod 'FocusNode'
+  pod 'GLTFSceneKit'
 
 end

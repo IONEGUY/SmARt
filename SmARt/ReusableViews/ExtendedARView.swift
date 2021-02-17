@@ -7,24 +7,45 @@
 
 import Foundation
 import ARKit
-import RealityKit
+import SceneKit
+import SmartHitTest
+import FocusNode
 
-class ExtendedARView: ARView, ARCoachingOverlayViewDelegate {
-    var doOnTap: ((ARView, simd_float4x4) -> ())?
-    var entitySelected: ((Entity) -> ())?
+class ExtendedARView: ARSCNView, ARSmartHitTest, ARSCNViewDelegate, ARCoachingOverlayViewDelegate {
+    var doOnTap: ((ARSCNView, simd_float4x4) -> ())?
+    var nodeSelected: ((SCNNode) -> ())?
+    
+    private let focusNode = FocusSquare()
 
     func setup() {
+        delegate = self
+        
+        addFocusNode()
         setupOptimizations()
         addCoaching()
-        configueARSceneView()
+        configueSession()
         addGestureRecognizers()
     }
     
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        focusNode.updateFocusNode()
+    }
+    
+    func configueSession() {
+        autoenablesDefaultLighting = true
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal]
+        session.run(configuration)
+    }
+    
+    private func addFocusNode() {
+        focusNode.viewDelegate = self
+        scene.rootNode.addChildNode(focusNode)
+    }
+    
     private func setupOptimizations() {
-        contentScaleFactor = 0.50 * contentScaleFactor
-        renderOptions = [.disableMotionBlur, .disableAREnvironmentLighting, .disableCameraGrain,
-                         .disableDepthOfField, .disableFaceOcclusions, .disableGroundingShadows,
-                         .disableHDR, .disablePersonOcclusion]
+        contentScaleFactor = 0.5 * contentScaleFactor
+        rendersMotionBlur = false
     }
     
     private func addCoaching() {
@@ -34,12 +55,6 @@ class ExtendedARView: ARView, ARCoachingOverlayViewDelegate {
         coachingOverlay.goal = .horizontalPlane
         coachingOverlay.session = session
         coachingOverlay.delegate = self
-    }
-
-    private func configueARSceneView() {
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal]
-        session.run(configuration)
     }
     
     private func addGestureRecognizers() {
@@ -52,13 +67,23 @@ class ExtendedARView: ARView, ARCoachingOverlayViewDelegate {
     @objc private func handleTapAction(_ sender: UITapGestureRecognizer) {
         let tapPoint = sender.location(in: self)
         doOnTap?(self, getPositionFromRayCast(at: tapPoint))
-        if let hitEntity = entity(at: tapPoint) {
-            entitySelected?(hitEntity)
+        if let hitNode = getNodeFromHitTest(at: tapPoint) {
+            nodeSelected?(hitNode)
         }
     }
     
     private func getPositionFromRayCast(at point: CGPoint) -> simd_float4x4 {
-        let cast = raycast(from: point, allowing: .existingPlaneInfinite, alignment: .horizontal)
-        return cast.first?.worldTransform ?? .init(0)
+        guard let raycastQuesry = raycastQuery(from: point,
+                                               allowing: .estimatedPlane,
+                                               alignment: .horizontal),
+              let transform = session.raycast(raycastQuesry).first?.worldTransform
+        else { return .init() }
+        return transform
+    }
+    
+    private func getNodeFromHitTest(at point: CGPoint)
+        -> SCNNode? {
+        guard let node = hitTest(point).first?.node.parent else { return nil }
+        return node
     }
 }

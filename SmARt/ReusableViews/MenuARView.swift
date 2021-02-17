@@ -14,39 +14,48 @@ import Combine
 import Closures
 
 struct MenuARView: UIViewRepresentable {
-    @Binding var sectionsList3DItemData: [SectionsList3DItemData]
-    var sectionItemSelected: (String) -> Void
-    @State var sectionsListAdded = false
+    @Binding var menuItems: [MenuItemData]
+    @State var menuAdded = false
+    @Binding var onMenuItemSelected: PassthroughSubject<String, Never>
     
     private let arView = ExtendedARView()
             
-    func makeUIView(context: Context) -> ARView {
+    func makeUIView(context: Context) -> ARSCNView {
         arView.setup()
         arView.doOnTap = populateARView
-        arView.entitySelected = {
-            guard let entity = $0 as? Menu3DItem else { return }
-            sectionItemSelected(entity.name)
+        arView.nodeSelected = {
+            guard let nodeName = ($0 as? Menu3DItem)?.name else { return }
+            onMenuItemSelected.send(nodeName)
         }
         
         return arView
     }
 
-    func updateUIView(_ arView: ARView, context: Context) {
+    func updateUIView(_ arView: ARSCNView, context: Context) {
 
     }
     
-    private func populateARView(_ arView: ARView, _ transform: simd_float4x4) {
-        if sectionsList3DItemData.isEmpty || sectionsListAdded { return }
-        sectionsListAdded.toggle()
-        for index in 0...sectionsList3DItemData.count - 1 {
-            let model = Menu3DItem()
-            model.initData(sectionsList3DItemData[index])
-            model.transform = Transform(matrix: transform)
-            model.position.y += (Float(index) * 0.1) + (Float(index) * 0.02) + 0.3
-            let anchor = AnchorEntity()
-            anchor.addChild(model)
-            anchor.generateCollisionShapes(recursive: true)
-            arView.scene.anchors.append(anchor)
+    private func populateARView(_ arView: ARSCNView, _ transform: simd_float4x4) {
+        if menuItems.isEmpty || menuAdded { return }
+        menuAdded.toggle()
+        
+        var nodes: [SCNNode] = []
+        let dispatchGroup = DispatchGroup()
+        
+        for index in 0...menuItems.count - 1 {
+            dispatchGroup.enter()
+            
+            let node = Menu3DItem()
+            node.initData(menuItems[index])
+            node.transform = SCNMatrix4(transform)
+            node.position.y += (Float(index) * 0.2) + (Float(index) * 0.04) + 0.1
+            nodes.append(node)
+            
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: DispatchQueue.global(qos: .background)) {
+            nodes.forEach { arView.scene.rootNode.addChildNode($0) }
         }
     }
 }

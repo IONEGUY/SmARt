@@ -12,11 +12,18 @@ struct MenuView: View {
     @ObservedObject var viewModel = MenuViewModel()
 
     var body: some View {
-        MenuARView(
-            sectionsList3DItemData:
-                $viewModel.sectionsList3DItemData,
-            sectionItemSelected: viewModel.sectionItemSelected)
-            .edgesIgnoringSafeArea(.all)
+        NavigationView {
+            ZStack {
+                NavigationLink(
+                    destination: SectionView(sectionInfo: viewModel.section),
+                    isActive: $viewModel.pushActive,
+                    label: { Text(String.empty) })
+                MenuARView(
+                    menuItems: $viewModel.menuItems,
+                    onMenuItemSelected: $viewModel.onMenuItemSelected)
+                    .edgesIgnoringSafeArea(.all)
+            }
+        }
     }
 }
 
