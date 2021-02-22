@@ -15,7 +15,7 @@ struct MenuView: View {
         NavigationView {
             ZStack {
                 NavigationLink(
-                    destination: SectionView(sectionInfo: viewModel.section),
+                    destination: SectionDetailContainerView(sectionInfo: viewModel.section),
                     isActive: $viewModel.pushActive,
                     label: { Text(String.empty) })
                 MenuARView(
@@ -23,7 +23,7 @@ struct MenuView: View {
                     onMenuItemSelected: $viewModel.onMenuItemSelected)
                     .edgesIgnoringSafeArea(.all)
             }
-        }
+        }.navigationBarHidden(true)
     }
 }
 

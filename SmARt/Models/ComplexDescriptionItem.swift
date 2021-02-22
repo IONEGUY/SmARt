@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct ComplexDescriptionItem: Codable {
-    var icon: ImageData?
-    var title: String?
+struct ComplexDescriptionItem: Codable, Identifiable {
+    var id = UUID()
+    var icon: ImageData
+    var title: String
     var subtitle: String?
     
     enum CodingKeys: String, CodingKey {

@@ -9,12 +9,12 @@ import Foundation
 
 struct Section: Codable {
     var id: String
-    var name: String?
-    var description: String?
+    var name: String
+    var description: String
     var complexDescription: ComplexDescription?
     var logo2d: ImageData?
     var logo3d: FileData
-    var typeSection: String?
+    var typeSection: String
     var sections: [Section]?
     var objects: [ObjectData]?
     var menuName: String

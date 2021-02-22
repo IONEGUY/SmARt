@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		28DA3C72DB1551AA5184E60F /* Pods_SmARt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609AC0DC49D0EDA7A517DADC /* Pods_SmARt.framework */; };
-		FA10601325DADE4E007E6898 /* Experiense.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = FA10600F25DADB63007E6898 /* Experiense.rcproject */; };
-		FA10603925DD4A47007E6898 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10603825DD4A47007E6898 /* SectionViewModel.swift */; };
+		FA10603925DD4A47007E6898 /* SectionDetailContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10603825DD4A47007E6898 /* SectionDetailContainerViewModel.swift */; };
+		FA10604025DD7629007E6898 /* MenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10603F25DD7629007E6898 /* MenuItemType.swift */; };
+		FA10604725DD8796007E6898 /* SectionDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10604625DD8796007E6898 /* SectionDetailContainerView.swift */; };
+		FA10605625DD9930007E6898 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10605525DD9930007E6898 /* UIScreen.swift */; };
+		FA2273FE25E454E300DA6FCB /* ExtendedRealityKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */; };
 		FA343EC825DAB18D00C3A161 /* ExtendedARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA343EC725DAB18D00C3A161 /* ExtendedARView.swift */; };
 		FA36208F25CC84D000DFE70E /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36208E25CC84D000DFE70E /* ApiError.swift */; };
 		FA36209D25CC89A700DFE70E /* StringResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36209B25CC89A700DFE70E /* StringResources.swift */; };
@@ -22,7 +25,6 @@
 		FA4FE01825CC4C4900D1EFC6 /* BaseApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE01225CC4C4900D1EFC6 /* BaseApiService.swift */; };
 		FA4FE01925CC4C4900D1EFC6 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE01325CC4C4900D1EFC6 /* ErrorHandler.swift */; };
 		FA4FE01A25CC4C4900D1EFC6 /* ApiErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE01425CC4C4900D1EFC6 /* ApiErrorLogger.swift */; };
-		FA589A0225D5500C00949EAF /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA589A0125D5500C00949EAF /* SectionView.swift */; };
 		FA6B3A5425D1515000B0C3C2 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A5325D1515000B0C3C2 /* MenuView.swift */; };
 		FA6B3A5725D1516200B0C3C2 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */; };
 		FA6B3A8E25D1BB3E00B0C3C2 /* MenuARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A8D25D1BB3E00B0C3C2 /* MenuARView.swift */; };
@@ -30,6 +32,18 @@
 		FA80BF7125CA9BC500FD78ED /* SmARtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80BF7025CA9BC500FD78ED /* SmARtApp.swift */; };
 		FA80BF7525CA9BC600FD78ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA80BF7425CA9BC600FD78ED /* Assets.xcassets */; };
 		FA80BF7825CA9BC600FD78ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA80BF7725CA9BC600FD78ED /* Preview Assets.xcassets */; };
+		FA8A87C425E3FED100D1BBE3 /* AugmentedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87C325E3FED100D1BBE3 /* AugmentedObjectType.swift */; };
+		FA8A87C825E427F300D1BBE3 /* SmartRoomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87C725E427F300D1BBE3 /* SmartRoomARView.swift */; };
+		FA8A87CC25E4339A00D1BBE3 /* SmartRoomARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CB25E4339A00D1BBE3 /* SmartRoomARViewModel.swift */; };
+		FA8A87CF25E4349C00D1BBE3 /* Object3DButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */; };
+		FAA5C22D25DED96F00BD1B1E /* SwiftUI Color Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */; };
+		FAA5C23025DEE46D00BD1B1E /* GetStartedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */; };
+		FAA5C23325DEE72600BD1B1E /* SectionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C23225DEE72600BD1B1E /* SectionDescription.swift */; };
+		FAA5C23725DEE8C100BD1B1E /* ComplexDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C23625DEE8C100BD1B1E /* ComplexDescriptionView.swift */; };
+		FAA5C23A25DEE98B00BD1B1E /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C23925DEE98B00BD1B1E /* ArrayExtensions.swift */; };
+		FAA5C26625DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C26525DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift */; };
+		FAA5C26A25DFC88F00BD1B1E /* SectionObjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C26925DFC88F00BD1B1E /* SectionObjectsView.swift */; };
+		FAA5C26D25E043B300BD1B1E /* HealthSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C26C25E043B300BD1B1E /* HealthSectionView.swift */; };
 		FAA9C89325CD5E8E005BA9EE /* ComplexDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C88925CD5E8E005BA9EE /* ComplexDescription.swift */; };
 		FAA9C89425CD5E8E005BA9EE /* FileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C88A25CD5E8E005BA9EE /* FileData.swift */; };
 		FAA9C89525CD5E8E005BA9EE /* ComplexDescriptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C88B25CD5E8E005BA9EE /* ComplexDescriptionItem.swift */; };
@@ -49,8 +63,11 @@
 		1189383F6BDEFD712629F3EB /* Pods-SmARt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmARt.debug.xcconfig"; path = "Target Support Files/Pods-SmARt/Pods-SmARt.debug.xcconfig"; sourceTree = "<group>"; };
 		59A56DDDA543FC89BB770483 /* Pods-SmARt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmARt.release.xcconfig"; path = "Target Support Files/Pods-SmARt/Pods-SmARt.release.xcconfig"; sourceTree = "<group>"; };
 		609AC0DC49D0EDA7A517DADC /* Pods_SmARt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmARt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA10600F25DADB63007E6898 /* Experiense.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experiense.rcproject; sourceTree = "<group>"; };
-		FA10603825DD4A47007E6898 /* SectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
+		FA10603825DD4A47007E6898 /* SectionDetailContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailContainerViewModel.swift; sourceTree = "<group>"; };
+		FA10603F25DD7629007E6898 /* MenuItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemType.swift; sourceTree = "<group>"; };
+		FA10604625DD8796007E6898 /* SectionDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailContainerView.swift; sourceTree = "<group>"; };
+		FA10605525DD9930007E6898 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedRealityKitView.swift; sourceTree = "<group>"; };
 		FA343EC725DAB18D00C3A161 /* ExtendedARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedARView.swift; sourceTree = "<group>"; };
 		FA36208E25CC84D000DFE70E /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		FA36209B25CC89A700DFE70E /* StringResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringResources.swift; sourceTree = "<group>"; };
@@ -63,7 +80,6 @@
 		FA4FE01225CC4C4900D1EFC6 /* BaseApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiService.swift; sourceTree = "<group>"; };
 		FA4FE01325CC4C4900D1EFC6 /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		FA4FE01425CC4C4900D1EFC6 /* ApiErrorLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiErrorLogger.swift; sourceTree = "<group>"; };
-		FA589A0125D5500C00949EAF /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		FA6B3A5325D1515000B0C3C2 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		FA6B3A8D25D1BB3E00B0C3C2 /* MenuARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuARView.swift; sourceTree = "<group>"; };
@@ -73,6 +89,18 @@
 		FA80BF7425CA9BC600FD78ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA80BF7725CA9BC600FD78ED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA80BF7925CA9BC600FD78ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA8A87C325E3FED100D1BBE3 /* AugmentedObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentedObjectType.swift; sourceTree = "<group>"; };
+		FA8A87C725E427F300D1BBE3 /* SmartRoomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRoomARView.swift; sourceTree = "<group>"; };
+		FA8A87CB25E4339A00D1BBE3 /* SmartRoomARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRoomARViewModel.swift; sourceTree = "<group>"; };
+		FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DButton.swift; sourceTree = "<group>"; };
+		FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI Color Extensions.swift"; sourceTree = "<group>"; };
+		FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedButton.swift; sourceTree = "<group>"; };
+		FAA5C23225DEE72600BD1B1E /* SectionDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDescription.swift; sourceTree = "<group>"; };
+		FAA5C23625DEE8C100BD1B1E /* ComplexDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexDescriptionView.swift; sourceTree = "<group>"; };
+		FAA5C23925DEE98B00BD1B1E /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		FAA5C26525DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionWithComplexDescriptionView.swift; sourceTree = "<group>"; };
+		FAA5C26925DFC88F00BD1B1E /* SectionObjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionObjectsView.swift; sourceTree = "<group>"; };
+		FAA5C26C25E043B300BD1B1E /* HealthSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSectionView.swift; sourceTree = "<group>"; };
 		FAA9C88925CD5E8E005BA9EE /* ComplexDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplexDescription.swift; sourceTree = "<group>"; };
 		FAA9C88A25CD5E8E005BA9EE /* FileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileData.swift; sourceTree = "<group>"; };
 		FAA9C88B25CD5E8E005BA9EE /* ComplexDescriptionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplexDescriptionItem.swift; sourceTree = "<group>"; };
@@ -117,6 +145,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FA10605025DD8E37007E6898 /* HealthSection */ = {
+			isa = PBXGroup;
+			children = (
+				FAA5C26C25E043B300BD1B1E /* HealthSectionView.swift */,
+			);
+			path = HealthSection;
+			sourceTree = "<group>";
+		};
 		FA36209125CC881200DFE70E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +164,8 @@
 		FA36209225CC884200DFE70E /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				FA10603F25DD7629007E6898 /* MenuItemType.swift */,
+				FA8A87C325E3FED100D1BBE3 /* AugmentedObjectType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -138,6 +176,9 @@
 				FAD3B21225D2D06300708AE9 /* UIViewExtensions.swift */,
 				FA3620A425CC8B0F00DFE70E /* NSObjectExtensions.swift */,
 				FA3620A325CC8B0F00DFE70E /* StringExtensions.swift */,
+				FA10605525DD9930007E6898 /* UIScreen.swift */,
+				FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */,
+				FAA5C23925DEE98B00BD1B1E /* ArrayExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -156,6 +197,7 @@
 				FAA9C89225CD5E8E005BA9EE /* Section.swift */,
 				FAA9C88E25CD5E8E005BA9EE /* VideoData.swift */,
 				FAD3B1E225D1EAC700708AE9 /* MenuItemData.swift */,
+				FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,7 +228,9 @@
 		FA36209A25CC88D300DFE70E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				FA5899FB25D54FB000949EAF /* Section */,
+				FA8A87C625E427BE00D1BBE3 /* SmartRoomARView */,
+				FA10605025DD8E37007E6898 /* HealthSection */,
+				FA5899FB25D54FB000949EAF /* SectionDetailContainer */,
 				FA6B3A5225D1506D00B0C3C2 /* Menu */,
 				FA3620A925CC8D6800DFE70E /* Base */,
 			);
@@ -196,9 +240,15 @@
 		FA3620A825CC8CDB00DFE70E /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
+				FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */,
 				FA6B3A8D25D1BB3E00B0C3C2 /* MenuARView.swift */,
 				FA6B3A9125D1BFD300B0C3C2 /* Menu3DItem.swift */,
 				FA343EC725DAB18D00C3A161 /* ExtendedARView.swift */,
+				FAA5C23225DEE72600BD1B1E /* SectionDescription.swift */,
+				FAA5C23625DEE8C100BD1B1E /* ComplexDescriptionView.swift */,
+				FAA5C26525DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift */,
+				FAA5C26925DFC88F00BD1B1E /* SectionObjectsView.swift */,
+				FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -240,13 +290,13 @@
 			path = ApiServices;
 			sourceTree = "<group>";
 		};
-		FA5899FB25D54FB000949EAF /* Section */ = {
+		FA5899FB25D54FB000949EAF /* SectionDetailContainer */ = {
 			isa = PBXGroup;
 			children = (
-				FA589A0125D5500C00949EAF /* SectionView.swift */,
-				FA10603825DD4A47007E6898 /* SectionViewModel.swift */,
+				FA10603825DD4A47007E6898 /* SectionDetailContainerViewModel.swift */,
+				FA10604625DD8796007E6898 /* SectionDetailContainerView.swift */,
 			);
-			path = Section;
+			path = SectionDetailContainer;
 			sourceTree = "<group>";
 		};
 		FA6B3A5225D1506D00B0C3C2 /* Menu */ = {
@@ -279,7 +329,6 @@
 		FA80BF6F25CA9BC500FD78ED /* SmARt */ = {
 			isa = PBXGroup;
 			children = (
-				FA10600F25DADB63007E6898 /* Experiense.rcproject */,
 				FA36209725CC88C700DFE70E /* Resources */,
 				FA4FE00E25CC4C4900D1EFC6 /* Networking */,
 				FA36209625CC885F00DFE70E /* Protocols */,
@@ -304,6 +353,15 @@
 				FA80BF7725CA9BC600FD78ED /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA8A87C625E427BE00D1BBE3 /* SmartRoomARView */ = {
+			isa = PBXGroup;
+			children = (
+				FA8A87C725E427F300D1BBE3 /* SmartRoomARView.swift */,
+				FA8A87CB25E4339A00D1BBE3 /* SmartRoomARViewModel.swift */,
+			);
+			path = SmartRoomARView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,15 +477,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA10601325DADE4E007E6898 /* Experiense.rcproject in Sources */,
+				FAA5C23A25DEE98B00BD1B1E /* ArrayExtensions.swift in Sources */,
 				FA6B3A5425D1515000B0C3C2 /* MenuView.swift in Sources */,
 				FA6B3A8E25D1BB3E00B0C3C2 /* MenuARView.swift in Sources */,
+				FAA5C26D25E043B300BD1B1E /* HealthSectionView.swift in Sources */,
 				FAD3B1E325D1EAC700708AE9 /* MenuItemData.swift in Sources */,
 				FA3620A525CC8B0F00DFE70E /* StringExtensions.swift in Sources */,
 				FA36209D25CC89A700DFE70E /* StringResources.swift in Sources */,
 				FAA9C89525CD5E8E005BA9EE /* ComplexDescriptionItem.swift in Sources */,
+				FAA5C23725DEE8C100BD1B1E /* ComplexDescriptionView.swift in Sources */,
 				FA36209E25CC89A700DFE70E /* Colors.swift in Sources */,
+				FA10604725DD8796007E6898 /* SectionDetailContainerView.swift in Sources */,
+				FA8A87CF25E4349C00D1BBE3 /* Object3DButton.swift in Sources */,
 				FA4FE01825CC4C4900D1EFC6 /* BaseApiService.swift in Sources */,
+				FA10604025DD7629007E6898 /* MenuItemType.swift in Sources */,
 				FA6B3A9225D1BFD300B0C3C2 /* Menu3DItem.swift in Sources */,
 				FA4FE01725CC4C4900D1EFC6 /* ApiConstants.swift in Sources */,
 				FA3620A125CC8A8E00DFE70E /* DIContainerConfigurator.swift in Sources */,
@@ -438,20 +501,29 @@
 				FAA9C89925CD5E8E005BA9EE /* Mask.swift in Sources */,
 				FAA9C89325CD5E8E005BA9EE /* ComplexDescription.swift in Sources */,
 				FAA9C89825CD5E8E005BA9EE /* VideoData.swift in Sources */,
-				FA589A0225D5500C00949EAF /* SectionView.swift in Sources */,
+				FAA5C26A25DFC88F00BD1B1E /* SectionObjectsView.swift in Sources */,
 				FA4FE01925CC4C4900D1EFC6 /* ErrorHandler.swift in Sources */,
 				FA4FE01A25CC4C4900D1EFC6 /* ApiErrorLogger.swift in Sources */,
 				FA3620A625CC8B0F00DFE70E /* NSObjectExtensions.swift in Sources */,
+				FAA5C23025DEE46D00BD1B1E /* GetStartedButton.swift in Sources */,
+				FA2273FE25E454E300DA6FCB /* ExtendedRealityKitView.swift in Sources */,
 				FAA9C89C25CD5E8E005BA9EE /* Section.swift in Sources */,
 				FA36208F25CC84D000DFE70E /* ApiError.swift in Sources */,
+				FAA5C22D25DED96F00BD1B1E /* SwiftUI Color Extensions.swift in Sources */,
 				FAD3B21325D2D06300708AE9 /* UIViewExtensions.swift in Sources */,
 				FA80BF7125CA9BC500FD78ED /* SmARtApp.swift in Sources */,
+				FA8A87C825E427F300D1BBE3 /* SmartRoomARView.swift in Sources */,
 				FAA9C89B25CD5E8E005BA9EE /* ImageData.swift in Sources */,
-				FA10603925DD4A47007E6898 /* SectionViewModel.swift in Sources */,
+				FA8A87C425E3FED100D1BBE3 /* AugmentedObjectType.swift in Sources */,
+				FA10603925DD4A47007E6898 /* SectionDetailContainerViewModel.swift in Sources */,
+				FAA5C23325DEE72600BD1B1E /* SectionDescription.swift in Sources */,
 				FAA9C89A25CD5E8E005BA9EE /* ObjectData.swift in Sources */,
+				FA8A87CC25E4339A00D1BBE3 /* SmartRoomARViewModel.swift in Sources */,
+				FA10605625DD9930007E6898 /* UIScreen.swift in Sources */,
 				FA4FE01625CC4C4900D1EFC6 /* URLRequestBuilder.swift in Sources */,
 				FAA9C89425CD5E8E005BA9EE /* FileData.swift in Sources */,
 				FAA9C89625CD5E8E005BA9EE /* Environment.swift in Sources */,
+				FAA5C26625DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

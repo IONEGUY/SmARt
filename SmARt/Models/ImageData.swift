@@ -11,7 +11,7 @@ struct ImageData: Codable {
     var name: String?
     var description: String?
     var size: Int64?
-    var url: String?
+    var url: String
     
     enum CodingKeys: String, CodingKey {
         case name

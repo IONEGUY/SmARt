@@ -12,5 +12,6 @@ target 'SmARt' do
   pod 'SmartHitTest'
   pod 'FocusNode'
   pod 'GLTFSceneKit'
+  pod 'Kingfisher'
 
 end

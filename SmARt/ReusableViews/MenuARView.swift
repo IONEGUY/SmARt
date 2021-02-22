@@ -20,7 +20,7 @@ struct MenuARView: UIViewRepresentable {
     
     private let arView = ExtendedARView()
             
-    func makeUIView(context: Context) -> ARSCNView {
+    func makeUIView(context: Context) -> ExtendedARView {
         arView.setup()
         arView.doOnTap = populateARView
         arView.nodeSelected = {
@@ -31,8 +31,8 @@ struct MenuARView: UIViewRepresentable {
         return arView
     }
 
-    func updateUIView(_ arView: ARSCNView, context: Context) {
-
+    func updateUIView(_ arView: ExtendedARView, context: Context) {
+        
     }
     
     private func populateARView(_ arView: ARSCNView, _ transform: simd_float4x4) {
