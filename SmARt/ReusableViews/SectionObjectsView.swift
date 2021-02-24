@@ -22,28 +22,7 @@ struct SectionObjectsView: View {
                     objectSelected(object)
                 }
         } else {
-            let masks = objects.map(\.mask)
-            HStack(spacing: 15) {
-                ForEach(0..<masks.count) { index in
-                    HStack {
-                        ZStack(alignment: .center) {
-                            KFImage(URL(string: masks[index]?.icon?.url ?? .empty))
-                                    .resizable()
-                                    .offset(x: 0, y: -40)
-                            VStack {
-                                Spacer()
-                                Text(masks[index]?.description ?? .empty)
-                                    .foregroundColor(.white)
-                                    .font(.body)
-                                    .fontWeight(.bold)
-                                    .padding(.all, 10)
-                            }
-                        }
-                    }
-                    .background(Color(hex: 0x1D242E))
-                    .cornerRadius(10)
-                }
-            }.frame(width: UIScreen.width - 30, height: 200)
+            MaskList(masks: objects.map(\.mask))
         }
     }
 }

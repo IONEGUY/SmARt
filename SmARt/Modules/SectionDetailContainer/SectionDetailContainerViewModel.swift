@@ -17,6 +17,10 @@ class SectionDetailContainerViewModel: ObservableObject {
     var objectSelected: (ObjectData) -> Void = {_ in}
     
     @Published var title: String = .empty
+    @Published var pushSmartRoomARViewActive = false
+    @Published var pushMaskFittingViewActive = false
+    @Published var masks = [Mask?]()
+    @Published var object3dUrls = [String]()
     
     init(sectionInfo: Section?) {
         self.sectionInfo = sectionInfo
@@ -40,16 +44,27 @@ class SectionDetailContainerViewModel: ObservableObject {
     
     private func handleGetStartedButtonPressed() {
         switch sectionType {
-        case .healthSection:
-            getStartedButtonText = "Get Stream"
+        case .smartRoom:
+            object3dUrls = ["http://34.105.234.21:8080/api-files/open/file/download/60267d500d23537b4fb43d8c",
+                            "http://34.105.234.21:8080/api-files/ope"]
+//                sectionInfo?.objects?.map { objectData in
+//                objectData.object3d?.files?.first?.url ?? .empty
+//            } ?? []
+            pushSmartRoomARViewActive = true
         case .section5G:
-            getStartedButtonText = "5G coverage"
+            object3dUrls = ["http://34.105.234.21:8080/api-files/open/file/download/60267d500d23537b4fb43d8c"]
+//                [sectionInfo?.objects?.first?.object3d?.files?.first?.url ?? .empty]
+            pushSmartRoomARViewActive = true
+        case .smartRetail:
+            masks = sectionInfo?.objects?.map(\.mask) ?? []
+            pushMaskFittingViewActive = true
         default:
             break
         }
     }
     
     private func handleObjectSelected(_ object: ObjectData) {
-        
+        object3dUrls = [object.object3d?.files?.first?.url ?? .empty]
+        pushSmartRoomARViewActive = true
     }
 }

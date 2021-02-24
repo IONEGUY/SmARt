@@ -11,7 +11,7 @@ import SceneKit
 import SmartHitTest
 import FocusNode
 
-class ExtendedARView: ARSCNView, ARSmartHitTest, ARSCNViewDelegate, ARCoachingOverlayViewDelegate {
+class ExtendedSceneKitView: ARSCNView, ARSmartHitTest, ARSCNViewDelegate, ARCoachingOverlayViewDelegate {
     var doOnTap: ((ARSCNView, simd_float4x4) -> ())?
     var nodeSelected: ((SCNNode) -> ())?
     
@@ -55,6 +55,14 @@ class ExtendedARView: ARSCNView, ARSmartHitTest, ARSCNViewDelegate, ARCoachingOv
         coachingOverlay.goal = .horizontalPlane
         coachingOverlay.session = session
         coachingOverlay.delegate = self
+    }
+    
+    func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
+        scene.rootNode.isHidden = false
+    }
+
+    func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
+        scene.rootNode.isHidden = true
     }
     
     private func addGestureRecognizers() {

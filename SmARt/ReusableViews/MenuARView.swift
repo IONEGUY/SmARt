@@ -17,22 +17,20 @@ struct MenuARView: UIViewRepresentable {
     @Binding var menuItems: [MenuItemData]
     @State var menuAdded = false
     @Binding var onMenuItemSelected: PassthroughSubject<String, Never>
-    
-    private let arView = ExtendedARView()
-            
-    func makeUIView(context: Context) -> ExtendedARView {
+                
+    func makeUIView(context: Context) -> ExtendedSceneKitView {
+        let arView = ExtendedSceneKitView()
         arView.setup()
+        return arView
+    }
+
+    func updateUIView(_ arView: ExtendedSceneKitView, context: Context) {
+        arView.configueSession()
         arView.doOnTap = populateARView
         arView.nodeSelected = {
             guard let nodeName = ($0 as? Menu3DItem)?.name else { return }
             onMenuItemSelected.send(nodeName)
         }
-        
-        return arView
-    }
-
-    func updateUIView(_ arView: ExtendedARView, context: Context) {
-        
     }
     
     private func populateARView(_ arView: ARSCNView, _ transform: simd_float4x4) {

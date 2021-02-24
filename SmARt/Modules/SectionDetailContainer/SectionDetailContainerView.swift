@@ -18,6 +18,15 @@ struct SectionDetailContainerView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
+            NavigationLink(destination: SmartRoomARView(viewModel: SmartRoomARViewModel(object3dUrls: viewModel.object3dUrls)),
+                           isActive: $viewModel.pushSmartRoomARViewActive) {
+              Text("")
+            }.hidden()
+            NavigationLink(destination: MaskFittingView(viewModel: MaskFittingViewModel(masks: viewModel.masks)),
+                           isActive: $viewModel.pushMaskFittingViewActive) {
+              Text("")
+            }.hidden()
+            
             Image("section_background")
                 .resizable()
                 .edgesIgnoringSafeArea(.all)

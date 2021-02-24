@@ -23,7 +23,7 @@ struct SmARtApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SmartRoomARView(viewModel: SmartRoomARViewModel(object3dUrls: ["1", "2"]))
+            MenuView()
         }
         .onChange(of: scenePhase) { (newScenePhase) in
             switch newScenePhase {

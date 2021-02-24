@@ -6,10 +6,7 @@
 //
 
 import SwiftUI
-import RealityKit
-import ARKit
 import Combine
-import Alamofire
 
 struct SmartRoomARView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -18,17 +15,18 @@ struct SmartRoomARView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Color.black
+            RealityKitViewContainer(objectUrl: $viewModel.current3DObjectUrl)
                 .edgesIgnoringSafeArea(.all)
             
             HStack {
                 Button(action: { presentationMode.wrappedValue.dismiss() }) {
                     Image(systemName: "chevron.left")
+                        .frame(width: 30, height: 30)
+                        .background(Color(hex: 0xC4C4C4, alpha: 0.7))
                         .foregroundColor(.white)
-                }
-                .frame(width: 30, height: 30)
-                .background(Color(hex: 0xC4C4C4, alpha: 0.7))
-                .cornerRadius(15)
+                        .cornerRadius(15)
+                }.frame(width: 60, height: 60, alignment: .topLeading)
+                
                 Spacer()
                 
                 if viewModel.is3DObjectButtonsVisible {
@@ -46,7 +44,6 @@ struct SmartRoomARView: View {
                     .cornerRadius(8)
                 }
             }.frame(width: UIScreen.width - 50, height: 60)
-            ARViewContainer(objectUrl: $viewModel.current3DObjectUrl)
         }
     }
 }
@@ -55,18 +52,4 @@ struct SmartRoomARView_Previews: PreviewProvider {
     static var previews: some View {
         SmartRoomARView(viewModel: SmartRoomARViewModel(object3dUrls: []))
     }
-}
-
-struct ARViewContainer: UIViewRepresentable {
-    @Binding var objectUrl: String
-    
-    func makeUIView(context: Context) -> ARView {
-        let arView = ARView(frame: .zero)
-        arView.contentScaleFactor =  0.5 * arView.contentScaleFactor
-        return arView
-        
-    }
-    
-    func updateUIView(_ uiView: ARView, context: Context) {}
-    
 }
