@@ -10,6 +10,5 @@ import Foundation
 enum AugmentedObjectType {
     case
     object3D,
-    video,
-    mask
+    video
 }

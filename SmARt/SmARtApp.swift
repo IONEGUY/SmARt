@@ -13,14 +13,15 @@ import AppCenterCrashes
 @main
 struct SmARtApp: App {
     @Environment(\.scenePhase) var scenePhase
-    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     private let appCenterAppSecret = "Needs to be created in AppCenter."
-    
+
     init() {
         DIContainerConfigurator.initiate()
         initCrashlytics()
     }
-    
+
     var body: some Scene {
         WindowGroup {
             MenuView()
@@ -34,7 +35,7 @@ struct SmARtApp: App {
             }
         }
     }
-    
+
     private func initCrashlytics() {
 //        AppCenter.start(withAppSecret: appCenterAppSecret,
 //                        services: [Analytics.self, Crashes.self])

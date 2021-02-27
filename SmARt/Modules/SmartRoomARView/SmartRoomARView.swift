@@ -15,7 +15,8 @@ struct SmartRoomARView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            RealityKitViewContainer(objectUrl: $viewModel.current3DObjectUrl)
+            RealityKitViewContainer(objectUrl: $viewModel.current3DObjectUrl,
+                                    objectType: $viewModel.augmentedObjectType)
                 .edgesIgnoringSafeArea(.all)
             
             HStack {
@@ -26,8 +27,6 @@ struct SmartRoomARView: View {
                         .foregroundColor(.white)
                         .cornerRadius(15)
                 }.frame(width: 60, height: 60, alignment: .topLeading)
-                
-                Spacer()
                 
                 if viewModel.is3DObjectButtonsVisible {
                     VStack {
@@ -45,11 +44,5 @@ struct SmartRoomARView: View {
                 }
             }.frame(width: UIScreen.width - 50, height: 60)
         }
-    }
-}
-
-struct SmartRoomARView_Previews: PreviewProvider {
-    static var previews: some View {
-        SmartRoomARView(viewModel: SmartRoomARViewModel(object3dUrls: []))
     }
 }

@@ -13,40 +13,27 @@ import UIKit
 import SwiftUI
 import Combine
 
-struct RealityKitViewContainer: UIViewRepresentable {
-    @Binding var objectUrl: String
+struct RealityKitViewContainer: UIViewRepresentable, ExtendedRealityKitViewDelegate {
     @State var cancellables = Set<AnyCancellable>()
     
+    @Binding var objectUrl: String
+    @Binding var objectType: AugmentedObjectType
+        
     func makeUIView(context: Context) -> ExtendedRealityKitView {
         let arView = ExtendedRealityKitView()
+        arView.delegate = self
         arView.setup()
+        
         return arView
     }
     
-    func updateUIView(_ uiView: ExtendedRealityKitView, context: Context) {
-        uiView.doOnTap = append3DObjectToARView
+    func updateUIView(_ uiView: ExtendedRealityKitView, context: Context) {}
+    
+    func doOnTap(_ arView: ExtendedRealityKitView, _ transform: simd_float4x4) {
+        objectType == .video
+            ? arView.appendVideo(objectUrl, transform)
+            : arView.append3DModel(objectUrl, transform)
     }
     
-    func append3DObjectToARView(arView: ARView, transform: simd_float4x4) {
-        AF.download(objectUrl, method: .get).responseData { response in
-            guard let fileName = objectUrl.split(separator: "/").last,
-                  let filePath = FileManager.default.urls(
-                for: .cachesDirectory,
-                in: .userDomainMask).first?.appendingPathComponent("\(fileName).usdz"),
-                (try? response.result.get().write(to: filePath)) != nil else { return }
-
-            Entity.loadModelAsync(contentsOf: filePath).sink {_ in}
-                receiveValue: { model in
-                    model.transform = Transform(matrix: transform)
-                    model.scale = SIMD3<Float>(x: 0.01, y: 0.01, z: 0.01)
-                    
-                    let anchor = AnchorEntity()
-                    anchor.addChild(model)
-                    anchor.generateCollisionShapes(recursive: true)
-                    arView.scene.anchors.append(anchor)
-                    arView.installGestures(.all, for: model)
-                }
-                .store(in: &cancellables)
-        }
-    }
+    func entitySelected(_ entity: Entity) {}
 }

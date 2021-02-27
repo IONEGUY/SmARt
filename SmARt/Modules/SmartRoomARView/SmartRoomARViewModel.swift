@@ -8,20 +8,23 @@
 import Foundation
 import Combine
 import SwiftUI
+import RealityKit
 
 class SmartRoomARViewModel: ObservableObject {
     @Published var object3DButtons: [Object3DButton]
     @Published var current3DObjectUrl: String
     @Published var is3DObjectButtonsVisible = false
+    @Published var augmentedObjectType = AugmentedObjectType.object3D
     
-    init(object3dUrls: [String]) {
+    init(object3dUrls: [String], augmentedObjectType: AugmentedObjectType) {
+        self.augmentedObjectType = augmentedObjectType
         current3DObjectUrl = object3dUrls.first ?? .empty
         is3DObjectButtonsVisible = object3dUrls.count >= 2
         object3DButtons = [
             Object3DButton(image: "light", isSelected: true),
             Object3DButton(image: "cup")
         ]
-                
+
         for index in 0..<object3dUrls.count {
             object3DButtons[index].action = { [unowned self] in
                 current3DObjectUrl = object3dUrls[index]

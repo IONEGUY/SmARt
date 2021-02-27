@@ -13,6 +13,13 @@
 		FA10604725DD8796007E6898 /* SectionDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10604625DD8796007E6898 /* SectionDetailContainerView.swift */; };
 		FA10605625DD9930007E6898 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10605525DD9930007E6898 /* UIScreen.swift */; };
 		FA2273FE25E454E300DA6FCB /* ExtendedRealityKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */; };
+		FA2656B525E679D60025ACB1 /* SmartTourismView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656B425E679D60025ACB1 /* SmartTourismView.swift */; };
+		FA2656B925E679E10025ACB1 /* SmartTourismViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656B825E679E10025ACB1 /* SmartTourismViewModel.swift */; };
+		FA2656BD25E695870025ACB1 /* DroneARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656BC25E695870025ACB1 /* DroneARView.swift */; };
+		FA2656CB25E695930025ACB1 /* DroneARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656CA25E695930025ACB1 /* DroneARViewModel.swift */; };
+		FA2656E125E6D5550025ACB1 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656E025E6D5550025ACB1 /* Joystick.swift */; };
+		FA2656E425E6D6FA0025ACB1 /* JoystickDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656E325E6D6FA0025ACB1 /* JoystickDirection.swift */; };
+		FA2656E725E6D9DD0025ACB1 /* JoystickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656E625E6D9DD0025ACB1 /* JoystickButton.swift */; };
 		FA343EC825DAB18D00C3A161 /* ExtendedSceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA343EC725DAB18D00C3A161 /* ExtendedSceneKitView.swift */; };
 		FA36208F25CC84D000DFE70E /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36208E25CC84D000DFE70E /* ApiError.swift */; };
 		FA36209D25CC89A700DFE70E /* StringResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36209B25CC89A700DFE70E /* StringResources.swift */; };
@@ -21,6 +28,11 @@
 		FA3620A525CC8B0F00DFE70E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3620A325CC8B0F00DFE70E /* StringExtensions.swift */; };
 		FA3620A625CC8B0F00DFE70E /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3620A425CC8B0F00DFE70E /* NSObjectExtensions.swift */; };
 		FA4203C325E500FA00BA739F /* RealityKitViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4203C225E500FA00BA739F /* RealityKitViewContainer.swift */; };
+		FA45B97625E7C263005CBC38 /* ColationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97525E7C263005CBC38 /* ColationManager.swift */; };
+		FA45B97925E7CD0B005CBC38 /* DimentionalDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97825E7CD0B005CBC38 /* DimentionalDirection.swift */; };
+		FA45B97D25E7CE7A005CBC38 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97C25E7CE7A005CBC38 /* TransformType.swift */; };
+		FA45B98125E7DFCE005CBC38 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B98025E7DFCE005CBC38 /* DoubleExtensions.swift */; };
+		FA45B98425E80349005CBC38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B98325E80349005CBC38 /* AppDelegate.swift */; };
 		FA4FE01625CC4C4900D1EFC6 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE01025CC4C4900D1EFC6 /* URLRequestBuilder.swift */; };
 		FA4FE01725CC4C4900D1EFC6 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE01125CC4C4900D1EFC6 /* ApiConstants.swift */; };
 		FA4FE01825CC4C4900D1EFC6 /* BaseApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE01225CC4C4900D1EFC6 /* BaseApiService.swift */; };
@@ -32,6 +44,17 @@
 		FA5A54EF25E573060023E448 /* MaskFittingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A54EE25E573060023E448 /* MaskFittingViewModel.swift */; };
 		FA5A54F225E578300023E448 /* MaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A54F125E578300023E448 /* MaskList.swift */; };
 		FA5A54F525E586430023E448 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A54F425E586430023E448 /* UIImageViewExtensions.swift */; };
+		FA5CED7125E928D50089B31F /* FocusEntity+Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED6A25E928D50089B31F /* FocusEntity+Segment.swift */; };
+		FA5CED7225E928D50089B31F /* float4x4+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED6B25E928D50089B31F /* float4x4+Extension.swift */; };
+		FA5CED7325E928D50089B31F /* FocusEntity+Colored.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED6C25E928D50089B31F /* FocusEntity+Colored.swift */; };
+		FA5CED7425E928D50089B31F /* FocusEntityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED6D25E928D50089B31F /* FocusEntityComponent.swift */; };
+		FA5CED7525E928D50089B31F /* FocusEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED6E25E928D50089B31F /* FocusEntity.swift */; };
+		FA5CED7625E928D50089B31F /* FocusEntity+Classic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED6F25E928D50089B31F /* FocusEntity+Classic.swift */; };
+		FA5CED7725E928D50089B31F /* FocusEntity+Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED7025E928D50089B31F /* FocusEntity+Alignment.swift */; };
+		FA5CED8225E95A650089B31F /* DroneARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED8125E95A650089B31F /* DroneARViewController.swift */; };
+		FA5CED8525E95AAE0089B31F /* DroneARViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED8425E95AAE0089B31F /* DroneARViewControllerContainer.swift */; };
+		FA5CED8825E95C5D0089B31F /* JoysticksWithMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED8725E95C5D0089B31F /* JoysticksWithMapView.swift */; };
+		FA5CED8C25E968220089B31F /* AnyPublisherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */; };
 		FA6B3A5425D1515000B0C3C2 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A5325D1515000B0C3C2 /* MenuView.swift */; };
 		FA6B3A5725D1516200B0C3C2 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */; };
 		FA6B3A8E25D1BB3E00B0C3C2 /* MenuARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A8D25D1BB3E00B0C3C2 /* MenuARView.swift */; };
@@ -75,6 +98,13 @@
 		FA10604625DD8796007E6898 /* SectionDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailContainerView.swift; sourceTree = "<group>"; };
 		FA10605525DD9930007E6898 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedRealityKitView.swift; sourceTree = "<group>"; };
+		FA2656B425E679D60025ACB1 /* SmartTourismView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTourismView.swift; sourceTree = "<group>"; };
+		FA2656B825E679E10025ACB1 /* SmartTourismViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTourismViewModel.swift; sourceTree = "<group>"; };
+		FA2656BC25E695870025ACB1 /* DroneARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneARView.swift; sourceTree = "<group>"; };
+		FA2656CA25E695930025ACB1 /* DroneARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneARViewModel.swift; sourceTree = "<group>"; };
+		FA2656E025E6D5550025ACB1 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
+		FA2656E325E6D6FA0025ACB1 /* JoystickDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickDirection.swift; sourceTree = "<group>"; };
+		FA2656E625E6D9DD0025ACB1 /* JoystickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickButton.swift; sourceTree = "<group>"; };
 		FA343EC725DAB18D00C3A161 /* ExtendedSceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedSceneKitView.swift; sourceTree = "<group>"; };
 		FA36208E25CC84D000DFE70E /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		FA36209B25CC89A700DFE70E /* StringResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringResources.swift; sourceTree = "<group>"; };
@@ -83,6 +113,11 @@
 		FA3620A325CC8B0F00DFE70E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		FA3620A425CC8B0F00DFE70E /* NSObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
 		FA4203C225E500FA00BA739F /* RealityKitViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitViewContainer.swift; sourceTree = "<group>"; };
+		FA45B97525E7C263005CBC38 /* ColationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColationManager.swift; sourceTree = "<group>"; };
+		FA45B97825E7CD0B005CBC38 /* DimentionalDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimentionalDirection.swift; sourceTree = "<group>"; };
+		FA45B97C25E7CE7A005CBC38 /* TransformType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformType.swift; sourceTree = "<group>"; };
+		FA45B98025E7DFCE005CBC38 /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
+		FA45B98325E80349005CBC38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA4FE01025CC4C4900D1EFC6 /* URLRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		FA4FE01125CC4C4900D1EFC6 /* ApiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		FA4FE01225CC4C4900D1EFC6 /* BaseApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiService.swift; sourceTree = "<group>"; };
@@ -94,6 +129,17 @@
 		FA5A54EE25E573060023E448 /* MaskFittingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskFittingViewModel.swift; sourceTree = "<group>"; };
 		FA5A54F125E578300023E448 /* MaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskList.swift; sourceTree = "<group>"; };
 		FA5A54F425E586430023E448 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		FA5CED6A25E928D50089B31F /* FocusEntity+Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusEntity+Segment.swift"; sourceTree = "<group>"; };
+		FA5CED6B25E928D50089B31F /* float4x4+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "float4x4+Extension.swift"; sourceTree = "<group>"; };
+		FA5CED6C25E928D50089B31F /* FocusEntity+Colored.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusEntity+Colored.swift"; sourceTree = "<group>"; };
+		FA5CED6D25E928D50089B31F /* FocusEntityComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusEntityComponent.swift; sourceTree = "<group>"; };
+		FA5CED6E25E928D50089B31F /* FocusEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusEntity.swift; sourceTree = "<group>"; };
+		FA5CED6F25E928D50089B31F /* FocusEntity+Classic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusEntity+Classic.swift"; sourceTree = "<group>"; };
+		FA5CED7025E928D50089B31F /* FocusEntity+Alignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusEntity+Alignment.swift"; sourceTree = "<group>"; };
+		FA5CED8125E95A650089B31F /* DroneARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneARViewController.swift; sourceTree = "<group>"; };
+		FA5CED8425E95AAE0089B31F /* DroneARViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneARViewControllerContainer.swift; sourceTree = "<group>"; };
+		FA5CED8725E95C5D0089B31F /* JoysticksWithMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoysticksWithMapView.swift; sourceTree = "<group>"; };
+		FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisherExtensions.swift; sourceTree = "<group>"; };
 		FA6B3A5325D1515000B0C3C2 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		FA6B3A8D25D1BB3E00B0C3C2 /* MenuARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuARView.swift; sourceTree = "<group>"; };
@@ -167,10 +213,31 @@
 			path = HealthSection;
 			sourceTree = "<group>";
 		};
+		FA2656B325E679B90025ACB1 /* SmartTourism */ = {
+			isa = PBXGroup;
+			children = (
+				FA2656B425E679D60025ACB1 /* SmartTourismView.swift */,
+				FA2656B825E679E10025ACB1 /* SmartTourismViewModel.swift */,
+			);
+			path = SmartTourism;
+			sourceTree = "<group>";
+		};
+		FA2656BB25E695660025ACB1 /* DroneARView */ = {
+			isa = PBXGroup;
+			children = (
+				FA2656BC25E695870025ACB1 /* DroneARView.swift */,
+				FA2656CA25E695930025ACB1 /* DroneARViewModel.swift */,
+				FA5CED8125E95A650089B31F /* DroneARViewController.swift */,
+				FA5CED8425E95AAE0089B31F /* DroneARViewControllerContainer.swift */,
+			);
+			path = DroneARView;
+			sourceTree = "<group>";
+		};
 		FA36209125CC881200DFE70E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				FA3620A025CC8A8E00DFE70E /* DIContainerConfigurator.swift */,
+				FA45B97525E7C263005CBC38 /* ColationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -180,6 +247,9 @@
 			children = (
 				FA10603F25DD7629007E6898 /* MenuItemType.swift */,
 				FA8A87C325E3FED100D1BBE3 /* AugmentedObjectType.swift */,
+				FA2656E325E6D6FA0025ACB1 /* JoystickDirection.swift */,
+				FA45B97825E7CD0B005CBC38 /* DimentionalDirection.swift */,
+				FA45B97C25E7CE7A005CBC38 /* TransformType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -194,6 +264,8 @@
 				FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */,
 				FAA5C23925DEE98B00BD1B1E /* ArrayExtensions.swift */,
 				FA5A54F425E586430023E448 /* UIImageViewExtensions.swift */,
+				FA45B98025E7DFCE005CBC38 /* DoubleExtensions.swift */,
+				FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -243,6 +315,8 @@
 		FA36209A25CC88D300DFE70E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FA2656BB25E695660025ACB1 /* DroneARView */,
+				FA2656B325E679B90025ACB1 /* SmartTourism */,
 				FA5A54E525E5708E0023E448 /* MaskFitting */,
 				FA8A87C625E427BE00D1BBE3 /* SmartRoomARView */,
 				FA10605025DD8E37007E6898 /* HealthSection */,
@@ -256,6 +330,7 @@
 		FA3620A825CC8CDB00DFE70E /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
+				FA5CED6925E928D50089B31F /* FocusEntity */,
 				FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */,
 				FA6B3A8D25D1BB3E00B0C3C2 /* MenuARView.swift */,
 				FA6B3A9125D1BFD300B0C3C2 /* Menu3DItem.swift */,
@@ -269,6 +344,9 @@
 				FA5A54E125E56EE90023E448 /* MaskFittingSceneKitView.swift */,
 				FA5A54EA25E571580023E448 /* MaskFittingSceneViewContainer.swift */,
 				FA5A54F125E578300023E448 /* MaskList.swift */,
+				FA2656E025E6D5550025ACB1 /* Joystick.swift */,
+				FA2656E625E6D9DD0025ACB1 /* JoystickButton.swift */,
+				FA5CED8725E95C5D0089B31F /* JoysticksWithMapView.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -328,6 +406,21 @@
 			path = MaskFitting;
 			sourceTree = "<group>";
 		};
+		FA5CED6925E928D50089B31F /* FocusEntity */ = {
+			isa = PBXGroup;
+			children = (
+				FA5CED6A25E928D50089B31F /* FocusEntity+Segment.swift */,
+				FA5CED6B25E928D50089B31F /* float4x4+Extension.swift */,
+				FA5CED6C25E928D50089B31F /* FocusEntity+Colored.swift */,
+				FA5CED6D25E928D50089B31F /* FocusEntityComponent.swift */,
+				FA5CED6E25E928D50089B31F /* FocusEntity.swift */,
+				FA5CED6F25E928D50089B31F /* FocusEntity+Classic.swift */,
+				FA5CED7025E928D50089B31F /* FocusEntity+Alignment.swift */,
+			);
+			name = FocusEntity;
+			path = FocusEntity/FocusEntity;
+			sourceTree = "<group>";
+		};
 		FA6B3A5225D1506D00B0C3C2 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +462,7 @@
 				FA3620A825CC8CDB00DFE70E /* ReusableViews */,
 				FA36209A25CC88D300DFE70E /* Modules */,
 				FA80BF7025CA9BC500FD78ED /* SmARtApp.swift */,
+				FA45B98325E80349005CBC38 /* AppDelegate.swift */,
 				FA80BF7925CA9BC600FD78ED /* Info.plist */,
 				FA80BF7425CA9BC600FD78ED /* Assets.xcassets */,
 				FA80BF7625CA9BC600FD78ED /* Preview Content */,
@@ -506,6 +600,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA45B98425E80349005CBC38 /* AppDelegate.swift in Sources */,
+				FA2656E125E6D5550025ACB1 /* Joystick.swift in Sources */,
 				FAA5C23A25DEE98B00BD1B1E /* ArrayExtensions.swift in Sources */,
 				FA6B3A5425D1515000B0C3C2 /* MenuView.swift in Sources */,
 				FA6B3A8E25D1BB3E00B0C3C2 /* MenuARView.swift in Sources */,
@@ -514,15 +610,23 @@
 				FA3620A525CC8B0F00DFE70E /* StringExtensions.swift in Sources */,
 				FA36209D25CC89A700DFE70E /* StringResources.swift in Sources */,
 				FAA9C89525CD5E8E005BA9EE /* ComplexDescriptionItem.swift in Sources */,
+				FA5CED8525E95AAE0089B31F /* DroneARViewControllerContainer.swift in Sources */,
 				FA5A54E725E571280023E448 /* MaskFittingView.swift in Sources */,
 				FAA5C23725DEE8C100BD1B1E /* ComplexDescriptionView.swift in Sources */,
 				FA36209E25CC89A700DFE70E /* Colors.swift in Sources */,
+				FA45B97D25E7CE7A005CBC38 /* TransformType.swift in Sources */,
+				FA5CED7625E928D50089B31F /* FocusEntity+Classic.swift in Sources */,
 				FA10604725DD8796007E6898 /* SectionDetailContainerView.swift in Sources */,
+				FA2656B925E679E10025ACB1 /* SmartTourismViewModel.swift in Sources */,
 				FA8A87CF25E4349C00D1BBE3 /* Object3DButton.swift in Sources */,
+				FA2656BD25E695870025ACB1 /* DroneARView.swift in Sources */,
 				FA4FE01825CC4C4900D1EFC6 /* BaseApiService.swift in Sources */,
 				FA5A54F225E578300023E448 /* MaskList.swift in Sources */,
+				FA2656E725E6D9DD0025ACB1 /* JoystickButton.swift in Sources */,
 				FA10604025DD7629007E6898 /* MenuItemType.swift in Sources */,
+				FA5CED7525E928D50089B31F /* FocusEntity.swift in Sources */,
 				FA6B3A9225D1BFD300B0C3C2 /* Menu3DItem.swift in Sources */,
+				FA45B98125E7DFCE005CBC38 /* DoubleExtensions.swift in Sources */,
 				FA4FE01725CC4C4900D1EFC6 /* ApiConstants.swift in Sources */,
 				FA3620A125CC8A8E00DFE70E /* DIContainerConfigurator.swift in Sources */,
 				FAA9C89725CD5E8E005BA9EE /* Object3dData.swift in Sources */,
@@ -532,20 +636,30 @@
 				FAA9C89925CD5E8E005BA9EE /* Mask.swift in Sources */,
 				FAA9C89325CD5E8E005BA9EE /* ComplexDescription.swift in Sources */,
 				FAA9C89825CD5E8E005BA9EE /* VideoData.swift in Sources */,
+				FA45B97625E7C263005CBC38 /* ColationManager.swift in Sources */,
 				FA4203C325E500FA00BA739F /* RealityKitViewContainer.swift in Sources */,
 				FA5A54EF25E573060023E448 /* MaskFittingViewModel.swift in Sources */,
+				FA2656B525E679D60025ACB1 /* SmartTourismView.swift in Sources */,
 				FAA5C26A25DFC88F00BD1B1E /* SectionObjectsView.swift in Sources */,
+				FA2656CB25E695930025ACB1 /* DroneARViewModel.swift in Sources */,
+				FA5CED7425E928D50089B31F /* FocusEntityComponent.swift in Sources */,
 				FA4FE01925CC4C4900D1EFC6 /* ErrorHandler.swift in Sources */,
 				FA4FE01A25CC4C4900D1EFC6 /* ApiErrorLogger.swift in Sources */,
+				FA45B97925E7CD0B005CBC38 /* DimentionalDirection.swift in Sources */,
+				FA5CED7725E928D50089B31F /* FocusEntity+Alignment.swift in Sources */,
 				FA3620A625CC8B0F00DFE70E /* NSObjectExtensions.swift in Sources */,
 				FAA5C23025DEE46D00BD1B1E /* GetStartedButton.swift in Sources */,
+				FA5CED7325E928D50089B31F /* FocusEntity+Colored.swift in Sources */,
 				FA2273FE25E454E300DA6FCB /* ExtendedRealityKitView.swift in Sources */,
 				FAA9C89C25CD5E8E005BA9EE /* Section.swift in Sources */,
 				FA36208F25CC84D000DFE70E /* ApiError.swift in Sources */,
+				FA5CED8825E95C5D0089B31F /* JoysticksWithMapView.swift in Sources */,
 				FAA5C22D25DED96F00BD1B1E /* SwiftUI Color Extensions.swift in Sources */,
+				FA5CED7125E928D50089B31F /* FocusEntity+Segment.swift in Sources */,
 				FAD3B21325D2D06300708AE9 /* UIViewExtensions.swift in Sources */,
 				FA80BF7125CA9BC500FD78ED /* SmARtApp.swift in Sources */,
 				FA8A87C825E427F300D1BBE3 /* SmartRoomARView.swift in Sources */,
+				FA5CED8C25E968220089B31F /* AnyPublisherExtensions.swift in Sources */,
 				FA5A54F525E586430023E448 /* UIImageViewExtensions.swift in Sources */,
 				FAA9C89B25CD5E8E005BA9EE /* ImageData.swift in Sources */,
 				FA8A87C425E3FED100D1BBE3 /* AugmentedObjectType.swift in Sources */,
@@ -555,10 +669,13 @@
 				FA8A87CC25E4339A00D1BBE3 /* SmartRoomARViewModel.swift in Sources */,
 				FA5A54EB25E571580023E448 /* MaskFittingSceneViewContainer.swift in Sources */,
 				FA5A54E225E56EE90023E448 /* MaskFittingSceneKitView.swift in Sources */,
+				FA5CED7225E928D50089B31F /* float4x4+Extension.swift in Sources */,
 				FA10605625DD9930007E6898 /* UIScreen.swift in Sources */,
+				FA2656E425E6D6FA0025ACB1 /* JoystickDirection.swift in Sources */,
 				FA4FE01625CC4C4900D1EFC6 /* URLRequestBuilder.swift in Sources */,
 				FAA9C89425CD5E8E005BA9EE /* FileData.swift in Sources */,
 				FAA9C89625CD5E8E005BA9EE /* Environment.swift in Sources */,
+				FA5CED8225E95A650089B31F /* DroneARViewController.swift in Sources */,
 				FAA5C26625DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

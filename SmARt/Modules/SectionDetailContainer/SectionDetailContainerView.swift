@@ -18,14 +18,19 @@ struct SectionDetailContainerView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            NavigationLink(destination: SmartRoomARView(viewModel: SmartRoomARViewModel(object3dUrls: viewModel.object3dUrls)),
-                           isActive: $viewModel.pushSmartRoomARViewActive) {
-              Text("")
-            }.hidden()
-            NavigationLink(destination: MaskFittingView(viewModel: MaskFittingViewModel(masks: viewModel.masks)),
-                           isActive: $viewModel.pushMaskFittingViewActive) {
-              Text("")
-            }.hidden()
+            NavigationLink(destination: SmartRoomARView(viewModel:
+                               SmartRoomARViewModel(object3dUrls: viewModel.object3dUrls,
+                                                    augmentedObjectType: viewModel.augmentedObjectType)),
+                           isActive: $viewModel.pushSmartRoomARViewActive,
+                           label: { Text("") }).hidden()
+            NavigationLink(destination: MaskFittingView(viewModel:
+                               MaskFittingViewModel(masks: viewModel.masks)),
+                           isActive: $viewModel.pushMaskFittingViewActive,
+                           label: { Text("") }).hidden()
+            NavigationLink(destination: DroneARView(viewModel:
+                               DroneARViewModel(droneModelUrl: viewModel.object3dUrls.first ?? .empty)),
+                           isActive: $viewModel.pushDroneARViewActive,
+                           label: { Text("") }).hidden()
             
             Image("section_background")
                 .resizable()
@@ -56,7 +61,12 @@ struct SectionDetailContainerView: View {
                                       getStartedButtonText: viewModel.getStartedButtonText,
                                       objectSelected: viewModel.objectSelected,
                                       getStartedButtonAction: viewModel.getStartedButtonPressed)
-                case .none:
+                case .smartTourism:
+                    SmartTourismView(objects: viewModel.sectionInfo?.objects ?? [],
+                                     objectSelected: viewModel.objectSelected,
+                                     sectionDescription: viewModel.sectionDescription)
+                        .padding(.top, 40)
+                default:
                     EmptyView()
                 }
             }
