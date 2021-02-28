@@ -12,6 +12,7 @@ import RealityKit
 
 class DroneARViewController: UIViewController, ExtendedRealityKitViewDelegate {
     var viewModel: DroneARViewModel
+    
     private var cancellabes = Set<AnyCancellable>()
     private var drone = ModelEntity()
     
@@ -41,7 +42,7 @@ class DroneARViewController: UIViewController, ExtendedRealityKitViewDelegate {
     }
     
     func doOnTap(_ arView: ExtendedRealityKitView, _ transform: simd_float4x4) {
-        arView.append3DModel(viewModel.droneModelUrl, transform)
+        arView.append3DModel(with: viewModel.droneModelUrl, transform)
             .sink { [unowned self] in
                 drone = $0
                 viewModel.objectTransform = $0.transform

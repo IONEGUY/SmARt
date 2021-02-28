@@ -10,6 +10,7 @@ import Alamofire
 
 struct ApiConstants {
     static let baseUrl = "http://34.105.234.21:8080/"
+    static let menuPath = "api/open/environment/global_ios"
 
     struct Parameters {
 

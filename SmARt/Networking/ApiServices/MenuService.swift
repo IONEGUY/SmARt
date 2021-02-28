@@ -10,6 +10,6 @@ import Combine
 
 class MenuService: BaseApiService {
     func getSections() -> AnyPublisher<EnvironmentOut, APIError> {
-        return request(URLRequestBuilder(.get, "api/open/environment/global_android"))
+        return request(URLRequestBuilder(.get, ApiConstants.menuPath))
     }
 }

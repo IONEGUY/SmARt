@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,9 @@
 		FA3620A525CC8B0F00DFE70E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3620A325CC8B0F00DFE70E /* StringExtensions.swift */; };
 		FA3620A625CC8B0F00DFE70E /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3620A425CC8B0F00DFE70E /* NSObjectExtensions.swift */; };
 		FA4203C325E500FA00BA739F /* RealityKitViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4203C225E500FA00BA739F /* RealityKitViewContainer.swift */; };
+		FA424D3B25EA83CE00637EB7 /* Menu3DItemRealityKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA424D3A25EA83CE00637EB7 /* Menu3DItemRealityKit.swift */; };
+		FA424D3E25EA919F00637EB7 /* MenuARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA424D3D25EA919F00637EB7 /* MenuARViewController.swift */; };
+		FA424D4325EA974200637EB7 /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = FA424D4225EA974200637EB7 /* RealityUI */; };
 		FA45B97625E7C263005CBC38 /* ColationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97525E7C263005CBC38 /* ColationManager.swift */; };
 		FA45B97925E7CD0B005CBC38 /* DimentionalDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97825E7CD0B005CBC38 /* DimentionalDirection.swift */; };
 		FA45B97D25E7CE7A005CBC38 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97C25E7CE7A005CBC38 /* TransformType.swift */; };
@@ -57,7 +60,7 @@
 		FA5CED8C25E968220089B31F /* AnyPublisherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */; };
 		FA6B3A5425D1515000B0C3C2 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A5325D1515000B0C3C2 /* MenuView.swift */; };
 		FA6B3A5725D1516200B0C3C2 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */; };
-		FA6B3A8E25D1BB3E00B0C3C2 /* MenuARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A8D25D1BB3E00B0C3C2 /* MenuARView.swift */; };
+		FA6B3A8E25D1BB3E00B0C3C2 /* MenuARViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A8D25D1BB3E00B0C3C2 /* MenuARViewControllerContainer.swift */; };
 		FA6B3A9225D1BFD300B0C3C2 /* Menu3DItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A9125D1BFD300B0C3C2 /* Menu3DItem.swift */; };
 		FA80BF7125CA9BC500FD78ED /* SmARtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80BF7025CA9BC500FD78ED /* SmARtApp.swift */; };
 		FA80BF7525CA9BC600FD78ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA80BF7425CA9BC600FD78ED /* Assets.xcassets */; };
@@ -113,6 +116,8 @@
 		FA3620A325CC8B0F00DFE70E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		FA3620A425CC8B0F00DFE70E /* NSObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
 		FA4203C225E500FA00BA739F /* RealityKitViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitViewContainer.swift; sourceTree = "<group>"; };
+		FA424D3A25EA83CE00637EB7 /* Menu3DItemRealityKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu3DItemRealityKit.swift; sourceTree = "<group>"; };
+		FA424D3D25EA919F00637EB7 /* MenuARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuARViewController.swift; sourceTree = "<group>"; };
 		FA45B97525E7C263005CBC38 /* ColationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColationManager.swift; sourceTree = "<group>"; };
 		FA45B97825E7CD0B005CBC38 /* DimentionalDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimentionalDirection.swift; sourceTree = "<group>"; };
 		FA45B97C25E7CE7A005CBC38 /* TransformType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformType.swift; sourceTree = "<group>"; };
@@ -142,7 +147,7 @@
 		FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisherExtensions.swift; sourceTree = "<group>"; };
 		FA6B3A5325D1515000B0C3C2 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
-		FA6B3A8D25D1BB3E00B0C3C2 /* MenuARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuARView.swift; sourceTree = "<group>"; };
+		FA6B3A8D25D1BB3E00B0C3C2 /* MenuARViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuARViewControllerContainer.swift; sourceTree = "<group>"; };
 		FA6B3A9125D1BFD300B0C3C2 /* Menu3DItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu3DItem.swift; sourceTree = "<group>"; };
 		FA80BF6D25CA9BC500FD78ED /* SmARt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmARt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA80BF7025CA9BC500FD78ED /* SmARtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmARtApp.swift; sourceTree = "<group>"; };
@@ -182,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28DA3C72DB1551AA5184E60F /* Pods_SmARt.framework in Frameworks */,
+				FA424D4325EA974200637EB7 /* RealityUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +338,6 @@
 			children = (
 				FA5CED6925E928D50089B31F /* FocusEntity */,
 				FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */,
-				FA6B3A8D25D1BB3E00B0C3C2 /* MenuARView.swift */,
 				FA6B3A9125D1BFD300B0C3C2 /* Menu3DItem.swift */,
 				FA343EC725DAB18D00C3A161 /* ExtendedSceneKitView.swift */,
 				FAA5C23225DEE72600BD1B1E /* SectionDescription.swift */,
@@ -347,6 +352,7 @@
 				FA2656E025E6D5550025ACB1 /* Joystick.swift */,
 				FA2656E625E6D9DD0025ACB1 /* JoystickButton.swift */,
 				FA5CED8725E95C5D0089B31F /* JoysticksWithMapView.swift */,
+				FA424D3A25EA83CE00637EB7 /* Menu3DItemRealityKit.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -426,6 +432,8 @@
 			children = (
 				FA6B3A5325D1515000B0C3C2 /* MenuView.swift */,
 				FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */,
+				FA6B3A8D25D1BB3E00B0C3C2 /* MenuARViewControllerContainer.swift */,
+				FA424D3D25EA919F00637EB7 /* MenuARViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -505,6 +513,9 @@
 			dependencies = (
 			);
 			name = SmARt;
+			packageProductDependencies = (
+				FA424D4225EA974200637EB7 /* RealityUI */,
+			);
 			productName = SmARt;
 			productReference = FA80BF6D25CA9BC500FD78ED /* SmARt.app */;
 			productType = "com.apple.product-type.application";
@@ -532,6 +543,9 @@
 				Base,
 			);
 			mainGroup = FA80BF6425CA9BC500FD78ED;
+			packageReferences = (
+				FA424D4125EA974200637EB7 /* XCRemoteSwiftPackageReference "RealityUI" */,
+			);
 			productRefGroup = FA80BF6E25CA9BC500FD78ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -604,7 +618,7 @@
 				FA2656E125E6D5550025ACB1 /* Joystick.swift in Sources */,
 				FAA5C23A25DEE98B00BD1B1E /* ArrayExtensions.swift in Sources */,
 				FA6B3A5425D1515000B0C3C2 /* MenuView.swift in Sources */,
-				FA6B3A8E25D1BB3E00B0C3C2 /* MenuARView.swift in Sources */,
+				FA6B3A8E25D1BB3E00B0C3C2 /* MenuARViewControllerContainer.swift in Sources */,
 				FAA5C26D25E043B300BD1B1E /* HealthSectionView.swift in Sources */,
 				FAD3B1E325D1EAC700708AE9 /* MenuItemData.swift in Sources */,
 				FA3620A525CC8B0F00DFE70E /* StringExtensions.swift in Sources */,
@@ -630,6 +644,7 @@
 				FA4FE01725CC4C4900D1EFC6 /* ApiConstants.swift in Sources */,
 				FA3620A125CC8A8E00DFE70E /* DIContainerConfigurator.swift in Sources */,
 				FAA9C89725CD5E8E005BA9EE /* Object3dData.swift in Sources */,
+				FA424D3B25EA83CE00637EB7 /* Menu3DItemRealityKit.swift in Sources */,
 				FA6B3A5725D1516200B0C3C2 /* MenuViewModel.swift in Sources */,
 				FA343EC825DAB18D00C3A161 /* ExtendedSceneKitView.swift in Sources */,
 				FAD3B20825D2B05400708AE9 /* MenuService.swift in Sources */,
@@ -677,6 +692,7 @@
 				FAA9C89625CD5E8E005BA9EE /* Environment.swift in Sources */,
 				FA5CED8225E95A650089B31F /* DroneARViewController.swift in Sources */,
 				FAA5C26625DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift in Sources */,
+				FA424D3E25EA919F00637EB7 /* MenuARViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,6 +883,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA424D4125EA974200637EB7 /* XCRemoteSwiftPackageReference "RealityUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/RealityUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA424D4225EA974200637EB7 /* RealityUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA424D4125EA974200637EB7 /* XCRemoteSwiftPackageReference "RealityUI" */;
+			productName = RealityUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA80BF6525CA9BC500FD78ED /* Project object */;
 }

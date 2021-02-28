@@ -44,10 +44,17 @@ class MenuViewModel: ObservableObject {
         sections.forEach { section in
             dispatchGroup.enter()
             AF.download(section.logo3d.url, method: .get).responseData { response in
-                guard let data = try? response.result.get() else { return }
-                menuItems.append(
-                    MenuItemData(id: section.id, object3DData: data,
-                                 name: section.menuName, description: section.menuDescription))
+                guard let fileName = section.logo3d.fileName,
+                      let filePath = FileManager.default.urls(
+                    for: .cachesDirectory,
+                    in: .userDomainMask).first?.appendingPathComponent("\(fileName).usdz"),
+                    (try? response.result.get().write(to: filePath)) != nil else { return }
+
+                menuItems.append(MenuItemData(id: section.id,
+                                              object3DFileUrl: filePath,
+                                              object3DName: fileName,
+                                              sectionName: section.menuName,
+                                              sectionDescription: section.menuDescription))
                 dispatchGroup.leave()
             }
         }

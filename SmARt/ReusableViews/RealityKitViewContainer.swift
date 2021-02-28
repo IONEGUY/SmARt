@@ -30,9 +30,11 @@ struct RealityKitViewContainer: UIViewRepresentable, ExtendedRealityKitViewDeleg
     func updateUIView(_ uiView: ExtendedRealityKitView, context: Context) {}
     
     func doOnTap(_ arView: ExtendedRealityKitView, _ transform: simd_float4x4) {
-        objectType == .video
+        (objectType == .video
             ? arView.appendVideo(objectUrl, transform)
-            : arView.append3DModel(objectUrl, transform)
+            : arView.append3DModel(with: objectUrl, transform))
+            .sink(receiveValue: {_ in})
+            .store(in: &cancellables)
     }
     
     func entitySelected(_ entity: Entity) {}

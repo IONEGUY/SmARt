@@ -8,8 +8,9 @@
 import Foundation
 
 struct MenuItemData {
-    var id: String    
-    var object3DData: Data
-    var name: String
-    var description: String
+    var id: String
+    var object3DFileUrl: URL
+    var object3DName: String
+    var sectionName: String
+    var sectionDescription: String
 }

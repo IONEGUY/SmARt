@@ -18,9 +18,7 @@ struct MenuView: View {
                     destination: SectionDetailContainerView(sectionInfo: viewModel.section),
                     isActive: $viewModel.pushActive,
                     label: { Text(String.empty) })
-                MenuARView(
-                    menuItems: $viewModel.menuItems,
-                    onMenuItemSelected: $viewModel.onMenuItemSelected)
+                MenuARViewControllerContainer(viewModel: viewModel)
                     .edgesIgnoringSafeArea(.all)
             }
         }.navigationBarHidden(true)

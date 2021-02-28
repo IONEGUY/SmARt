@@ -10,8 +10,9 @@ import ARKit
 import RealityKit
 import Alamofire
 import Combine
+import RealityUI
 
-class ExtendedRealityKitView: ARView, FocusEntityDelegate {
+class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayViewDelegate {
     var delegate: ExtendedRealityKitViewDelegate?
     var focusEntity: FocusEntity?
     
@@ -20,10 +21,32 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate {
     func setup() {
         setupOptimizations()
         setupFocusEntity()
-        configueARSceneView()
+        addCoaching()
         addGestureRecognizers()
+        addLighting()
     }
     
+    func configueARSession() {
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal]
+        session.run(configuration)
+    }
+    
+    private func addCoaching() {
+        let coachingOverlay = ARCoachingOverlayView()
+        addSubview(coachingOverlay)
+        coachingOverlay.fillSuperview()
+        coachingOverlay.goal = .horizontalPlane
+        coachingOverlay.session = session
+        coachingOverlay.delegate = self
+    }
+    
+    private func addLighting() {
+        let lightAnchor = AnchorEntity()
+        lightAnchor.addChild(DefaultLightingEntity())
+        scene.anchors.append(lightAnchor)
+    }
+
     private func setupFocusEntity() {
         focusEntity = FocusEntity(on: self, focus: .classic)
     }
@@ -33,12 +56,6 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate {
         renderOptions = [.disableMotionBlur, .disableAREnvironmentLighting,
                          .disableCameraGrain, .disableDepthOfField, .disableFaceOcclusions, .disableGroundingShadows,
                          .disableHDR, .disablePersonOcclusion]
-    }
-
-    private func configueARSceneView() {
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal]
-        session.run(configuration)
     }
     
     private func addGestureRecognizers() {
@@ -69,7 +86,7 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate {
         }
     }
     
-    func append3DModel(_ url: String, _ transform: simd_float4x4) -> AnyPublisher<ModelEntity, Never> {
+    func append3DModel(with url: String, _ transform: simd_float4x4) -> AnyPublisher<ModelEntity, Never> {
         AnyPublisher.create { [unowned self] observer in
             if scene.findEntity(named: url) != nil { observer.onComplete() }
             AF.download(url, method: .get).responseData { [unowned self] response in
@@ -95,8 +112,6 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate {
     }
     
     private func addAnchorToARView(_ anchor: AnchorEntity, _ model: ModelEntity, _ name: String) {
-//        objectTransform = model.transform
-//        currentModel = model
         model.name = name
         anchor.addChild(model)
         scene.anchors.append(anchor)
@@ -105,8 +120,11 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate {
     @objc private func handleTapAction(_ sender: UITapGestureRecognizer) {
         let tapPoint = sender.location(in: self)
         delegate?.doOnTap(self, getPositionFromRayCast(at: tapPoint))
-        if let hitEntity = entity(at: tapPoint) {
-            delegate?.entitySelected(hitEntity)
+        
+        let ccHit = hitTest(tapPoint, mask: .all).first
+        let tappedEntity = ccHit?.entity
+        if tappedEntity != nil {
+            delegate?.entitySelected(tappedEntity!)
         }
     }
     
@@ -119,4 +137,12 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate {
 protocol ExtendedRealityKitViewDelegate {
     func doOnTap(_ sender: ExtendedRealityKitView, _ transform: simd_float4x4)
     func entitySelected(_ entity: Entity)
+}
+
+class DefaultLightingEntity: Entity, HasPointLight {
+    required init() {
+        super.init()
+  
+        light = PointLightComponent(color: .white, intensity: 50000)
+    }
 }
