@@ -8,7 +8,6 @@
 import Foundation
 import RealityKit
 import UIKit
-import RealityUI
 import SwiftUI
 import Combine
 

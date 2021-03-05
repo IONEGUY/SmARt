@@ -11,7 +11,6 @@ import ARKit
 import UIKit
 import Alamofire
 import Combine
-import RealityUI
 
 class Menu3DItem: Entity {
     private var cancellables = Set<AnyCancellable>()
