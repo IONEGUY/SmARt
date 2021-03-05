@@ -44,9 +44,6 @@ class DroneARViewController: UIViewController, ExtendedRealityKitViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let value = UIInterfaceOrientation.landscapeRight.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        
         createNavBar()
         addJoysticksBar()
         
@@ -55,11 +52,16 @@ class DroneARViewController: UIViewController, ExtendedRealityKitViewDelegate {
         }.store(in: &cancellabes)
     }
     
+    private func setOrientation(to orientation: UIInterfaceOrientation) {
+        UIView.setAnimationsEnabled(false)
+        UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
+        UIView.setAnimationsEnabled(true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
       super.viewDidAppear(animated)
-      UIView.setAnimationsEnabled(false)
-      UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
-      UIView.setAnimationsEnabled(true)
+        
+        setOrientation(to: UIInterfaceOrientation.landscapeRight)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +77,8 @@ class DroneARViewController: UIViewController, ExtendedRealityKitViewDelegate {
         
         arView.removeGroup(withName: Self.typeName)
         arView.removeFromSuperview()
+        
+        setOrientation(to: UIInterfaceOrientation.portrait)
     }
     
     func doOnTap(_ arView: ExtendedRealityKitView, _ transform: simd_float4x4) {
