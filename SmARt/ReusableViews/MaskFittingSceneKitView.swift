@@ -17,10 +17,14 @@ class MaskFittingSceneKitView: ARSCNView, ARSCNViewDelegate {
     
     func setup(_ defaultMask: String) {
         delegate = self
-        
+
         self.defaultMask = defaultMask
         
         configueARSceneView()
+    }
+    
+    deinit {
+        print("MaskFittingSceneKitView released")
     }
     
     private func configueARSceneView() {
@@ -29,9 +33,7 @@ class MaskFittingSceneKitView: ARSCNView, ARSCNViewDelegate {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        guard let device = device else {
-            return nil
-        }
+        guard let device = device else { return nil }
         
         let faceGeometry = ARSCNFaceGeometry(device: device, fillMesh: true)
         faceNode.geometry = faceGeometry
@@ -40,19 +42,18 @@ class MaskFittingSceneKitView: ARSCNView, ARSCNViewDelegate {
     }
     
     func updateMask(_ mask: String) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             let imageView = UIImageView()
             imageView.kf.setImage(with: URL(string: mask))
-            self.faceNode.geometry?.firstMaterial?.diffuse.contents = imageView.image
+            faceNode.geometry?.firstMaterial?.diffuse.contents = imageView.image
         }
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         guard let faceAnchor = anchor as? ARFaceAnchor,
-              let faceGeometry = node.geometry as? ARSCNFaceGeometry else {
-            return
-        }
-        
+              let faceGeometry = node.geometry as? ARSCNFaceGeometry
+        else { return }
+
         faceGeometry.update(from: faceAnchor.geometry)
     }
 }

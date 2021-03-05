@@ -12,20 +12,28 @@ import SwiftUI
 
 class MenuViewModel: ObservableObject {
     private var cancellableSet = Set<AnyCancellable>()
-    private var sections = [Section]()
+    @Published var sections = [Section]()
+    private var progresses: [Float] = []
     
     @Published var menuItems = [MenuItemData]()
     @Published var pushActive = false
     @Published var onMenuItemSelected = PassthroughSubject<String, Never>()
     @Published var section: Section?
+    @Published var isLoading = false
+    @Published var averageProgress: Float = 0
     
     init() {
         MenuService(ApiErrorLogger()).getSections()
-            .map(\.sections)
-            .replaceError(with: [])
+            .flatMap(cache3DModels)
+            .sink(receiveCompletion: {_ in},
+                  receiveValue: { [unowned self] _ in isLoading = false} )
+            .store(in: &cancellableSet)
+        
+        $sections
+            .removeDuplicates(by: { $0.count == $1.count })
             .filter { !$0.isEmpty }
-            .receive(on: RunLoop.main)
-            .sink { [unowned self] in createMenuData($0) }
+            .flatMap(initMenuItems)
+            .assign(to: \.menuItems, on: self)
             .store(in: &cancellableSet)
         
         onMenuItemSelected
@@ -36,31 +44,59 @@ class MenuViewModel: ObservableObject {
             .store(in: &cancellableSet)
     }
     
-    private func createMenuData(_ sections: [Section]) {
-        self.sections = sections
-        let dispatchGroup = DispatchGroup()
-        var menuItems = [MenuItemData]()
-        
-        sections.forEach { section in
-            dispatchGroup.enter()
-            AF.download(section.logo3d.url, method: .get).responseData { response in
-                guard let fileName = section.logo3d.fileName,
-                      let filePath = FileManager.default.urls(
-                    for: .cachesDirectory,
-                    in: .userDomainMask).first?.appendingPathComponent("\(fileName).usdz"),
-                    (try? response.result.get().write(to: filePath)) != nil else { return }
-
-                menuItems.append(MenuItemData(id: section.id,
-                                              object3DFileUrl: filePath,
-                                              object3DName: fileName,
-                                              sectionName: section.menuName,
-                                              sectionDescription: section.menuDescription))
-                dispatchGroup.leave()
-            }
+    private func initMenuItems(_ sections: [Section]) -> AnyPublisher<[MenuItemData], Never> {
+        AnyPublisher.create { [unowned self] observer in
+            menuItems = sections.map { MenuItemData(
+                id: $0.id, object3DFileUrl: $0.logo3d.url,
+                sectionName: $0.menuName, sectionDescription: $0.menuDescription) }
+            observer.onComplete()
+            return Disposable(dispose: {})
         }
-        
-        dispatchGroup.notify(queue: DispatchQueue.main) {
-            self.menuItems = menuItems
+    }
+    
+    private func cache3DModels(_ environment: EnvironmentOut) -> AnyPublisher<Void, Never> {
+        AnyPublisher.create { [unowned self] observer in
+            sections = environment.sections
+            
+            if environment.version <= (UserDefaults.standard.value(forKey: "version") as? Int ?? -1) {
+                observer.onNext(Void())
+                return Disposable(dispose: {})
+            }
+            
+            UserDefaults.standard.set(environment.version, forKey: "version")
+
+            isLoading = true
+            let dispatchGroup = DispatchGroup()
+            let urls = [sections.map(\.logo3d.url), sections.compactMap(\.objects).flatMap { $0 }
+                .compactMap(\.object3d?.files).flatMap { $0 }.map(\.url)].flatMap { $0 }
+            progresses = [Float](repeating: Float(), count: urls.count)
+            urls.enumerated().forEach { (index, url) in
+                dispatchGroup.enter()
+                AF.download(url)
+                    .downloadProgress {
+                        progresses[index] = Float($0.fractionCompleted)
+                        updateLoadingProgress()
+                    }
+                    .responseData { response in
+                        if let object3DName = url.split(separator: "/").last,
+                           let filePath = FileManager.default
+                            .urls(for: .cachesDirectory, in: .userDomainMask)
+                            .first?.appendingPathComponent("\(object3DName).usdz") {
+                            try? response.result.get().write(to: filePath)
+                    }
+                    
+                    dispatchGroup.leave()
+                }
+            }
+            dispatchGroup.notify(queue: DispatchQueue.global()) { observer.onNext(Void()) }
+            
+            return Disposable(dispose: {})
+        }
+    }
+    
+    private func updateLoadingProgress() {
+        DispatchQueue.main.async { [unowned self] in
+            averageProgress = progresses.reduce(0.0, +) / Float(progresses.count)
         }
     }
 }

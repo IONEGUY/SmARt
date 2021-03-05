@@ -8,10 +8,7 @@ target 'SmARt' do
   pod 'Swinject'
   pod 'SwinjectAutoregistration'
   pod 'AppCenter'
-  pod 'Closures'
-  pod 'SmartHitTest'
-  pod 'FocusNode'
-  pod 'GLTFSceneKit'
   pod 'Kingfisher'
+  pod 'lottie-ios'
 
 end

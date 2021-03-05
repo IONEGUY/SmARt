@@ -1,26 +1,24 @@
 //
-//  SmartRoomARView.swift
+//  NavBar.swift
 //  SmARt
 //
-//  Created by MacBook on 22.02.21.
+//  Created by MacBook on 3.03.21.
 //
 
+import Foundation
 import SwiftUI
-import Combine
 
-struct SmartRoomARView: View {
+struct NavBar: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var viewModel: SmartRoomARViewModel
+    @State var object3DButtons: [Object3DButton] = []
+    @State var title: String = .empty
+    @State var backButtonAction: (() -> Void)?
     
     var body: some View {
         ZStack(alignment: .top) {
-            RealityKitViewContainer(objectUrl: $viewModel.current3DObjectUrl,
-                                    objectType: $viewModel.augmentedObjectType)
-                .edgesIgnoringSafeArea(.all)
-            
             HStack {
-                Button(action: { presentationMode.wrappedValue.dismiss() }) {
+                Button(action: { backButtonAction?() ?? presentationMode.wrappedValue.dismiss() }) {
                     Image(systemName: "chevron.left")
                         .frame(width: 30, height: 30)
                         .background(Color(hex: 0xC4C4C4, alpha: 0.7))
@@ -28,10 +26,15 @@ struct SmartRoomARView: View {
                         .cornerRadius(15)
                 }.frame(width: 60, height: 60, alignment: .topLeading)
                 
-                if viewModel.is3DObjectButtonsVisible {
+                Spacer()
+                
+                if !object3DButtons.isEmpty {
                     VStack {
-                        ForEach(viewModel.object3DButtons) { button in
-                            Button(action: button.action) {
+                        ForEach(object3DButtons) { button in
+                            Button(action: {
+                                button.action()
+                                object3DButtons = [object3DButtons].flatMap { $0 }
+                            }) {
                                 Image(button.image)
                                     .colorMultiply(Color(
                                         hex: button.isSelected ? 0x0983FD : 0xFFFFFF))
@@ -42,7 +45,12 @@ struct SmartRoomARView: View {
                     .background(Color(hex: 0xC4C4C4, alpha: 0.7))
                     .cornerRadius(8)
                 }
-            }.frame(width: UIScreen.width - 50, height: 60)
+            }
+            Text(title)
+                .foregroundColor(.white)
+                .fontWeight(.heavy)
+                .font(.title3)
+                .padding(.top, 5)
         }
     }
 }

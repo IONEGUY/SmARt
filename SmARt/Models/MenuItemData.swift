@@ -9,8 +9,7 @@ import Foundation
 
 struct MenuItemData {
     var id: String
-    var object3DFileUrl: URL
-    var object3DName: String
+    var object3DFileUrl: String
     var sectionName: String
     var sectionDescription: String
 }

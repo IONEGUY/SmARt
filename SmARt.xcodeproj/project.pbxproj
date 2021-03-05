@@ -3,34 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		28DA3C72DB1551AA5184E60F /* Pods_SmARt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609AC0DC49D0EDA7A517DADC /* Pods_SmARt.framework */; };
-		FA10603925DD4A47007E6898 /* SectionDetailContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10603825DD4A47007E6898 /* SectionDetailContainerViewModel.swift */; };
+		FA10603925DD4A47007E6898 /* SectionDetailBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10603825DD4A47007E6898 /* SectionDetailBaseViewModel.swift */; };
 		FA10604025DD7629007E6898 /* MenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10603F25DD7629007E6898 /* MenuItemType.swift */; };
-		FA10604725DD8796007E6898 /* SectionDetailContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10604625DD8796007E6898 /* SectionDetailContainerView.swift */; };
+		FA10604725DD8796007E6898 /* SectionDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10604625DD8796007E6898 /* SectionDetailBaseView.swift */; };
 		FA10605625DD9930007E6898 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10605525DD9930007E6898 /* UIScreen.swift */; };
 		FA2273FE25E454E300DA6FCB /* ExtendedRealityKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */; };
 		FA2656B525E679D60025ACB1 /* SmartTourismView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656B425E679D60025ACB1 /* SmartTourismView.swift */; };
-		FA2656B925E679E10025ACB1 /* SmartTourismViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656B825E679E10025ACB1 /* SmartTourismViewModel.swift */; };
-		FA2656BD25E695870025ACB1 /* DroneARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656BC25E695870025ACB1 /* DroneARView.swift */; };
 		FA2656CB25E695930025ACB1 /* DroneARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656CA25E695930025ACB1 /* DroneARViewModel.swift */; };
 		FA2656E125E6D5550025ACB1 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656E025E6D5550025ACB1 /* Joystick.swift */; };
 		FA2656E425E6D6FA0025ACB1 /* JoystickDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656E325E6D6FA0025ACB1 /* JoystickDirection.swift */; };
 		FA2656E725E6D9DD0025ACB1 /* JoystickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656E625E6D9DD0025ACB1 /* JoystickButton.swift */; };
-		FA343EC825DAB18D00C3A161 /* ExtendedSceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA343EC725DAB18D00C3A161 /* ExtendedSceneKitView.swift */; };
 		FA36208F25CC84D000DFE70E /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36208E25CC84D000DFE70E /* ApiError.swift */; };
 		FA36209D25CC89A700DFE70E /* StringResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36209B25CC89A700DFE70E /* StringResources.swift */; };
 		FA36209E25CC89A700DFE70E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36209C25CC89A700DFE70E /* Colors.swift */; };
 		FA3620A125CC8A8E00DFE70E /* DIContainerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3620A025CC8A8E00DFE70E /* DIContainerConfigurator.swift */; };
 		FA3620A525CC8B0F00DFE70E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3620A325CC8B0F00DFE70E /* StringExtensions.swift */; };
 		FA3620A625CC8B0F00DFE70E /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3620A425CC8B0F00DFE70E /* NSObjectExtensions.swift */; };
-		FA4203C325E500FA00BA739F /* RealityKitViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4203C225E500FA00BA739F /* RealityKitViewContainer.swift */; };
 		FA424D3B25EA83CE00637EB7 /* Menu3DItemRealityKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA424D3A25EA83CE00637EB7 /* Menu3DItemRealityKit.swift */; };
-		FA424D3E25EA919F00637EB7 /* MenuARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA424D3D25EA919F00637EB7 /* MenuARViewController.swift */; };
-		FA424D4325EA974200637EB7 /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = FA424D4225EA974200637EB7 /* RealityUI */; };
+		FA424D3E25EA919F00637EB7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA424D3D25EA919F00637EB7 /* MenuViewController.swift */; };
+		FA43319725F18F39008D8AC2 /* MaskFittingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43319625F18F39008D8AC2 /* MaskFittingViewController.swift */; };
+		FA43319B25F19DFE008D8AC2 /* MaskFittingSceneViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43319A25F19DFD008D8AC2 /* MaskFittingSceneViewContainer.swift */; };
+		FA4331AA25F25EA3008D8AC2 /* loading_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = FA4331A925F25EA3008D8AC2 /* loading_animation.json */; };
 		FA45B97625E7C263005CBC38 /* ColationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97525E7C263005CBC38 /* ColationManager.swift */; };
 		FA45B97925E7CD0B005CBC38 /* DimentionalDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97825E7CD0B005CBC38 /* DimentionalDirection.swift */; };
 		FA45B97D25E7CE7A005CBC38 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97C25E7CE7A005CBC38 /* TransformType.swift */; };
@@ -43,10 +41,8 @@
 		FA4FE01A25CC4C4900D1EFC6 /* ApiErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE01425CC4C4900D1EFC6 /* ApiErrorLogger.swift */; };
 		FA5A54E225E56EE90023E448 /* MaskFittingSceneKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A54E125E56EE90023E448 /* MaskFittingSceneKitView.swift */; };
 		FA5A54E725E571280023E448 /* MaskFittingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A54E625E571280023E448 /* MaskFittingView.swift */; };
-		FA5A54EB25E571580023E448 /* MaskFittingSceneViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A54EA25E571580023E448 /* MaskFittingSceneViewContainer.swift */; };
 		FA5A54EF25E573060023E448 /* MaskFittingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A54EE25E573060023E448 /* MaskFittingViewModel.swift */; };
 		FA5A54F225E578300023E448 /* MaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A54F125E578300023E448 /* MaskList.swift */; };
-		FA5A54F525E586430023E448 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A54F425E586430023E448 /* UIImageViewExtensions.swift */; };
 		FA5CED7125E928D50089B31F /* FocusEntity+Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED6A25E928D50089B31F /* FocusEntity+Segment.swift */; };
 		FA5CED7225E928D50089B31F /* float4x4+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED6B25E928D50089B31F /* float4x4+Extension.swift */; };
 		FA5CED7325E928D50089B31F /* FocusEntity+Colored.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED6C25E928D50089B31F /* FocusEntity+Colored.swift */; };
@@ -55,18 +51,16 @@
 		FA5CED7625E928D50089B31F /* FocusEntity+Classic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED6F25E928D50089B31F /* FocusEntity+Classic.swift */; };
 		FA5CED7725E928D50089B31F /* FocusEntity+Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED7025E928D50089B31F /* FocusEntity+Alignment.swift */; };
 		FA5CED8225E95A650089B31F /* DroneARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED8125E95A650089B31F /* DroneARViewController.swift */; };
-		FA5CED8525E95AAE0089B31F /* DroneARViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED8425E95AAE0089B31F /* DroneARViewControllerContainer.swift */; };
 		FA5CED8825E95C5D0089B31F /* JoysticksWithMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED8725E95C5D0089B31F /* JoysticksWithMapView.swift */; };
 		FA5CED8C25E968220089B31F /* AnyPublisherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */; };
-		FA6B3A5425D1515000B0C3C2 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A5325D1515000B0C3C2 /* MenuView.swift */; };
+		FA5F087F25EFF49A004CF5D0 /* GlobalStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F087E25EFF49A004CF5D0 /* GlobalStyles.swift */; };
+		FA5F088525F008E2004CF5D0 /* SectionDetailBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F088425F008E2004CF5D0 /* SectionDetailBaseViewController.swift */; };
 		FA6B3A5725D1516200B0C3C2 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */; };
-		FA6B3A8E25D1BB3E00B0C3C2 /* MenuARViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A8D25D1BB3E00B0C3C2 /* MenuARViewControllerContainer.swift */; };
-		FA6B3A9225D1BFD300B0C3C2 /* Menu3DItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A9125D1BFD300B0C3C2 /* Menu3DItem.swift */; };
-		FA80BF7125CA9BC500FD78ED /* SmARtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80BF7025CA9BC500FD78ED /* SmARtApp.swift */; };
+		FA7E8E6025EFB97300F3D345 /* SmartRoomARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E8E5F25EFB97300F3D345 /* SmartRoomARViewController.swift */; };
+		FA7E8E6825EFCAF400F3D345 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E8E6725EFCAF400F3D345 /* NavBar.swift */; };
 		FA80BF7525CA9BC600FD78ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA80BF7425CA9BC600FD78ED /* Assets.xcassets */; };
 		FA80BF7825CA9BC600FD78ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA80BF7725CA9BC600FD78ED /* Preview Assets.xcassets */; };
 		FA8A87C425E3FED100D1BBE3 /* AugmentedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87C325E3FED100D1BBE3 /* AugmentedObjectType.swift */; };
-		FA8A87C825E427F300D1BBE3 /* SmartRoomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87C725E427F300D1BBE3 /* SmartRoomARView.swift */; };
 		FA8A87CC25E4339A00D1BBE3 /* SmartRoomARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CB25E4339A00D1BBE3 /* SmartRoomARViewModel.swift */; };
 		FA8A87CF25E4349C00D1BBE3 /* Object3DButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */; };
 		FAA5C22D25DED96F00BD1B1E /* SwiftUI Color Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */; };
@@ -87,6 +81,7 @@
 		FAA9C89A25CD5E8E005BA9EE /* ObjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C89025CD5E8E005BA9EE /* ObjectData.swift */; };
 		FAA9C89B25CD5E8E005BA9EE /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C89125CD5E8E005BA9EE /* ImageData.swift */; };
 		FAA9C89C25CD5E8E005BA9EE /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C89225CD5E8E005BA9EE /* Section.swift */; };
+		FAD0DCC125EE9F390033B559 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0DCC025EE9F390033B559 /* LoadingView.swift */; };
 		FAD3B1E325D1EAC700708AE9 /* MenuItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B1E225D1EAC700708AE9 /* MenuItemData.swift */; };
 		FAD3B20825D2B05400708AE9 /* MenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B20725D2B05400708AE9 /* MenuService.swift */; };
 		FAD3B21325D2D06300708AE9 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B21225D2D06300708AE9 /* UIViewExtensions.swift */; };
@@ -96,28 +91,27 @@
 		1189383F6BDEFD712629F3EB /* Pods-SmARt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmARt.debug.xcconfig"; path = "Target Support Files/Pods-SmARt/Pods-SmARt.debug.xcconfig"; sourceTree = "<group>"; };
 		59A56DDDA543FC89BB770483 /* Pods-SmARt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmARt.release.xcconfig"; path = "Target Support Files/Pods-SmARt/Pods-SmARt.release.xcconfig"; sourceTree = "<group>"; };
 		609AC0DC49D0EDA7A517DADC /* Pods_SmARt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmARt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA10603825DD4A47007E6898 /* SectionDetailContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailContainerViewModel.swift; sourceTree = "<group>"; };
+		FA10603825DD4A47007E6898 /* SectionDetailBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailBaseViewModel.swift; sourceTree = "<group>"; };
 		FA10603F25DD7629007E6898 /* MenuItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemType.swift; sourceTree = "<group>"; };
-		FA10604625DD8796007E6898 /* SectionDetailContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailContainerView.swift; sourceTree = "<group>"; };
+		FA10604625DD8796007E6898 /* SectionDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailBaseView.swift; sourceTree = "<group>"; };
 		FA10605525DD9930007E6898 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedRealityKitView.swift; sourceTree = "<group>"; };
 		FA2656B425E679D60025ACB1 /* SmartTourismView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTourismView.swift; sourceTree = "<group>"; };
-		FA2656B825E679E10025ACB1 /* SmartTourismViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTourismViewModel.swift; sourceTree = "<group>"; };
-		FA2656BC25E695870025ACB1 /* DroneARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneARView.swift; sourceTree = "<group>"; };
 		FA2656CA25E695930025ACB1 /* DroneARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneARViewModel.swift; sourceTree = "<group>"; };
 		FA2656E025E6D5550025ACB1 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		FA2656E325E6D6FA0025ACB1 /* JoystickDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickDirection.swift; sourceTree = "<group>"; };
 		FA2656E625E6D9DD0025ACB1 /* JoystickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickButton.swift; sourceTree = "<group>"; };
-		FA343EC725DAB18D00C3A161 /* ExtendedSceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedSceneKitView.swift; sourceTree = "<group>"; };
 		FA36208E25CC84D000DFE70E /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		FA36209B25CC89A700DFE70E /* StringResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringResources.swift; sourceTree = "<group>"; };
 		FA36209C25CC89A700DFE70E /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FA3620A025CC8A8E00DFE70E /* DIContainerConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIContainerConfigurator.swift; sourceTree = "<group>"; };
 		FA3620A325CC8B0F00DFE70E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		FA3620A425CC8B0F00DFE70E /* NSObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
-		FA4203C225E500FA00BA739F /* RealityKitViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitViewContainer.swift; sourceTree = "<group>"; };
 		FA424D3A25EA83CE00637EB7 /* Menu3DItemRealityKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu3DItemRealityKit.swift; sourceTree = "<group>"; };
-		FA424D3D25EA919F00637EB7 /* MenuARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuARViewController.swift; sourceTree = "<group>"; };
+		FA424D3D25EA919F00637EB7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		FA43319625F18F39008D8AC2 /* MaskFittingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskFittingViewController.swift; sourceTree = "<group>"; };
+		FA43319A25F19DFD008D8AC2 /* MaskFittingSceneViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskFittingSceneViewContainer.swift; sourceTree = "<group>"; };
+		FA4331A925F25EA3008D8AC2 /* loading_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_animation.json; sourceTree = "<group>"; };
 		FA45B97525E7C263005CBC38 /* ColationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColationManager.swift; sourceTree = "<group>"; };
 		FA45B97825E7CD0B005CBC38 /* DimentionalDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimentionalDirection.swift; sourceTree = "<group>"; };
 		FA45B97C25E7CE7A005CBC38 /* TransformType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformType.swift; sourceTree = "<group>"; };
@@ -130,10 +124,8 @@
 		FA4FE01425CC4C4900D1EFC6 /* ApiErrorLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiErrorLogger.swift; sourceTree = "<group>"; };
 		FA5A54E125E56EE90023E448 /* MaskFittingSceneKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskFittingSceneKitView.swift; sourceTree = "<group>"; };
 		FA5A54E625E571280023E448 /* MaskFittingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskFittingView.swift; sourceTree = "<group>"; };
-		FA5A54EA25E571580023E448 /* MaskFittingSceneViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskFittingSceneViewContainer.swift; sourceTree = "<group>"; };
 		FA5A54EE25E573060023E448 /* MaskFittingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskFittingViewModel.swift; sourceTree = "<group>"; };
 		FA5A54F125E578300023E448 /* MaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskList.swift; sourceTree = "<group>"; };
-		FA5A54F425E586430023E448 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		FA5CED6A25E928D50089B31F /* FocusEntity+Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusEntity+Segment.swift"; sourceTree = "<group>"; };
 		FA5CED6B25E928D50089B31F /* float4x4+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "float4x4+Extension.swift"; sourceTree = "<group>"; };
 		FA5CED6C25E928D50089B31F /* FocusEntity+Colored.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusEntity+Colored.swift"; sourceTree = "<group>"; };
@@ -142,20 +134,18 @@
 		FA5CED6F25E928D50089B31F /* FocusEntity+Classic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusEntity+Classic.swift"; sourceTree = "<group>"; };
 		FA5CED7025E928D50089B31F /* FocusEntity+Alignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FocusEntity+Alignment.swift"; sourceTree = "<group>"; };
 		FA5CED8125E95A650089B31F /* DroneARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneARViewController.swift; sourceTree = "<group>"; };
-		FA5CED8425E95AAE0089B31F /* DroneARViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneARViewControllerContainer.swift; sourceTree = "<group>"; };
 		FA5CED8725E95C5D0089B31F /* JoysticksWithMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoysticksWithMapView.swift; sourceTree = "<group>"; };
 		FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisherExtensions.swift; sourceTree = "<group>"; };
-		FA6B3A5325D1515000B0C3C2 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		FA5F087E25EFF49A004CF5D0 /* GlobalStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStyles.swift; sourceTree = "<group>"; };
+		FA5F088425F008E2004CF5D0 /* SectionDetailBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailBaseViewController.swift; sourceTree = "<group>"; };
 		FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
-		FA6B3A8D25D1BB3E00B0C3C2 /* MenuARViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuARViewControllerContainer.swift; sourceTree = "<group>"; };
-		FA6B3A9125D1BFD300B0C3C2 /* Menu3DItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu3DItem.swift; sourceTree = "<group>"; };
+		FA7E8E5F25EFB97300F3D345 /* SmartRoomARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRoomARViewController.swift; sourceTree = "<group>"; };
+		FA7E8E6725EFCAF400F3D345 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		FA80BF6D25CA9BC500FD78ED /* SmARt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmARt.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA80BF7025CA9BC500FD78ED /* SmARtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmARtApp.swift; sourceTree = "<group>"; };
 		FA80BF7425CA9BC600FD78ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA80BF7725CA9BC600FD78ED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA80BF7925CA9BC600FD78ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8A87C325E3FED100D1BBE3 /* AugmentedObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentedObjectType.swift; sourceTree = "<group>"; };
-		FA8A87C725E427F300D1BBE3 /* SmartRoomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRoomARView.swift; sourceTree = "<group>"; };
 		FA8A87CB25E4339A00D1BBE3 /* SmartRoomARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRoomARViewModel.swift; sourceTree = "<group>"; };
 		FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DButton.swift; sourceTree = "<group>"; };
 		FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI Color Extensions.swift"; sourceTree = "<group>"; };
@@ -176,6 +166,7 @@
 		FAA9C89025CD5E8E005BA9EE /* ObjectData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectData.swift; sourceTree = "<group>"; };
 		FAA9C89125CD5E8E005BA9EE /* ImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		FAA9C89225CD5E8E005BA9EE /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		FAD0DCC025EE9F390033B559 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FAD3B1E225D1EAC700708AE9 /* MenuItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemData.swift; sourceTree = "<group>"; };
 		FAD3B20725D2B05400708AE9 /* MenuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuService.swift; sourceTree = "<group>"; };
 		FAD3B21225D2D06300708AE9 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -187,7 +178,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28DA3C72DB1551AA5184E60F /* Pods_SmARt.framework in Frameworks */,
-				FA424D4325EA974200637EB7 /* RealityUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				FA2656B425E679D60025ACB1 /* SmartTourismView.swift */,
-				FA2656B825E679E10025ACB1 /* SmartTourismViewModel.swift */,
 			);
 			path = SmartTourism;
 			sourceTree = "<group>";
@@ -231,10 +220,8 @@
 		FA2656BB25E695660025ACB1 /* DroneARView */ = {
 			isa = PBXGroup;
 			children = (
-				FA2656BC25E695870025ACB1 /* DroneARView.swift */,
 				FA2656CA25E695930025ACB1 /* DroneARViewModel.swift */,
 				FA5CED8125E95A650089B31F /* DroneARViewController.swift */,
-				FA5CED8425E95AAE0089B31F /* DroneARViewControllerContainer.swift */,
 			);
 			path = DroneARView;
 			sourceTree = "<group>";
@@ -269,7 +256,6 @@
 				FA10605525DD9930007E6898 /* UIScreen.swift */,
 				FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */,
 				FAA5C23925DEE98B00BD1B1E /* ArrayExtensions.swift */,
-				FA5A54F425E586430023E448 /* UIImageViewExtensions.swift */,
 				FA45B98025E7DFCE005CBC38 /* DoubleExtensions.swift */,
 				FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */,
 			);
@@ -312,6 +298,7 @@
 		FA36209725CC88C700DFE70E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA5F087E25EFF49A004CF5D0 /* GlobalStyles.swift */,
 				FA36209C25CC89A700DFE70E /* Colors.swift */,
 				FA36209B25CC89A700DFE70E /* StringResources.swift */,
 			);
@@ -326,7 +313,6 @@
 				FA5A54E525E5708E0023E448 /* MaskFitting */,
 				FA8A87C625E427BE00D1BBE3 /* SmartRoomARView */,
 				FA10605025DD8E37007E6898 /* HealthSection */,
-				FA5899FB25D54FB000949EAF /* SectionDetailContainer */,
 				FA6B3A5225D1506D00B0C3C2 /* Menu */,
 				FA3620A925CC8D6800DFE70E /* Base */,
 			);
@@ -338,21 +324,19 @@
 			children = (
 				FA5CED6925E928D50089B31F /* FocusEntity */,
 				FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */,
-				FA6B3A9125D1BFD300B0C3C2 /* Menu3DItem.swift */,
-				FA343EC725DAB18D00C3A161 /* ExtendedSceneKitView.swift */,
 				FAA5C23225DEE72600BD1B1E /* SectionDescription.swift */,
 				FAA5C23625DEE8C100BD1B1E /* ComplexDescriptionView.swift */,
-				FAA5C26525DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift */,
 				FAA5C26925DFC88F00BD1B1E /* SectionObjectsView.swift */,
 				FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */,
-				FA4203C225E500FA00BA739F /* RealityKitViewContainer.swift */,
 				FA5A54E125E56EE90023E448 /* MaskFittingSceneKitView.swift */,
-				FA5A54EA25E571580023E448 /* MaskFittingSceneViewContainer.swift */,
+				FA43319A25F19DFD008D8AC2 /* MaskFittingSceneViewContainer.swift */,
 				FA5A54F125E578300023E448 /* MaskList.swift */,
 				FA2656E025E6D5550025ACB1 /* Joystick.swift */,
 				FA2656E625E6D9DD0025ACB1 /* JoystickButton.swift */,
 				FA5CED8725E95C5D0089B31F /* JoysticksWithMapView.swift */,
 				FA424D3A25EA83CE00637EB7 /* Menu3DItemRealityKit.swift */,
+				FAD0DCC025EE9F390033B559 /* LoadingView.swift */,
+				FA7E8E6725EFCAF400F3D345 /* NavBar.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -360,6 +344,10 @@
 		FA3620A925CC8D6800DFE70E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				FAA5C26525DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift */,
+				FA10603825DD4A47007E6898 /* SectionDetailBaseViewModel.swift */,
+				FA10604625DD8796007E6898 /* SectionDetailBaseView.swift */,
+				FA5F088425F008E2004CF5D0 /* SectionDetailBaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -394,20 +382,12 @@
 			path = ApiServices;
 			sourceTree = "<group>";
 		};
-		FA5899FB25D54FB000949EAF /* SectionDetailContainer */ = {
-			isa = PBXGroup;
-			children = (
-				FA10603825DD4A47007E6898 /* SectionDetailContainerViewModel.swift */,
-				FA10604625DD8796007E6898 /* SectionDetailContainerView.swift */,
-			);
-			path = SectionDetailContainer;
-			sourceTree = "<group>";
-		};
 		FA5A54E525E5708E0023E448 /* MaskFitting */ = {
 			isa = PBXGroup;
 			children = (
 				FA5A54E625E571280023E448 /* MaskFittingView.swift */,
 				FA5A54EE25E573060023E448 /* MaskFittingViewModel.swift */,
+				FA43319625F18F39008D8AC2 /* MaskFittingViewController.swift */,
 			);
 			path = MaskFitting;
 			sourceTree = "<group>";
@@ -430,10 +410,8 @@
 		FA6B3A5225D1506D00B0C3C2 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				FA6B3A5325D1515000B0C3C2 /* MenuView.swift */,
 				FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */,
-				FA6B3A8D25D1BB3E00B0C3C2 /* MenuARViewControllerContainer.swift */,
-				FA424D3D25EA919F00637EB7 /* MenuARViewController.swift */,
+				FA424D3D25EA919F00637EB7 /* MenuViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -469,9 +447,9 @@
 				FA36209125CC881200DFE70E /* Utils */,
 				FA3620A825CC8CDB00DFE70E /* ReusableViews */,
 				FA36209A25CC88D300DFE70E /* Modules */,
-				FA80BF7025CA9BC500FD78ED /* SmARtApp.swift */,
 				FA45B98325E80349005CBC38 /* AppDelegate.swift */,
 				FA80BF7925CA9BC600FD78ED /* Info.plist */,
+				FA4331A925F25EA3008D8AC2 /* loading_animation.json */,
 				FA80BF7425CA9BC600FD78ED /* Assets.xcassets */,
 				FA80BF7625CA9BC600FD78ED /* Preview Content */,
 			);
@@ -489,8 +467,8 @@
 		FA8A87C625E427BE00D1BBE3 /* SmartRoomARView */ = {
 			isa = PBXGroup;
 			children = (
-				FA8A87C725E427F300D1BBE3 /* SmartRoomARView.swift */,
 				FA8A87CB25E4339A00D1BBE3 /* SmartRoomARViewModel.swift */,
+				FA7E8E5F25EFB97300F3D345 /* SmartRoomARViewController.swift */,
 			);
 			path = SmartRoomARView;
 			sourceTree = "<group>";
@@ -514,7 +492,6 @@
 			);
 			name = SmARt;
 			packageProductDependencies = (
-				FA424D4225EA974200637EB7 /* RealityUI */,
 			);
 			productName = SmARt;
 			productReference = FA80BF6D25CA9BC500FD78ED /* SmARt.app */;
@@ -544,7 +521,6 @@
 			);
 			mainGroup = FA80BF6425CA9BC500FD78ED;
 			packageReferences = (
-				FA424D4125EA974200637EB7 /* XCRemoteSwiftPackageReference "RealityUI" */,
 			);
 			productRefGroup = FA80BF6E25CA9BC500FD78ED /* Products */;
 			projectDirPath = "";
@@ -562,6 +538,7 @@
 			files = (
 				FA80BF7825CA9BC600FD78ED /* Preview Assets.xcassets in Resources */,
 				FA80BF7525CA9BC600FD78ED /* Assets.xcassets in Resources */,
+				FA4331AA25F25EA3008D8AC2 /* loading_animation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,43 +594,41 @@
 				FA45B98425E80349005CBC38 /* AppDelegate.swift in Sources */,
 				FA2656E125E6D5550025ACB1 /* Joystick.swift in Sources */,
 				FAA5C23A25DEE98B00BD1B1E /* ArrayExtensions.swift in Sources */,
-				FA6B3A5425D1515000B0C3C2 /* MenuView.swift in Sources */,
-				FA6B3A8E25D1BB3E00B0C3C2 /* MenuARViewControllerContainer.swift in Sources */,
 				FAA5C26D25E043B300BD1B1E /* HealthSectionView.swift in Sources */,
 				FAD3B1E325D1EAC700708AE9 /* MenuItemData.swift in Sources */,
+				FA43319B25F19DFE008D8AC2 /* MaskFittingSceneViewContainer.swift in Sources */,
 				FA3620A525CC8B0F00DFE70E /* StringExtensions.swift in Sources */,
 				FA36209D25CC89A700DFE70E /* StringResources.swift in Sources */,
 				FAA9C89525CD5E8E005BA9EE /* ComplexDescriptionItem.swift in Sources */,
-				FA5CED8525E95AAE0089B31F /* DroneARViewControllerContainer.swift in Sources */,
+				FA7E8E6025EFB97300F3D345 /* SmartRoomARViewController.swift in Sources */,
 				FA5A54E725E571280023E448 /* MaskFittingView.swift in Sources */,
 				FAA5C23725DEE8C100BD1B1E /* ComplexDescriptionView.swift in Sources */,
 				FA36209E25CC89A700DFE70E /* Colors.swift in Sources */,
 				FA45B97D25E7CE7A005CBC38 /* TransformType.swift in Sources */,
 				FA5CED7625E928D50089B31F /* FocusEntity+Classic.swift in Sources */,
-				FA10604725DD8796007E6898 /* SectionDetailContainerView.swift in Sources */,
-				FA2656B925E679E10025ACB1 /* SmartTourismViewModel.swift in Sources */,
+				FA10604725DD8796007E6898 /* SectionDetailBaseView.swift in Sources */,
 				FA8A87CF25E4349C00D1BBE3 /* Object3DButton.swift in Sources */,
-				FA2656BD25E695870025ACB1 /* DroneARView.swift in Sources */,
+				FA7E8E6825EFCAF400F3D345 /* NavBar.swift in Sources */,
 				FA4FE01825CC4C4900D1EFC6 /* BaseApiService.swift in Sources */,
+				FA5F088525F008E2004CF5D0 /* SectionDetailBaseViewController.swift in Sources */,
 				FA5A54F225E578300023E448 /* MaskList.swift in Sources */,
 				FA2656E725E6D9DD0025ACB1 /* JoystickButton.swift in Sources */,
 				FA10604025DD7629007E6898 /* MenuItemType.swift in Sources */,
 				FA5CED7525E928D50089B31F /* FocusEntity.swift in Sources */,
-				FA6B3A9225D1BFD300B0C3C2 /* Menu3DItem.swift in Sources */,
 				FA45B98125E7DFCE005CBC38 /* DoubleExtensions.swift in Sources */,
 				FA4FE01725CC4C4900D1EFC6 /* ApiConstants.swift in Sources */,
 				FA3620A125CC8A8E00DFE70E /* DIContainerConfigurator.swift in Sources */,
 				FAA9C89725CD5E8E005BA9EE /* Object3dData.swift in Sources */,
 				FA424D3B25EA83CE00637EB7 /* Menu3DItemRealityKit.swift in Sources */,
+				FA5F087F25EFF49A004CF5D0 /* GlobalStyles.swift in Sources */,
 				FA6B3A5725D1516200B0C3C2 /* MenuViewModel.swift in Sources */,
-				FA343EC825DAB18D00C3A161 /* ExtendedSceneKitView.swift in Sources */,
 				FAD3B20825D2B05400708AE9 /* MenuService.swift in Sources */,
 				FAA9C89925CD5E8E005BA9EE /* Mask.swift in Sources */,
 				FAA9C89325CD5E8E005BA9EE /* ComplexDescription.swift in Sources */,
 				FAA9C89825CD5E8E005BA9EE /* VideoData.swift in Sources */,
 				FA45B97625E7C263005CBC38 /* ColationManager.swift in Sources */,
-				FA4203C325E500FA00BA739F /* RealityKitViewContainer.swift in Sources */,
 				FA5A54EF25E573060023E448 /* MaskFittingViewModel.swift in Sources */,
+				FA43319725F18F39008D8AC2 /* MaskFittingViewController.swift in Sources */,
 				FA2656B525E679D60025ACB1 /* SmartTourismView.swift in Sources */,
 				FAA5C26A25DFC88F00BD1B1E /* SectionObjectsView.swift in Sources */,
 				FA2656CB25E695930025ACB1 /* DroneARViewModel.swift in Sources */,
@@ -663,6 +638,7 @@
 				FA45B97925E7CD0B005CBC38 /* DimentionalDirection.swift in Sources */,
 				FA5CED7725E928D50089B31F /* FocusEntity+Alignment.swift in Sources */,
 				FA3620A625CC8B0F00DFE70E /* NSObjectExtensions.swift in Sources */,
+				FAD0DCC125EE9F390033B559 /* LoadingView.swift in Sources */,
 				FAA5C23025DEE46D00BD1B1E /* GetStartedButton.swift in Sources */,
 				FA5CED7325E928D50089B31F /* FocusEntity+Colored.swift in Sources */,
 				FA2273FE25E454E300DA6FCB /* ExtendedRealityKitView.swift in Sources */,
@@ -672,17 +648,13 @@
 				FAA5C22D25DED96F00BD1B1E /* SwiftUI Color Extensions.swift in Sources */,
 				FA5CED7125E928D50089B31F /* FocusEntity+Segment.swift in Sources */,
 				FAD3B21325D2D06300708AE9 /* UIViewExtensions.swift in Sources */,
-				FA80BF7125CA9BC500FD78ED /* SmARtApp.swift in Sources */,
-				FA8A87C825E427F300D1BBE3 /* SmartRoomARView.swift in Sources */,
 				FA5CED8C25E968220089B31F /* AnyPublisherExtensions.swift in Sources */,
-				FA5A54F525E586430023E448 /* UIImageViewExtensions.swift in Sources */,
 				FAA9C89B25CD5E8E005BA9EE /* ImageData.swift in Sources */,
 				FA8A87C425E3FED100D1BBE3 /* AugmentedObjectType.swift in Sources */,
-				FA10603925DD4A47007E6898 /* SectionDetailContainerViewModel.swift in Sources */,
+				FA10603925DD4A47007E6898 /* SectionDetailBaseViewModel.swift in Sources */,
 				FAA5C23325DEE72600BD1B1E /* SectionDescription.swift in Sources */,
 				FAA9C89A25CD5E8E005BA9EE /* ObjectData.swift in Sources */,
 				FA8A87CC25E4339A00D1BBE3 /* SmartRoomARViewModel.swift in Sources */,
-				FA5A54EB25E571580023E448 /* MaskFittingSceneViewContainer.swift in Sources */,
 				FA5A54E225E56EE90023E448 /* MaskFittingSceneKitView.swift in Sources */,
 				FA5CED7225E928D50089B31F /* float4x4+Extension.swift in Sources */,
 				FA10605625DD9930007E6898 /* UIScreen.swift in Sources */,
@@ -692,7 +664,7 @@
 				FAA9C89625CD5E8E005BA9EE /* Environment.swift in Sources */,
 				FA5CED8225E95A650089B31F /* DroneARViewController.swift in Sources */,
 				FAA5C26625DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift in Sources */,
-				FA424D3E25EA919F00637EB7 /* MenuARViewController.swift in Sources */,
+				FA424D3E25EA919F00637EB7 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,25 +855,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		FA424D4125EA974200637EB7 /* XCRemoteSwiftPackageReference "RealityUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/maxxfrazer/RealityUI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FA424D4225EA974200637EB7 /* RealityUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FA424D4125EA974200637EB7 /* XCRemoteSwiftPackageReference "RealityUI" */;
-			productName = RealityUI;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA80BF6525CA9BC500FD78ED /* Project object */;
 }

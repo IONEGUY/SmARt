@@ -19,9 +19,3 @@ struct SectionDescription: View {
             .multilineTextAlignment(.center)
     }
 }
-
-struct SectionDescription_Previews: PreviewProvider {
-    static var previews: some View {
-        SectionDescription(text: .empty)
-    }
-}

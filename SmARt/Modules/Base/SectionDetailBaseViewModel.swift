@@ -9,7 +9,7 @@ import Combine
 import Alamofire
 import SwiftUI
 
-class SectionDetailContainerViewModel: ObservableObject {
+class SectionDetailBaseViewModel: ObservableObject {
     let sectionInfo: Section?
     var sectionType: SectionType = .none
     var getStartedButtonText = "Get Started"
@@ -55,7 +55,7 @@ class SectionDetailContainerViewModel: ObservableObject {
             pushSmartRoomARViewActive = true
         case .section5G:
             object3dUrls =
-                [sectionInfo?.objects?.first?.object3d?.files?.first?.url ?? .empty]
+                [sectionInfo?.objects?.last?.object3d?.files?.first?.url ?? .empty]
             pushSmartRoomARViewActive = true
         case .smartRetail:
             masks = sectionInfo?.objects?.map(\.mask) ?? []

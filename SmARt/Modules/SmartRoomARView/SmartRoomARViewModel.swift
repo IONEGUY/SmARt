@@ -11,15 +11,20 @@ import SwiftUI
 import RealityKit
 
 class SmartRoomARViewModel: ObservableObject {
-    @Published var object3DButtons: [Object3DButton]
+    @Published var object3DButtons: [Object3DButton] = []
     @Published var current3DObjectUrl: String
-    @Published var is3DObjectButtonsVisible = false
     @Published var augmentedObjectType = AugmentedObjectType.object3D
     
     init(object3dUrls: [String], augmentedObjectType: AugmentedObjectType) {
         self.augmentedObjectType = augmentedObjectType
         current3DObjectUrl = object3dUrls.first ?? .empty
-        is3DObjectButtonsVisible = object3dUrls.count >= 2
+        
+        createObject3DButtons(object3dUrls)
+    }
+    
+    private func createObject3DButtons(_ object3dUrls: [String]) {
+        if object3dUrls.count < 2 { return }
+        
         object3DButtons = [
             Object3DButton(image: "light", isSelected: true),
             Object3DButton(image: "cup")

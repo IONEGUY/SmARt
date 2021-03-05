@@ -17,6 +17,7 @@ struct SectionObjectsView: View {
             KFImage(URL(string: objects.first?.icon.url ?? .empty))
                 .resizable()
                 .frame(width: UIScreen.width - 60, height: 150)
+                .cornerRadius(18)
                 .onTapGesture {
                     guard let object = objects.first else { return }
                     objectSelected(object)
@@ -24,11 +25,5 @@ struct SectionObjectsView: View {
         } else {
             MaskList(masks: objects.map(\.mask))
         }
-    }
-}
-
-struct SectionObjectsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SectionObjectsView(objects: [], objectSelected: { _ in})
     }
 }

@@ -16,29 +16,35 @@ import RealityUI
 class Menu3DItem: Entity {
     private var cancellables = Set<AnyCancellable>()
     
-    func initData(_ menuItemData: MenuItemData) {
+    func initData(_ menuItemData: MenuItemData, _ completion: @escaping () -> Void) {
         name = menuItemData.id
-        Entity.loadModelAsync(contentsOf: menuItemData.object3DFileUrl)
+        generateCollisionShapes(recursive: true)
+        let cacheDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
+        guard let object3DName = menuItemData.object3DFileUrl.split(separator: "/").last,
+              let filePath = cacheDirectory?.appendingPathComponent("\(object3DName).usdz")
+        else { fatalError("cannot retrieve file with 3d model") }
+        
+        Entity.loadModelAsync(contentsOf: filePath)
             .sink { _ in }
             receiveValue: { [unowned self] model in
-                model.scale = SIMD3<Float>(x: 0.001, y: 0.001, z: 0.001)
                 model.position.x += -0.18
-                model.position.z += 0.05
+                model.position.z += 0.1
                 model.orientation = simd_quatf(angle: .pi / 2, axis: [0, 1, 0])
-                model.generateCollisionShapes(recursive: false)
-                
+                model.generateCollisionShapes(recursive: true)
                 addChild(createPlaneInfo(menuItemData))
                 addChild(model)
+                completion()
             }
             .store(in: &cancellables)
     }
     
     private func createPlaneInfo(_ menuItemData: MenuItemData) -> ModelEntity {
         let image = createPlaneInfoImage(menuItemData.sectionName, menuItemData.sectionDescription)
-        let documentsDirectory =
+        let cacheDirectory =
             FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
-        guard let data = image.pngData(),
-              let filePath = documentsDirectory?.appendingPathComponent("\(menuItemData.object3DName).png"),
+        guard let imageName = menuItemData.object3DFileUrl.split(separator: "/").last,
+              let data = image.pngData(),
+              let filePath = cacheDirectory?.appendingPathComponent("\(imageName).png"),
             (try? data.write(to: filePath)) != nil else { return ModelEntity() }
 
         var material = SimpleMaterial()
@@ -50,7 +56,7 @@ class Menu3DItem: Entity {
                                                      height: 0.2,
                                                      cornerRadius: 0.08),
                                 materials: [material])
-        model.generateCollisionShapes(recursive: false)
+        model.generateCollisionShapes(recursive: true)
         return model
     }
 

@@ -10,26 +10,61 @@ import ARKit
 import RealityKit
 import Alamofire
 import Combine
-import RealityUI
 
 class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayViewDelegate {
     var delegate: ExtendedRealityKitViewDelegate?
     var focusEntity: FocusEntity?
-    
     var cancellables = Set<AnyCancellable>()
+    var videoPlayers: [AVPlayer] = []
+    
+    static var shared = ExtendedRealityKitView()
     
     func setup() {
+        configueARSession()
         setupOptimizations()
         setupFocusEntity()
         addCoaching()
         addGestureRecognizers()
-        addLighting()
     }
     
+    func addToGroup(withName name: String, anchor: HasAnchoring) {
+        var groupAnchor = getGroupAnchor(name)
+        if groupAnchor == nil {
+            groupAnchor = AnchorEntity()
+            groupAnchor?.name = name
+            scene.anchors.append(groupAnchor ?? AnchorEntity())
+        }
+        
+        groupAnchor?.addChild(anchor)
+    }
+    
+    func hideGroup(withName name: String) {
+        getGroupAnchor(name)?.isEnabled = false
+    }
+    
+    func showGroup(withName name: String) {
+        getGroupAnchor(name)?.isEnabled = true
+    }
+    
+    func removeGroup(withName name: String) {
+        getGroupAnchor(name)?.removeFromParent()
+    }
+
     func configueARSession() {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal]
         session.run(configuration)
+    }
+    
+    func createLightingAnchor(_ position: SIMD3<Float>) -> HasAnchoring {
+        let lightAnchor = AnchorEntity()
+        lightAnchor.addChild(DefaultLightingEntity())
+        lightAnchor.transform.translation = position
+        return lightAnchor
+    }
+    
+    private func getGroupAnchor(_ name: String) -> HasAnchoring? {
+        return scene.anchors.first(where: { $0.name == name })
     }
     
     private func addCoaching() {
@@ -40,12 +75,6 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
         coachingOverlay.session = session
         coachingOverlay.delegate = self
     }
-    
-    private func addLighting() {
-        let lightAnchor = AnchorEntity()
-        lightAnchor.addChild(DefaultLightingEntity())
-        scene.anchors.append(lightAnchor)
-    }
 
     private func setupFocusEntity() {
         focusEntity = FocusEntity(on: self, focus: .classic)
@@ -54,7 +83,8 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
     private func setupOptimizations() {
         contentScaleFactor = 0.50 * contentScaleFactor
         renderOptions = [.disableMotionBlur, .disableAREnvironmentLighting,
-                         .disableCameraGrain, .disableDepthOfField, .disableFaceOcclusions, .disableGroundingShadows,
+                         .disableCameraGrain, .disableDepthOfField,
+                         .disableFaceOcclusions, .disableGroundingShadows,
                          .disableHDR, .disablePersonOcclusion]
     }
     
@@ -65,64 +95,72 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
         addGestureRecognizer(tapRecognizer)
     }
     
-    func appendVideo(_ url: String, _ transform: simd_float4x4) -> AnyPublisher<ModelEntity, Never> {
+    func appendVideo(_ url: String, _ transform: simd_float4x4, groupName: String? = nil) -> AnyPublisher<ModelEntity, Never> {
         AnyPublisher.create { [unowned self] observer in
-            if scene.findEntity(named: url) != nil { observer.onComplete() }
+            if scene.findEntity(named: url) != nil { return .init(dispose: {}) }
             
             guard let videoURL = URL(string: url) else { return Disposable(dispose: {}) }
             
             let videoPlayer = AVPlayer(playerItem: AVPlayerItem(url: videoURL))
+            videoPlayers.append(videoPlayer)
 
             let videoPlane = ModelEntity(mesh: .generatePlane(width: 1.6, height: 0.9),
                                          materials: [VideoMaterial(avPlayer: videoPlayer)])
-
-            let anchor = AnchorEntity(plane: .horizontal)
+            videoPlane.transform.translation = transform.translation
+            videoPlane.transform.rotation = Transform(matrix: transform).rotation
             
-            addAnchorToARView(anchor, videoPlane, url)
+            let anchor = AnchorEntity(plane: .horizontal)
+            addAnchorToARView(anchor, videoPlane, url, groupName)
+            
             observer.onNext(videoPlane)
             
             videoPlayer.play()
-            return Disposable(dispose: {})
+            return .init(dispose: {})
         }
     }
     
-    func append3DModel(with url: String, _ transform: simd_float4x4) -> AnyPublisher<ModelEntity, Never> {
+    func append3DModel(with url: String, _ transform: simd_float4x4, groupName: String? = nil) -> AnyPublisher<ModelEntity, Never> {
         AnyPublisher.create { [unowned self] observer in
-            if scene.findEntity(named: url) != nil { observer.onComplete() }
-            AF.download(url, method: .get).responseData { [unowned self] response in
-                guard let fileName = url.split(separator: "/").last,
-                      let filePath = FileManager.default.urls(
-                        for: .cachesDirectory,
-                        in: .userDomainMask).first?.appendingPathComponent("\(fileName).usdz"),
-                      (try? response.result.get().write(to: filePath)) != nil else { return }
-                
-                Entity.loadModelAsync(contentsOf: filePath).sink {_ in}
-                    receiveValue: { [unowned self] model in
-                        model.transform = Transform(matrix: transform)
-                        model.scale = SIMD3<Float>(x: 0.01, y: 0.01, z: 0.01)
-                        
-                        let anchor = AnchorEntity()
-                        addAnchorToARView(anchor, model, url)
-                        observer.onNext(model)
-                    }
-                    .store(in: &cancellables)
-            }
-            return Disposable(dispose: {})
+            if scene.findEntity(named: url) != nil { return .init(dispose: {}) }
+            
+            let cacheDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
+            guard let object3DName = url.split(separator: "/").last,
+                  let filePath = cacheDirectory?.appendingPathComponent("\(object3DName).usdz")
+            else { fatalError("cannot retrieve file with 3d model") }
+            
+            Entity.loadModelAsync(contentsOf: filePath).sink {_ in}
+                receiveValue: { [unowned self] model in
+                    model.transform.translation = transform.translation
+                    model.transform.rotation = Transform(matrix: transform).rotation
+                    
+                    let anchor = AnchorEntity()
+                    addAnchorToARView(anchor, model, url, groupName)
+                    model.availableAnimations.forEach { model.playAnimation($0.repeat()) }
+                    observer.onNext(model)
+                }
+                .store(in: &cancellables)
+            return .init(dispose: {})
         }
     }
     
-    private func addAnchorToARView(_ anchor: AnchorEntity, _ model: ModelEntity, _ name: String) {
+    private func addAnchorToARView(_ anchor: AnchorEntity, _ model: ModelEntity, _ name: String, _ groupName: String? = nil) {
         model.name = name
+        anchor.name = name
         anchor.addChild(model)
-        scene.anchors.append(anchor)
+        
+        if let groupName = groupName {
+            addToGroup(withName: groupName, anchor: anchor)
+        } else {
+            scene.anchors.append(anchor)
+        }
     }
     
     @objc private func handleTapAction(_ sender: UITapGestureRecognizer) {
         let tapPoint = sender.location(in: self)
         delegate?.doOnTap(self, getPositionFromRayCast(at: tapPoint))
         
-        let ccHit = hitTest(tapPoint, mask: .all).first
-        let tappedEntity = ccHit?.entity
+        let hit = hitTest(tapPoint, mask: .all).first
+        let tappedEntity = hit?.entity        
         if tappedEntity != nil {
             delegate?.entitySelected(tappedEntity!)
         }

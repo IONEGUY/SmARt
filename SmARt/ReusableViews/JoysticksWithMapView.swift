@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct JoysticksWithMapView: View {
-    @Binding var currentRegion: MKCoordinateRegion
+    @State var currentRegion: MKCoordinateRegion
     @State var leftJoystickAction: (JoystickDirection) -> Void
     @State var rightJoystickAction: (JoystickDirection) -> Void
     

@@ -35,9 +35,3 @@ struct GetStartedButton: View {
         .shadow(color: Color(hex: 0x705FBE), radius: 5)
     }
 }
-
-struct GetStartedButton_Previews: PreviewProvider {
-    static var previews: some View {
-        GetStartedButton(action: {}, text: .empty)
-    }
-}

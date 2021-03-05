@@ -7,18 +7,30 @@
 
 import Foundation
 import UIKit
-import SwiftUI
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
 
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        GlobalStyles.initialize()
+        initializeWindow()
+        initCrashlytics()
         return true
     }
     
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return AppDelegate.orientationLock
+    private func initializeWindow() {
+        let rootViewController = MenuViewController(viewModel: MenuViewModel())
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = rootViewController
+        window?.makeKeyAndVisible()
     }
     
-    static var orientationLock = UIInterfaceOrientationMask.portrait
+    private func initCrashlytics() {
+        AppCenter.start(withAppSecret: "c82edc1f-13cc-4d6d-bb8d-dfebea4761dd",
+                        services: [ Analytics.self, Crashes.self ])
+    }
 }

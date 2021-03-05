@@ -21,6 +21,8 @@ struct ComplexDescriptionView: View {
                     ForEach(0..<chunkedData[index].count) { innerIndex in
                         HStack {
                             KFImage(URL(string: chunkedData[index][innerIndex].icon.url))
+                                .resizable()
+                                .frame(width: 20, height: 20)
                             Text(chunkedData[index][innerIndex].title)
                                 .foregroundColor(.white)
                                 .font(.system(size: 12))
@@ -42,11 +44,5 @@ struct ComplexDescriptionView: View {
             }
         }
         .padding(.horizontal, 20)
-    }
-}
-
-struct ComplexDescriptionView_Previews: PreviewProvider {
-    static var previews: some View {
-        ComplexDescriptionView(data: [], chunkValue: 0)
     }
 }

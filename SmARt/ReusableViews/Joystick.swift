@@ -17,9 +17,10 @@ struct Joystick: View {
                 Circle()
                     .foregroundColor(Color(hex: 0xC4C4C4, alpha: 0.7))
                     .frame(width: 70, height: 70)
-            }.frame(width: 100, height: 100)
-            .overlay(Circle().stroke(Color(hex: 0xC4C4C4, alpha: 0.2),lineWidth: 20)
-            ).foregroundColor(Color.red)
+            }
+            .frame(width: 100, height: 100)
+            .overlay(Circle().stroke(Color(hex: 0xC4C4C4, alpha: 0.2),lineWidth: 20))
+            .foregroundColor(Color.red)
             
             VStack {
                 JoystickButton(timer: $timer, direction: .up, action: action)

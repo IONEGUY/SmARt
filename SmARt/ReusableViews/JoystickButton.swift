@@ -22,7 +22,7 @@ struct JoystickButton: View {
         })
         .simultaneousGesture(DragGesture(minimumDistance: 0)
             .onEnded { _ in longPressEnded() })
-        .simultaneousGesture(LongPressGesture(minimumDuration: 0.2)
+        .simultaneousGesture(LongPressGesture(minimumDuration: 0.02)
             .onEnded { _ in
                 isLongPressing = true
                 timer?.invalidate()

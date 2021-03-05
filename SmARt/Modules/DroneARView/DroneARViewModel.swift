@@ -14,7 +14,7 @@ import CoreLocation
 
 class DroneARViewModel: ObservableObject {
     private var cancellabes = Set<AnyCancellable>()
-    private let translationSpeed: Float = 0.05
+    private let translationSpeed: Float = 0.03
     private let rotationSpeed: Float = 1
     
     @Published var droneModelUrl = String.empty
@@ -28,7 +28,7 @@ class DroneARViewModel: ObservableObject {
     @Published var objectTransform = Transform()
     
     init(droneModelUrl: String) {
-        self.droneModelUrl = "http://34.105.234.21:8080/api-files/open/file/download/60267d500d23537b4fb43d8c"
+        self.droneModelUrl = droneModelUrl
         
         leftJoystickAction = { [unowned self] in
             var transform = objectTransform
