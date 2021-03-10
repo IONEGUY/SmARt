@@ -18,11 +18,8 @@ class Menu3DItem: Entity {
     func initData(_ menuItemData: MenuItemData, _ completion: @escaping () -> Void) {
         name = menuItemData.id
         generateCollisionShapes(recursive: true)
-        let cacheDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
-        guard let object3DName = menuItemData.object3DFileUrl.split(separator: "/").last,
-              let filePath = cacheDirectory?.appendingPathComponent("\(object3DName).usdz")
-        else { fatalError("cannot retrieve file with 3d model") }
-        
+
+        let filePath = URL.constructFilePath(withName: "\(menuItemData.logo3DId).usdz")
         Entity.loadModelAsync(contentsOf: filePath)
             .sink { _ in }
             receiveValue: { [unowned self] model in
@@ -39,12 +36,8 @@ class Menu3DItem: Entity {
     
     private func createPlaneInfo(_ menuItemData: MenuItemData) -> ModelEntity {
         let image = createPlaneInfoImage(menuItemData.sectionName, menuItemData.sectionDescription)
-        let cacheDirectory =
-            FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
-        guard let imageName = menuItemData.object3DFileUrl.split(separator: "/").last,
-              let data = image.pngData(),
-              let filePath = cacheDirectory?.appendingPathComponent("\(imageName).png"),
-            (try? data.write(to: filePath)) != nil else { return ModelEntity() }
+        let filePath = URL.constructFilePath(withName: "\(menuItemData.id).png")
+        try? image.pngData()?.write(to: filePath)
 
         var material = SimpleMaterial()
         material.baseColor = try! .texture(.load(contentsOf: filePath))

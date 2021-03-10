@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import Kingfisher
 
 struct SmartTourismView: View {
     var objects: [ObjectData]
@@ -59,8 +58,7 @@ struct SmartTourismView: View {
             
             VStack(spacing: 14) {
                 ForEach(objects) { object in
-                    KFImage(URL(string: object.icon.url))
-                        .resizable()
+                    ImageFromFile(name: object.icon.id)
                         .frame(width: UIScreen.width - 40, height: 140)
                         .onTapGesture { objectSelected(object) }
                 }

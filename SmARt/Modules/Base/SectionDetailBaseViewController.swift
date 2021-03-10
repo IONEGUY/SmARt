@@ -48,7 +48,7 @@ class SectionDetailBaseViewController: UIViewController {
             .dropFirst()
             .sink { [unowned self] _ in
                 let vc = SmartRoomARViewController(viewModel:
-                    SmartRoomARViewModel(object3dUrls: viewModel.object3dUrls,
+                    SmartRoomARViewModel(object3DIds: viewModel.object3DIds,
                                          augmentedObjectType: viewModel.augmentedObjectType))
                 vc.modalPresentationStyle = .fullScreen
                 present(vc, animated: false, completion: nil)
@@ -58,7 +58,8 @@ class SectionDetailBaseViewController: UIViewController {
         viewModel.$pushDroneARViewActive
             .dropFirst()
             .sink { [unowned self] _ in
-                let vc = DroneARViewController(viewModel: DroneARViewModel(droneModelUrl: viewModel.object3dUrls.first ?? .empty))
+                let vc = DroneARViewController(viewModel:
+                    DroneARViewModel(droneModelId: viewModel.object3DIds.first ?? .empty))
                 vc.modalPresentationStyle = .fullScreen
                 present(vc, animated: false, completion: nil)
             }

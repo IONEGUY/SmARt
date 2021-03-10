@@ -82,8 +82,9 @@ class DroneARViewController: UIViewController, ExtendedRealityKitViewDelegate {
     }
     
     func doOnTap(_ arView: ExtendedRealityKitView, _ transform: simd_float4x4) {
-        arView.append3DModel(with: viewModel.droneModelUrl, transform, groupName: Self.typeName)
+        arView.append3DModel(viewModel.droneModelId, transform, groupName: Self.typeName)
             .sink { [unowned self] in
+                $0.transform.rotation = simd_quatf(angle: .pi / 2, axis: [0,1,0])
                 drone = $0
                 viewModel.objectTransform = $0.transform
             }.store(in: &cancellabes)
@@ -107,8 +108,7 @@ class DroneARViewController: UIViewController, ExtendedRealityKitViewDelegate {
     
     private func addJoysticksBar() {
         let joysticksBar = UIHostingController(rootView:
-            JoysticksWithMapView(currentRegion: viewModel.currentRegion,
-                                 leftJoystickAction: viewModel.leftJoystickAction,
+            JoysticksWithMapView(leftJoystickAction: viewModel.leftJoystickAction,
                                  rightJoystickAction: viewModel.rightJoystickAction))
         joysticksBar.view.backgroundColor = .clear
         addChild(joysticksBar)

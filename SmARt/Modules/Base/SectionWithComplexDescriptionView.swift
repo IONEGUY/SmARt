@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct SectionWithComplexDescriptionView: View {
     var section: Section?
@@ -16,11 +15,9 @@ struct SectionWithComplexDescriptionView: View {
     
     var body: some View {
         VStack {
-            KFImage(URL(string: section?.logo2d?.url ?? .empty))
-                .resizable()
+            ImageFromFile(name: section?.logo2d?.id ?? .empty)
                 .scaledToFit()
-                .frame(width: UIScreen.width - 20,
-                       height: 300)
+                .frame(width: UIScreen.width - 20, height: 300)
             
             if section?.complexDescription != nil {
                 ComplexDescriptionView(data: section?.complexDescription?.items ?? [],

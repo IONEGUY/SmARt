@@ -25,6 +25,7 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
         setupFocusEntity()
         addCoaching()
         addGestureRecognizers()
+        createLightingAnchor()
     }
     
     func addToGroup(withName name: String, anchor: HasAnchoring) {
@@ -56,11 +57,10 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
         session.run(configuration)
     }
     
-    func createLightingAnchor(_ position: SIMD3<Float>) -> HasAnchoring {
+    func createLightingAnchor() {
         let lightAnchor = AnchorEntity()
         lightAnchor.addChild(DefaultLightingEntity())
-        lightAnchor.transform.translation = position
-        return lightAnchor
+        scene.anchors.append(lightAnchor)
     }
     
     private func getGroupAnchor(_ name: String) -> HasAnchoring? {
@@ -95,22 +95,19 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
         addGestureRecognizer(tapRecognizer)
     }
     
-    func appendVideo(_ url: String, _ transform: simd_float4x4, groupName: String? = nil) -> AnyPublisher<ModelEntity, Never> {
+    func appendVideo(_ id: String, _ transform: simd_float4x4, groupName: String? = nil) -> AnyPublisher<ModelEntity, Never> {
         AnyPublisher.create { [unowned self] observer in
-            if scene.findEntity(named: url) != nil { return .init(dispose: {}) }
+            if scene.findEntity(named: id) != nil { return .init(dispose: {}) }
             
-            guard let videoURL = URL(string: url) else { return Disposable(dispose: {}) }
+            let url = URL.constructFilePath(withName: "\(id).mp4")
             
-            let videoPlayer = AVPlayer(playerItem: AVPlayerItem(url: videoURL))
+            let videoPlayer = AVPlayer(playerItem: AVPlayerItem(url: url))
             videoPlayers.append(videoPlayer)
 
             let videoPlane = ModelEntity(mesh: .generatePlane(width: 1.6, height: 0.9),
                                          materials: [VideoMaterial(avPlayer: videoPlayer)])
-            videoPlane.transform.translation = transform.translation
-            videoPlane.transform.rotation = Transform(matrix: transform).rotation
             
-            let anchor = AnchorEntity(plane: .horizontal)
-            addAnchorToARView(anchor, videoPlane, url, groupName)
+            addAnchorToARView(transform, videoPlane, id, groupName)
             
             observer.onNext(videoPlane)
             
@@ -119,22 +116,14 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
         }
     }
     
-    func append3DModel(with url: String, _ transform: simd_float4x4, groupName: String? = nil) -> AnyPublisher<ModelEntity, Never> {
+    func append3DModel(_ id: String, _ transform: simd_float4x4, groupName: String? = nil) -> AnyPublisher<ModelEntity, Never> {
         AnyPublisher.create { [unowned self] observer in
-            if scene.findEntity(named: url) != nil { return .init(dispose: {}) }
+            if scene.findEntity(named: id) != nil { return .init(dispose: {}) }
             
-            let cacheDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
-            guard let object3DName = url.split(separator: "/").last,
-                  let filePath = cacheDirectory?.appendingPathComponent("\(object3DName).usdz")
-            else { fatalError("cannot retrieve file with 3d model") }
-            
+            let filePath = URL.constructFilePath(withName: "\(id).usdz")
             Entity.loadModelAsync(contentsOf: filePath).sink {_ in}
                 receiveValue: { [unowned self] model in
-                    model.transform.translation = transform.translation
-                    model.transform.rotation = Transform(matrix: transform).rotation
-                    
-                    let anchor = AnchorEntity()
-                    addAnchorToARView(anchor, model, url, groupName)
+                    addAnchorToARView(transform, model, id, groupName)
                     model.availableAnimations.forEach { model.playAnimation($0.repeat()) }
                     observer.onNext(model)
                 }
@@ -143,7 +132,8 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
         }
     }
     
-    private func addAnchorToARView(_ anchor: AnchorEntity, _ model: ModelEntity, _ name: String, _ groupName: String? = nil) {
+    private func addAnchorToARView(_ transform: simd_float4x4, _ model: ModelEntity, _ name: String, _ groupName: String? = nil) {
+        let anchor = AnchorEntity(.world(transform: transform))
         model.name = name
         anchor.name = name
         anchor.addChild(model)
@@ -181,6 +171,6 @@ class DefaultLightingEntity: Entity, HasPointLight {
     required init() {
         super.init()
   
-        light = PointLightComponent(color: .white, intensity: 50000)
+        light = PointLightComponent(color: .white, intensity: 60000)
     }
 }

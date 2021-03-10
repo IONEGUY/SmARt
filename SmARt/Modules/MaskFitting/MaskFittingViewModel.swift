@@ -14,13 +14,13 @@ class MaskFittingViewModel: ObservableObject {
                                    icon: ImageData(url: .empty),
                                    description: String.empty)
     @Published var masks = [Mask?]()
-    @Published var currentMaskUrl = String.empty
+    @Published var currentMaskId = String.empty
     
     init(masks: [Mask?]) {
         self.masks = masks
         if let firstMask = masks.first, let mask = firstMask {
             currentMask = mask
-            currentMaskUrl = mask.icon.url
+            currentMaskId = mask.icon.id
         }
     }
     
@@ -28,6 +28,6 @@ class MaskFittingViewModel: ObservableObject {
         masks.removeAll(where: { $0?.id == mask.id })
         masks.append(currentMask)
         currentMask = mask
-        currentMaskUrl = mask.icon.url
+        currentMaskId = mask.icon.id
     }
 }

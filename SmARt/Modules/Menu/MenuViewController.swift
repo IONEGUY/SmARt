@@ -16,7 +16,7 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
     var menuAdded = false
     var arView: ExtendedRealityKitView
     var cancellables = Set<AnyCancellable>()
-    var loadingView = LoadingView()
+    var loadingView = LoadingViewWithProgressBar()
     var loadingViewContainer = UIView()
     
     init(viewModel: MenuViewModel) {
@@ -34,35 +34,32 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.$isLoading
-            .receive(on: RunLoop.main)
-            .sink { [unowned self] isLoading in
-            if isLoading {
-                loadingView.setup()
-                addLoadingView()
-            } else {
-                loadingViewContainer.removeFromSuperview()
-            }
-        }
-        .store(in: &cancellables)
+        viewModel.$contentLoadingProgress
+            .dropFirst()
+            .first()
+            .sink { [unowned self] _ in addLoadingView() }
+            .store(in: &cancellables)
         
-        viewModel.$averageProgress
-            .sink { [unowned self] in
-                loadingView.updateProgress(CGFloat($0))
-            }
+        viewModel.$contentLoadingProgress
+            .sink { [unowned self] in loadingView.updateProgress(CGFloat($0)) }
+            .store(in: &cancellables)
+        
+        viewModel.$contentLoadingProgress
+            .filter { $0 >= Constants.completeProgressValue }
+            .sink { [unowned self] _ in loadingViewContainer.removeFromSuperview() }
             .store(in: &cancellables)
     }
     
     private func addLoadingView() {
+        loadingView.text = "Fetching Media Content"
         loadingViewContainer = UIView()
-        loadingViewContainer.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        loadingViewContainer.backgroundColor = UIColor.black.withAlphaComponent(0.9)
         view.addSubview(loadingViewContainer)
         loadingViewContainer.fillSuperview()
         loadingViewContainer.addSubview(loadingView)
         
         loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        loadingView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        loadingView.widthAnchor.constraint(equalToConstant: 250).isActive = true
         loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
@@ -121,12 +118,6 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
             menuItems.forEach {
                 let anchor = AnchorEntity()
                 anchor.addChild($0)
-                
-                var lightPosition = transform.translation
-                lightPosition.z -= -2
-                let lightAnchor = arView.createLightingAnchor(lightPosition)
-                
-                arView.addToGroup(withName: Self.typeName, anchor: lightAnchor)
                 arView.addToGroup(withName: Self.typeName, anchor: anchor)
             }
         }

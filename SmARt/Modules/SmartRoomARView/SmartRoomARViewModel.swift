@@ -12,27 +12,27 @@ import RealityKit
 
 class SmartRoomARViewModel: ObservableObject {
     @Published var object3DButtons: [Object3DButton] = []
-    @Published var current3DObjectUrl: String
+    @Published var current3DObjectId: String
     @Published var augmentedObjectType = AugmentedObjectType.object3D
     
-    init(object3dUrls: [String], augmentedObjectType: AugmentedObjectType) {
+    init(object3DIds: [String], augmentedObjectType: AugmentedObjectType) {
         self.augmentedObjectType = augmentedObjectType
-        current3DObjectUrl = object3dUrls.first ?? .empty
+        current3DObjectId = object3DIds.first ?? .empty
         
-        createObject3DButtons(object3dUrls)
+        createObject3DButtons(object3DIds)
     }
     
-    private func createObject3DButtons(_ object3dUrls: [String]) {
-        if object3dUrls.count < 2 { return }
+    private func createObject3DButtons(_ object3DIds: [String]) {
+        if object3DIds.count < 2 { return }
         
         object3DButtons = [
             Object3DButton(image: "light", isSelected: true),
             Object3DButton(image: "cup")
         ]
 
-        for index in 0..<object3dUrls.count {
+        for index in 0..<object3DIds.count {
             object3DButtons[index].action = { [unowned self] in
-                current3DObjectUrl = object3dUrls[index]
+                current3DObjectId = object3DIds[index]
                 object3DButtons.forEach { $0.isSelected = false }
                 object3DButtons[index].isSelected = true
             }

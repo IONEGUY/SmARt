@@ -7,16 +7,13 @@
 
 import Foundation
 
-struct ImageData: Codable {
-    var name: String?
-    var description: String?
-    var size: Int64?
-    var url: String
+struct ImageData: FileDataProtocol, Codable {
+    var id: String = .empty
+    var url: String = .empty
+    var fileExtension = "png"
     
     enum CodingKeys: String, CodingKey {
-        case name
-        case description
-        case size
+        case id
         case url
     }
 }

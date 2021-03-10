@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct SectionObjectsView: View {
     var objects: [ObjectData]
@@ -14,8 +13,7 @@ struct SectionObjectsView: View {
     
     var body: some View {
         if objects.first?.mask == nil {
-            KFImage(URL(string: objects.first?.icon.url ?? .empty))
-                .resizable()
+            ImageFromFile(name: objects.first?.icon.id ?? .empty)
                 .frame(width: UIScreen.width - 60, height: 150)
                 .cornerRadius(18)
                 .onTapGesture {

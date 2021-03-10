@@ -51,10 +51,6 @@ class SmartRoomARViewController: UIViewController, ExtendedRealityKitViewDelegat
         arView.removeFromSuperview()
     }
     
-    deinit {
-        print("SmartRoomARViewController has been released")
-    }
-    
     private func createNavBar() {
         let navBar = UIHostingController(rootView: NavBar(object3DButtons: viewModel.object3DButtons) { [unowned self] in
             dismiss(animated: false, completion: nil)
@@ -71,8 +67,8 @@ class SmartRoomARViewController: UIViewController, ExtendedRealityKitViewDelegat
     
     func doOnTap(_ sender: ExtendedRealityKitView, _ transform: simd_float4x4) {
         (viewModel.augmentedObjectType == .object3D
-            ? arView.append3DModel(with: viewModel.current3DObjectUrl, transform, groupName: Self.typeName)
-            : arView.appendVideo(viewModel.current3DObjectUrl, transform, groupName: Self.typeName))
+            ? arView.append3DModel(viewModel.current3DObjectId, transform, groupName: Self.typeName)
+            : arView.appendVideo(viewModel.current3DObjectId, transform, groupName: Self.typeName))
             .sink {_ in}
             .store(in: &cancellables)
     }

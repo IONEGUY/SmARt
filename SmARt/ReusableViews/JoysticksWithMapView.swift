@@ -7,16 +7,18 @@
 
 import SwiftUI
 import MapKit
+import Combine
 
 struct JoysticksWithMapView: View {
-    @State var currentRegion: MKCoordinateRegion
     @State var leftJoystickAction: (JoystickDirection) -> Void
     @State var rightJoystickAction: (JoystickDirection) -> Void
+    
+    @ObservedObject fileprivate var viewModel = JoysticksWithMapViewModel()
     
     var body: some View {
         HStack {
             Joystick(action: leftJoystickAction)
-            Map(coordinateRegion: $currentRegion,
+            Map(coordinateRegion: $viewModel.currentRegion,
                 showsUserLocation: true)
                 .frame(height: 60)
                 .cornerRadius(10)
@@ -27,5 +29,20 @@ struct JoysticksWithMapView: View {
             Joystick(action: rightJoystickAction)
         }
         .padding()
+    }
+}
+
+fileprivate class JoysticksWithMapViewModel: ObservableObject {
+    private var cancellabes = Set<AnyCancellable>()
+    
+    @Published var currentRegion = MKCoordinateRegion()
+    
+    init() {
+        LocationManager.shared.onLocationUpdated
+            .first()
+            .map { MKCoordinateRegion(center: $0, span:
+                       MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)) }
+            .assign(to: \.currentRegion, on: self)
+            .store(in: &cancellabes)
     }
 }

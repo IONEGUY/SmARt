@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct HealthSectionView: View {
     var objects: [ObjectData]
@@ -22,8 +21,7 @@ struct HealthSectionView: View {
             VStack(spacing: 14) {
                 ForEach(videos) { video in
                     HStack {
-                        KFImage(URL(string: video.icon.url))
-                            .resizable()
+                        ImageFromFile(name: video.icon.id)
                             .frame(width: 54, height: 54)
                         VStack(alignment: .leading) {
                             Text(video.name)
@@ -55,8 +53,7 @@ struct HealthSectionView: View {
             
             VStack(spacing: 14) {
                 ForEach(charts) { chart in
-                    KFImage(URL(string: chart.icon.url))
-                        .resizable()
+                    ImageFromFile(name: chart.icon.id)
                         .frame(width: UIScreen.width - 40, height: 120)
                         .onTapGesture { objectSelected(chart) }
                 }

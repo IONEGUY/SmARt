@@ -17,18 +17,16 @@ class DroneARViewModel: ObservableObject {
     private let translationSpeed: Float = 0.03
     private let rotationSpeed: Float = 1
     
-    @Published var droneModelUrl = String.empty
+    @Published var droneModelId = String.empty
     @Published var objectType = AugmentedObjectType.object3D
-    
-    @Published var currentRegion = MKCoordinateRegion()
     
     @Published var leftJoystickAction: (JoystickDirection) -> Void = {_ in}
     @Published var rightJoystickAction: (JoystickDirection) -> Void = {_ in}
     
     @Published var objectTransform = Transform()
     
-    init(droneModelUrl: String) {
-        self.droneModelUrl = droneModelUrl
+    init(droneModelId: String) {
+        self.droneModelId = droneModelId
         
         leftJoystickAction = { [unowned self] in
             var transform = objectTransform
@@ -54,12 +52,5 @@ class DroneARViewModel: ObservableObject {
             transform.rotation = simd_quatf(angle: rotationAngle, axis: [0,1,0])
             objectTransform = transform
         }
-        
-        LocationManager.shared.onLocationUpdated
-            .first()
-            .map { MKCoordinateRegion(center: $0, span:
-                       MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)) }
-            .assign(to: \.currentRegion, on: self)
-            .store(in: &cancellabes)
     }
 }

@@ -21,7 +21,7 @@ class SectionDetailBaseViewModel: ObservableObject {
     @Published var pushMaskFittingViewActive = false
     @Published var pushDroneARViewActive = false
     @Published var masks = [Mask?]()
-    @Published var object3dUrls = [String]()
+    @Published var object3DIds = [String]()
     @Published var augmentedObjectType = AugmentedObjectType.object3D
     @Published var sectionDescription = String.empty
     
@@ -49,20 +49,20 @@ class SectionDetailBaseViewModel: ObservableObject {
     private func handleGetStartedButtonPressed() {
         switch sectionType {
         case .smartRoom:
-            object3dUrls = sectionInfo?.objects?.map { objectData in
-                objectData.object3d?.files?.first?.url ?? .empty
+            object3DIds = sectionInfo?.objects?.map { objectData in
+                objectData.object3d?.files?.first?.id ?? .empty
             } ?? []
             pushSmartRoomARViewActive = true
         case .section5G:
-            object3dUrls =
-                [sectionInfo?.objects?.last?.object3d?.files?.first?.url ?? .empty]
+            object3DIds =
+                [sectionInfo?.objects?.last?.object3d?.files?.first?.id ?? .empty]
             pushSmartRoomARViewActive = true
         case .smartRetail:
             masks = sectionInfo?.objects?.map(\.mask) ?? []
             pushMaskFittingViewActive = true
         case .droneSection:
-            object3dUrls =
-                [sectionInfo?.objects?.first?.object3d?.files?.first?.url ?? .empty]
+            object3DIds =
+                [sectionInfo?.objects?.first?.object3d?.files?.first?.id ?? .empty]
             pushDroneARViewActive = true
         default:
             break
@@ -71,7 +71,7 @@ class SectionDetailBaseViewModel: ObservableObject {
     
     private func handleObjectSelected(_ object: ObjectData) {
         augmentedObjectType = object.video != nil ? .video : .object3D
-        object3dUrls = [object.video?.url ?? object.object3d?.files?.first?.url ?? .empty]
+        object3DIds = [object.video?.id ?? object.object3d?.files?.first?.id ?? .empty]
         pushSmartRoomARViewActive = true
     }
 }

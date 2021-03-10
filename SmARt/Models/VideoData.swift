@@ -7,22 +7,19 @@
 
 import Foundation
 
-struct VideoData: Codable {
-    var icon: ImageData?
-    var name: String?
-    var description: String?
-    var size: Int64?
-    var url: String?
-    var type: String?
-    var isLive: Bool?
+struct VideoData: FileDataProtocol, Codable {
+    var id: String
+    var icon: ImageData
+    var name: String
+    var description: String
+    var url: String
+    var fileExtension = "mp4"
     
     enum CodingKeys: String, CodingKey {
+        case id
         case icon
         case name
         case description
-        case size
         case url
-        case type
-        case isLive
     }
 }

@@ -22,7 +22,6 @@ class BaseApiService {
             .value()
             .mapError(mapAFErrorToAppError)
             .receive(on: DispatchQueue.global(qos: .background))
-            .retry(3)
             .share()
             .eraseToAnyPublisher()
     }

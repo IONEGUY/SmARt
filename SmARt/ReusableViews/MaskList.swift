@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct MaskList: View {
     @State var masks: [Mask?]
@@ -17,9 +16,8 @@ struct MaskList: View {
         HStack(spacing: 15) {
             ForEach(0..<masks.count) { index in
                 ZStack(alignment: .center) {
-                    KFImage(URL(string: masks[index]?.icon.url ?? .empty))
-                            .resizable()
-                            .offset(x: 0, y: -40)
+                    ImageFromFile(name: masks[index]?.icon.id ?? .empty)
+                        .offset(x: 0, y: -40)
                     VStack {
                         Spacer()
                         Text(masks[index]?.description ?? .empty)

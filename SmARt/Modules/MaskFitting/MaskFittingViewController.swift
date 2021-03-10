@@ -33,10 +33,6 @@ class MaskFittingViewController: UIViewController, ARSCNViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        print("MaskFittingViewController released")
-    }
-    
     func setup(_ defaultMask: String) {
         self.defaultMask = defaultMask
         maskFittingView.delegate = self
@@ -51,14 +47,14 @@ class MaskFittingViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setup(viewModel.currentMaskUrl)
+        setup(viewModel.currentMaskId)
         view.insertSubview(maskFittingView, at: 0)
         maskFittingView.fillSuperview()
         
         createNavBar()
         createMaskList()
         
-        viewModel.$currentMaskUrl
+        viewModel.$currentMaskId
             .sink(receiveValue: { [unowned self] in updateMask($0)})
             .store(in: &cancellables)
     }
@@ -75,7 +71,7 @@ class MaskFittingViewController: UIViewController, ARSCNViewDelegate {
     func updateMask(_ mask: String) {
         DispatchQueue.main.async { [unowned self] in
             let imageView = UIImageView()
-            imageView.kf.setImage(with: URL(string: mask))
+            imageView.image = UIImage.read(from: .documentDirectory, name: mask)
             faceNode.geometry?.firstMaterial?.diffuse.contents = imageView.image
         }
     }

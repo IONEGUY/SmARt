@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct ComplexDescriptionView: View {
     var data: [ComplexDescriptionItem]
@@ -20,8 +19,7 @@ struct ComplexDescriptionView: View {
                 HStack(spacing: 10) {
                     ForEach(0..<chunkedData[index].count) { innerIndex in
                         HStack {
-                            KFImage(URL(string: chunkedData[index][innerIndex].icon.url))
-                                .resizable()
+                            ImageFromFile(name: chunkedData[index][innerIndex].icon.id)
                                 .frame(width: 20, height: 20)
                             Text(chunkedData[index][innerIndex].title)
                                 .foregroundColor(.white)

@@ -8,7 +8,6 @@ target 'SmARt' do
   pod 'Swinject'
   pod 'SwinjectAutoregistration'
   pod 'AppCenter'
-  pod 'Kingfisher'
-  pod 'lottie-ios'
+  pod 'ZIPFoundation'
 
 end
