@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 import RealityKit
 
-class SmartRoomARViewModel: ObservableObject {
+class GeneralARViewModel: ObservableObject {
     @Published var object3DButtons: [Object3DButton] = []
     @Published var current3DObjectId: String
     @Published var augmentedObjectType = AugmentedObjectType.object3D

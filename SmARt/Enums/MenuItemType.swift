@@ -15,5 +15,6 @@ enum SectionType: String {
     section5G = "TYPE_5G",
     smartRoom = "TYPE_SMARTROOM",
     smartRetail = "TYPE_SMARTRETAIL",
-    smartTourism = "TYPE_SMARTTOURISM"
+    smartTourism = "TYPE_SMARTTOURISM",
+    arDrawing = "TYPE_DRAWING"
 }

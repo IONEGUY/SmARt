@@ -7,8 +7,12 @@
 
 import Foundation
 
-protocol FileDataProtocol {
+protocol FileProtocol {
     var id: String { get set }
     var url: String { get set }
     var fileExtension: String { get set }
+}
+
+extension FileProtocol {
+    var nameWithExtension: String { "\(id).\(fileExtension)" }
 }

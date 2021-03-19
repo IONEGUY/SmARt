@@ -20,6 +20,7 @@ class SectionDetailBaseViewModel: ObservableObject {
     @Published var pushSmartRoomARViewActive = false
     @Published var pushMaskFittingViewActive = false
     @Published var pushDroneARViewActive = false
+    @Published var pushARDrawingActive = false
     @Published var masks = [Mask?]()
     @Published var object3DIds = [String]()
     @Published var augmentedObjectType = AugmentedObjectType.object3D
@@ -64,6 +65,7 @@ class SectionDetailBaseViewModel: ObservableObject {
             object3DIds =
                 [sectionInfo?.objects?.first?.object3d?.files?.first?.id ?? .empty]
             pushDroneARViewActive = true
+        case .arDrawing: pushARDrawingActive = true
         default:
             break
         }

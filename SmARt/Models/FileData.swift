@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FileData: FileDataProtocol, Codable {
+struct FileData: FileProtocol, Codable {
     var id: String = .empty
     var url: String = .empty
     var fileExtension = "usdz"

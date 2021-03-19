@@ -52,12 +52,12 @@
 		FA5F087F25EFF49A004CF5D0 /* GlobalStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F087E25EFF49A004CF5D0 /* GlobalStyles.swift */; };
 		FA5F088525F008E2004CF5D0 /* SectionDetailBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F088425F008E2004CF5D0 /* SectionDetailBaseViewController.swift */; };
 		FA6B3A5725D1516200B0C3C2 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */; };
-		FA7E8E6025EFB97300F3D345 /* SmartRoomARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E8E5F25EFB97300F3D345 /* SmartRoomARViewController.swift */; };
+		FA7E8E6025EFB97300F3D345 /* GeneralARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E8E5F25EFB97300F3D345 /* GeneralARViewController.swift */; };
 		FA7E8E6825EFCAF400F3D345 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E8E6725EFCAF400F3D345 /* NavBar.swift */; };
 		FA80BF7525CA9BC600FD78ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA80BF7425CA9BC600FD78ED /* Assets.xcassets */; };
 		FA80BF7825CA9BC600FD78ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA80BF7725CA9BC600FD78ED /* Preview Assets.xcassets */; };
 		FA8A87C425E3FED100D1BBE3 /* AugmentedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87C325E3FED100D1BBE3 /* AugmentedObjectType.swift */; };
-		FA8A87CC25E4339A00D1BBE3 /* SmartRoomARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CB25E4339A00D1BBE3 /* SmartRoomARViewModel.swift */; };
+		FA8A87CC25E4339A00D1BBE3 /* GeneralARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CB25E4339A00D1BBE3 /* GeneralARViewModel.swift */; };
 		FA8A87CF25E4349C00D1BBE3 /* Object3DButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */; };
 		FAA5C22D25DED96F00BD1B1E /* SwiftUI Color Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */; };
 		FAA5C23025DEE46D00BD1B1E /* GetStartedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */; };
@@ -78,11 +78,22 @@
 		FAA9C89C25CD5E8E005BA9EE /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C89225CD5E8E005BA9EE /* Section.swift */; };
 		FAAF7E0525F7BD2400CBDBF0 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E0425F7BD2400CBDBF0 /* ProgressBar.swift */; };
 		FAAF7E1F25F8176600CBDBF0 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E1E25F8176600CBDBF0 /* ImageData.swift */; };
-		FAAF7E2225F817A400CBDBF0 /* FileDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E2125F817A400CBDBF0 /* FileDataProtocol.swift */; };
+		FAAF7E2225F817A400CBDBF0 /* FileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E2125F817A400CBDBF0 /* FileProtocol.swift */; };
 		FAAF7E2825F8EA1400CBDBF0 /* ImageFromFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E2725F8EA1400CBDBF0 /* ImageFromFile.swift */; };
 		FAAF7E2B25F8EE0F00CBDBF0 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E2A25F8EE0F00CBDBF0 /* URLExtensions.swift */; };
 		FAAF7E3125F9326D00CBDBF0 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E3025F9326D00CBDBF0 /* UIImageViewExtensions.swift */; };
 		FAAF7E3525F945F600CBDBF0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E3425F945F600CBDBF0 /* Constants.swift */; };
+		FAAF7E3E25FAA1F000CBDBF0 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E3D25FAA1F000CBDBF0 /* FileLoader.swift */; };
+		FAC04B0726038C7C00DBB692 /* ARDrawingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B0626038C7C00DBB692 /* ARDrawingSectionView.swift */; };
+		FAC04B0B2603962300DBB692 /* ARDrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B0A2603962300DBB692 /* ARDrawingViewController.swift */; };
+		FAC04B122603A73000DBB692 /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B112603A73000DBB692 /* SCNVector3Extensions.swift */; };
+		FAC04B152603AE3F00DBB692 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC04B142603AE3F00DBB692 /* art.scnassets */; };
+		FAC04B322603D6DB00DBB692 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC04B312603D6DB00DBB692 /* logo.png */; };
+		FAC04B372603DFFE00DBB692 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC04B362603DFFE00DBB692 /* LaunchScreen.storyboard */; };
+		FAC04B3B2603E81B00DBB692 /* OutlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B3A2603E81B00DBB692 /* OutlinedLabel.swift */; };
+		FAC04B472604C4C500DBB692 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B462604C4C500DBB692 /* OnboardingViewController.swift */; };
+		FAC04B4B2604C4ED00DBB692 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B4A2604C4ED00DBB692 /* OnboardingView.swift */; };
+		FAC04B4E2604D92D00DBB692 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B4D2604D92D00DBB692 /* OnboardingViewModel.swift */; };
 		FAD0DCC125EE9F390033B559 /* LoadingViewWithProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0DCC025EE9F390033B559 /* LoadingViewWithProgressBar.swift */; };
 		FAD3B1E325D1EAC700708AE9 /* MenuItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B1E225D1EAC700708AE9 /* MenuItemData.swift */; };
 		FAD3B20825D2B05400708AE9 /* MenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B20725D2B05400708AE9 /* MenuService.swift */; };
@@ -137,14 +148,14 @@
 		FA5F087E25EFF49A004CF5D0 /* GlobalStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStyles.swift; sourceTree = "<group>"; };
 		FA5F088425F008E2004CF5D0 /* SectionDetailBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailBaseViewController.swift; sourceTree = "<group>"; };
 		FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
-		FA7E8E5F25EFB97300F3D345 /* SmartRoomARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRoomARViewController.swift; sourceTree = "<group>"; };
+		FA7E8E5F25EFB97300F3D345 /* GeneralARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralARViewController.swift; sourceTree = "<group>"; };
 		FA7E8E6725EFCAF400F3D345 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		FA80BF6D25CA9BC500FD78ED /* SmARt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmARt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA80BF7425CA9BC600FD78ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA80BF7725CA9BC600FD78ED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA80BF7925CA9BC600FD78ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8A87C325E3FED100D1BBE3 /* AugmentedObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentedObjectType.swift; sourceTree = "<group>"; };
-		FA8A87CB25E4339A00D1BBE3 /* SmartRoomARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRoomARViewModel.swift; sourceTree = "<group>"; };
+		FA8A87CB25E4339A00D1BBE3 /* GeneralARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralARViewModel.swift; sourceTree = "<group>"; };
 		FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DButton.swift; sourceTree = "<group>"; };
 		FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI Color Extensions.swift"; sourceTree = "<group>"; };
 		FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedButton.swift; sourceTree = "<group>"; };
@@ -165,11 +176,22 @@
 		FAA9C89225CD5E8E005BA9EE /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		FAAF7E0425F7BD2400CBDBF0 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		FAAF7E1E25F8176600CBDBF0 /* ImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
-		FAAF7E2125F817A400CBDBF0 /* FileDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataProtocol.swift; sourceTree = "<group>"; };
+		FAAF7E2125F817A400CBDBF0 /* FileProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProtocol.swift; sourceTree = "<group>"; };
 		FAAF7E2725F8EA1400CBDBF0 /* ImageFromFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFromFile.swift; sourceTree = "<group>"; };
 		FAAF7E2A25F8EE0F00CBDBF0 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		FAAF7E3025F9326D00CBDBF0 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		FAAF7E3425F945F600CBDBF0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FAAF7E3D25FAA1F000CBDBF0 /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
+		FAC04B0626038C7C00DBB692 /* ARDrawingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDrawingSectionView.swift; sourceTree = "<group>"; };
+		FAC04B0A2603962300DBB692 /* ARDrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDrawingViewController.swift; sourceTree = "<group>"; };
+		FAC04B112603A73000DBB692 /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
+		FAC04B142603AE3F00DBB692 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		FAC04B312603D6DB00DBB692 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		FAC04B362603DFFE00DBB692 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FAC04B3A2603E81B00DBB692 /* OutlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedLabel.swift; sourceTree = "<group>"; };
+		FAC04B462604C4C500DBB692 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		FAC04B4A2604C4ED00DBB692 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		FAC04B4D2604D92D00DBB692 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		FAD0DCC025EE9F390033B559 /* LoadingViewWithProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewWithProgressBar.swift; sourceTree = "<group>"; };
 		FAD3B1E225D1EAC700708AE9 /* MenuItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemData.swift; sourceTree = "<group>"; };
 		FAD3B20725D2B05400708AE9 /* MenuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuService.swift; sourceTree = "<group>"; };
@@ -235,6 +257,7 @@
 			children = (
 				FA3620A025CC8A8E00DFE70E /* DIContainerConfigurator.swift */,
 				FA45B97525E7C263005CBC38 /* ColationManager.swift */,
+				FAAF7E3D25FAA1F000CBDBF0 /* FileLoader.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -264,6 +287,7 @@
 				FA45B98025E7DFCE005CBC38 /* DoubleExtensions.swift */,
 				FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */,
 				FAAF7E2A25F8EE0F00CBDBF0 /* URLExtensions.swift */,
+				FAC04B112603A73000DBB692 /* SCNVector3Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -297,7 +321,7 @@
 		FA36209625CC885F00DFE70E /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				FAAF7E2125F817A400CBDBF0 /* FileDataProtocol.swift */,
+				FAAF7E2125F817A400CBDBF0 /* FileProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -305,6 +329,7 @@
 		FA36209725CC88C700DFE70E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FAC04B312603D6DB00DBB692 /* logo.png */,
 				FA5F087E25EFF49A004CF5D0 /* GlobalStyles.swift */,
 				FA36209C25CC89A700DFE70E /* Colors.swift */,
 				FA36209B25CC89A700DFE70E /* StringResources.swift */,
@@ -316,10 +341,12 @@
 		FA36209A25CC88D300DFE70E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FAC04B452604C48E00DBB692 /* Onboarding */,
+				FAC04B0526038B0F00DBB692 /* ARDrawingSection */,
 				FA2656BB25E695660025ACB1 /* DroneARView */,
 				FA2656B325E679B90025ACB1 /* SmartTourism */,
 				FA5A54E525E5708E0023E448 /* MaskFitting */,
-				FA8A87C625E427BE00D1BBE3 /* SmartRoomARView */,
+				FA8A87C625E427BE00D1BBE3 /* GeneralARView */,
 				FA10605025DD8E37007E6898 /* HealthSection */,
 				FA6B3A5225D1506D00B0C3C2 /* Menu */,
 				FA3620A925CC8D6800DFE70E /* Base */,
@@ -345,6 +372,7 @@
 				FA7E8E6725EFCAF400F3D345 /* NavBar.swift */,
 				FAAF7E0425F7BD2400CBDBF0 /* ProgressBar.swift */,
 				FAAF7E2725F8EA1400CBDBF0 /* ImageFromFile.swift */,
+				FAC04B3A2603E81B00DBB692 /* OutlinedLabel.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -456,7 +484,9 @@
 				FA36209A25CC88D300DFE70E /* Modules */,
 				FA45B98325E80349005CBC38 /* AppDelegate.swift */,
 				FA80BF7925CA9BC600FD78ED /* Info.plist */,
+				FAC04B142603AE3F00DBB692 /* art.scnassets */,
 				FA80BF7425CA9BC600FD78ED /* Assets.xcassets */,
+				FAC04B362603DFFE00DBB692 /* LaunchScreen.storyboard */,
 				FA80BF7625CA9BC600FD78ED /* Preview Content */,
 			);
 			path = SmARt;
@@ -470,13 +500,32 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		FA8A87C625E427BE00D1BBE3 /* SmartRoomARView */ = {
+		FA8A87C625E427BE00D1BBE3 /* GeneralARView */ = {
 			isa = PBXGroup;
 			children = (
-				FA8A87CB25E4339A00D1BBE3 /* SmartRoomARViewModel.swift */,
-				FA7E8E5F25EFB97300F3D345 /* SmartRoomARViewController.swift */,
+				FA8A87CB25E4339A00D1BBE3 /* GeneralARViewModel.swift */,
+				FA7E8E5F25EFB97300F3D345 /* GeneralARViewController.swift */,
 			);
-			path = SmartRoomARView;
+			path = GeneralARView;
+			sourceTree = "<group>";
+		};
+		FAC04B0526038B0F00DBB692 /* ARDrawingSection */ = {
+			isa = PBXGroup;
+			children = (
+				FAC04B0626038C7C00DBB692 /* ARDrawingSectionView.swift */,
+				FAC04B0A2603962300DBB692 /* ARDrawingViewController.swift */,
+			);
+			path = ARDrawingSection;
+			sourceTree = "<group>";
+		};
+		FAC04B452604C48E00DBB692 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				FAC04B462604C4C500DBB692 /* OnboardingViewController.swift */,
+				FAC04B4A2604C4ED00DBB692 /* OnboardingView.swift */,
+				FAC04B4D2604D92D00DBB692 /* OnboardingViewModel.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -542,7 +591,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC04B322603D6DB00DBB692 /* logo.png in Resources */,
 				FA80BF7825CA9BC600FD78ED /* Preview Assets.xcassets in Resources */,
+				FAC04B152603AE3F00DBB692 /* art.scnassets in Resources */,
+				FAC04B372603DFFE00DBB692 /* LaunchScreen.storyboard in Resources */,
 				FA80BF7525CA9BC600FD78ED /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,6 +648,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC04B122603A73000DBB692 /* SCNVector3Extensions.swift in Sources */,
 				FA45B98425E80349005CBC38 /* AppDelegate.swift in Sources */,
 				FA2656E125E6D5550025ACB1 /* Joystick.swift in Sources */,
 				FAA5C23A25DEE98B00BD1B1E /* ArrayExtensions.swift in Sources */,
@@ -604,7 +657,8 @@
 				FA3620A525CC8B0F00DFE70E /* StringExtensions.swift in Sources */,
 				FA36209D25CC89A700DFE70E /* StringResources.swift in Sources */,
 				FAA9C89525CD5E8E005BA9EE /* ComplexDescriptionItem.swift in Sources */,
-				FA7E8E6025EFB97300F3D345 /* SmartRoomARViewController.swift in Sources */,
+				FA7E8E6025EFB97300F3D345 /* GeneralARViewController.swift in Sources */,
+				FAC04B472604C4C500DBB692 /* OnboardingViewController.swift in Sources */,
 				FAA5C23725DEE8C100BD1B1E /* ComplexDescriptionView.swift in Sources */,
 				FA36209E25CC89A700DFE70E /* Colors.swift in Sources */,
 				FA45B97D25E7CE7A005CBC38 /* TransformType.swift in Sources */,
@@ -634,6 +688,7 @@
 				FA45B97625E7C263005CBC38 /* ColationManager.swift in Sources */,
 				FA5A54EF25E573060023E448 /* MaskFittingViewModel.swift in Sources */,
 				FA43319725F18F39008D8AC2 /* MaskFittingViewController.swift in Sources */,
+				FAC04B0B2603962300DBB692 /* ARDrawingViewController.swift in Sources */,
 				FA2656B525E679D60025ACB1 /* SmartTourismView.swift in Sources */,
 				FAA5C26A25DFC88F00BD1B1E /* SectionObjectsView.swift in Sources */,
 				FA2656CB25E695930025ACB1 /* DroneARViewModel.swift in Sources */,
@@ -644,25 +699,30 @@
 				FA5CED7725E928D50089B31F /* FocusEntity+Alignment.swift in Sources */,
 				FA3620A625CC8B0F00DFE70E /* NSObjectExtensions.swift in Sources */,
 				FAD0DCC125EE9F390033B559 /* LoadingViewWithProgressBar.swift in Sources */,
+				FAAF7E3E25FAA1F000CBDBF0 /* FileLoader.swift in Sources */,
 				FAA5C23025DEE46D00BD1B1E /* GetStartedButton.swift in Sources */,
 				FA5CED7325E928D50089B31F /* FocusEntity+Colored.swift in Sources */,
 				FAAF7E0525F7BD2400CBDBF0 /* ProgressBar.swift in Sources */,
 				FA2273FE25E454E300DA6FCB /* ExtendedRealityKitView.swift in Sources */,
 				FAA9C89C25CD5E8E005BA9EE /* Section.swift in Sources */,
 				FA36208F25CC84D000DFE70E /* ApiError.swift in Sources */,
-				FAAF7E2225F817A400CBDBF0 /* FileDataProtocol.swift in Sources */,
+				FAAF7E2225F817A400CBDBF0 /* FileProtocol.swift in Sources */,
 				FAAF7E2B25F8EE0F00CBDBF0 /* URLExtensions.swift in Sources */,
+				FAC04B4E2604D92D00DBB692 /* OnboardingViewModel.swift in Sources */,
 				FA5CED8825E95C5D0089B31F /* JoysticksWithMapView.swift in Sources */,
 				FAAF7E3125F9326D00CBDBF0 /* UIImageViewExtensions.swift in Sources */,
 				FAA5C22D25DED96F00BD1B1E /* SwiftUI Color Extensions.swift in Sources */,
 				FA5CED7125E928D50089B31F /* FocusEntity+Segment.swift in Sources */,
 				FAD3B21325D2D06300708AE9 /* UIViewExtensions.swift in Sources */,
+				FAC04B3B2603E81B00DBB692 /* OutlinedLabel.swift in Sources */,
 				FA5CED8C25E968220089B31F /* AnyPublisherExtensions.swift in Sources */,
 				FA8A87C425E3FED100D1BBE3 /* AugmentedObjectType.swift in Sources */,
 				FA10603925DD4A47007E6898 /* SectionDetailBaseViewModel.swift in Sources */,
+				FAC04B4B2604C4ED00DBB692 /* OnboardingView.swift in Sources */,
 				FAA5C23325DEE72600BD1B1E /* SectionDescription.swift in Sources */,
+				FAC04B0726038C7C00DBB692 /* ARDrawingSectionView.swift in Sources */,
 				FAA9C89A25CD5E8E005BA9EE /* ObjectData.swift in Sources */,
-				FA8A87CC25E4339A00D1BBE3 /* SmartRoomARViewModel.swift in Sources */,
+				FA8A87CC25E4339A00D1BBE3 /* GeneralARViewModel.swift in Sources */,
 				FAAF7E3525F945F600CBDBF0 /* Constants.swift in Sources */,
 				FA5CED7225E928D50089B31F /* float4x4+Extension.swift in Sources */,
 				FA10605625DD9930007E6898 /* UIScreen.swift in Sources */,

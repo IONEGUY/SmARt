@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VideoData: FileDataProtocol, Codable {
+struct VideoData: FileProtocol, Codable {
     var id: String
     var icon: ImageData
     var name: String

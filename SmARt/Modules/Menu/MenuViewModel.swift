@@ -9,10 +9,12 @@ import Foundation
 import Combine
 import Alamofire
 import SwiftUI
+import BackgroundTasks
 
 class MenuViewModel: ObservableObject {
     private var cancellableSet = Set<AnyCancellable>()
     private var progresses: [Float] = []
+    private var fileLoader = FileLoader()
     
     @Published var sections = [Section]()
     @Published var menuItems = [MenuItemData]()
@@ -25,13 +27,12 @@ class MenuViewModel: ObservableObject {
         MenuService(ApiErrorLogger()).getSections()
             .filter(isAllowedToDownloadMediaContent)
             .map(constructFilesForCaching)
-            .flatMap(performLoading)
-            .sink {_ in } receiveValue: {}
+            .sink(receiveCompletion: {_ in}, receiveValue: performLoading)
             .store(in: &cancellableSet)
         
         MenuService(ApiErrorLogger()).getSections()
             .flatMap(initMenuItems)
-            .sink {_ in } receiveValue: {_ in}
+            .sink {_ in} receiveValue: {_ in}
             .store(in: &cancellableSet)
         
         MenuService(ApiErrorLogger()).getSections()
@@ -71,58 +72,41 @@ class MenuViewModel: ObservableObject {
         return isVersionGreaterThatCurrent || !isContentLoaded
     }
     
-    private func performLoading(_ files: [FileDataProtocol]) -> AnyPublisher<Void, Never> {
-        AnyPublisher.create { [unowned self] observer in
-            progresses = [Float](repeating: Float(), count: files.count)
-            let dispatchGroup = DispatchGroup()
-            files.enumerated().forEach { (index, file) in
-                dispatchGroup.enter()
-                let destination: DownloadRequest.Destination = { _, _ in
-                    let path = URL.constructFilePath(withName: "\(file.id).\(file.fileExtension)")
-                    return (path, [.removePreviousFile])
-                }
-                AF.download(file.url, to: destination)
-                    .downloadProgress(queue: .main) { [unowned self] in
-                        updateLoadingState($0, at: index) }
-                    .response { _ in dispatchGroup.leave() }
-            }
-            dispatchGroup.notify(queue: DispatchQueue.main) {
-                UserDefaults.standard.set(true, forKey: "isContentLoaded")
-                observer.onNext(Void())
-            }
-            
-            return Disposable(dispose: {})
-        }
+    private func performLoading(_ files: [FileProtocol]) {
+        fileLoader.progress
+            .assign(to: \.contentLoadingProgress, on: self)
+            .store(in: &cancellableSet)
+        
+        fileLoader.progress
+            .sink(receiveCompletion: { _ in UserDefaults.standard.set(true, forKey: "isContentLoaded") },
+                  receiveValue: { [unowned self] in contentLoadingProgress = $0 })
+            .store(in: &cancellableSet)
+        
+        fileLoader.download(files: files)
     }
     
-    private func constructFilesForCaching(_ environment: EnvironmentOut) -> [FileDataProtocol] {
+    private func constructFilesForCaching(_ environment: EnvironmentOut) -> [FileProtocol] {
         let sections = environment.sections
         let objects3D = sections.compactMap(\.objects).flatMap { $0 }.compactMap(\.object3d)
         
         let object3DImages = objects3D.compactMap(\.icon)
-        let complexDescriptionImages: [FileDataProtocol] =
+        let complexDescriptionImages: [FileProtocol] =
             sections.compactMap(\.complexDescription?.items).flatMap { $0 }.map(\.icon)
-        let logo3dImages: [FileDataProtocol] = sections.compactMap(\.logo2d)
+        let logo3dImages: [FileProtocol] = sections.compactMap(\.logo2d)
         
-        let logo3dFiles: [FileDataProtocol] = sections.map(\.logo3d)
+        let logo3dFiles: [FileProtocol] = sections.map(\.logo3d)
         let object3DFiles = objects3D.compactMap(\.files).flatMap { $0 }
         
-        let videoImages: [FileDataProtocol] =
+        let videoImages: [FileProtocol] =
             sections.compactMap(\.objects).flatMap { $0 }.compactMap(\.video).compactMap { $0.icon }
         
-        let videos: [FileDataProtocol] =
+        let videos: [FileProtocol] =
             sections.compactMap(\.objects).flatMap { $0 }.compactMap(\.video)
         
-        let masks: [FileDataProtocol] =
+        let masks: [FileProtocol] =
             sections.compactMap(\.objects).flatMap { $0 }.compactMap(\.mask).compactMap { $0.icon }
         
         return [videos, object3DFiles, logo3dFiles, object3DImages, videoImages, logo3dImages, masks,
                 complexDescriptionImages].flatMap { $0 }
-    }
-    
-    private func updateLoadingState(_ progress: Progress, at index: Int) {
-        contentLoadingProgress = progresses.reduce(0.0, +) / Float(progresses.count)
-        progresses[index] = Float(progress.fractionCompleted)
-        print(contentLoadingProgress)
     }
 }

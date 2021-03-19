@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageData: FileDataProtocol, Codable {
+struct ImageData: FileProtocol, Codable {
     var id: String = .empty
     var url: String = .empty
     var fileExtension = "png"

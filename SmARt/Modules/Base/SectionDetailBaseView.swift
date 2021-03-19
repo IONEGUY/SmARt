@@ -38,6 +38,11 @@ struct SectionDetailBaseView: View {
                                  objectSelected: viewModel.objectSelected,
                                  sectionDescription: viewModel.sectionDescription)
                     .padding(.top, 50)
+            case .arDrawing:
+                ARDrawingSectionView(getStartedButtonText: viewModel.getStartedButtonText,
+                                     getStartedButtonAction: viewModel.getStartedButtonPressed,
+                                     section: viewModel.sectionInfo)
+                    .padding(.top, 50)
             default: EmptyView()
             }
         }

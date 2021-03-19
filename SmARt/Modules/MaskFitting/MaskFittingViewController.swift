@@ -87,6 +87,7 @@ class MaskFittingViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        maskFittingView.session.pause()
         ExtendedRealityKitView.shared.configueARSession()
     }
     

@@ -8,5 +8,5 @@
 import Foundation
 
 class Constants {
-    static let completeProgressValue: Float = 0.999
+    static let completeProgressValue: Float = 0.9
 }

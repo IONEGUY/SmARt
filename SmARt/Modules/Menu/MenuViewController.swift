@@ -37,15 +37,18 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
         viewModel.$contentLoadingProgress
             .dropFirst()
             .first()
+            .receive(on: RunLoop.main)
             .sink { [unowned self] _ in addLoadingView() }
             .store(in: &cancellables)
         
         viewModel.$contentLoadingProgress
+            .receive(on: RunLoop.main)
             .sink { [unowned self] in loadingView.updateProgress(CGFloat($0)) }
             .store(in: &cancellables)
         
         viewModel.$contentLoadingProgress
             .filter { $0 >= Constants.completeProgressValue }
+            .receive(on: RunLoop.main)
             .sink { [unowned self] _ in loadingViewContainer.removeFromSuperview() }
             .store(in: &cancellables)
     }

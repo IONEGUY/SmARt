@@ -11,13 +11,13 @@ import UIKit
 import SwiftUI
 import Combine
 
-class SmartRoomARViewController: UIViewController, ExtendedRealityKitViewDelegate {
-    @ObservedObject var viewModel: SmartRoomARViewModel
+class GeneralARViewController: UIViewController, ExtendedRealityKitViewDelegate {
+    @ObservedObject var viewModel: GeneralARViewModel
     var menuAdded = false
     var arView: ExtendedRealityKitView
     var cancellables = Set<AnyCancellable>()
     
-    init(viewModel: SmartRoomARViewModel) {
+    init(viewModel: GeneralARViewModel) {
         self.viewModel = viewModel
         arView = ExtendedRealityKitView.shared
         
