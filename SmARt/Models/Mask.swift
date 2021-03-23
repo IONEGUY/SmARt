@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct Mask: Codable {
-    var icon: ImageData?
+struct Mask: Codable, Identifiable {
+    var id: String
+    var icon: ImageData
     var description: String?
     var size: Int64?
-    var url: String?
     
     enum CodingKeys: String, CodingKey {
+        case id
         case icon
         case description
         case size
-        case url
     }
 }

@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct ObjectData: Codable {
-    var icon: ImageData?
-    var name: String?
-    var description: String?
+struct ObjectData: Codable, Identifiable {
+    var id = UUID()
+    var icon: ImageData
+    var name: String
+    var description: String
     var type: String?
     var object3d: Object3dData?
     var video: VideoData?

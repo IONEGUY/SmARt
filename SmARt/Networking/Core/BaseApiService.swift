@@ -21,8 +21,8 @@ class BaseApiService {
             .publishDecodable(type: T.self)
             .value()
             .mapError(mapAFErrorToAppError)
-            .receive(on: DispatchQueue.main)
-            .retry(3)
+            .receive(on: DispatchQueue.global(qos: .background))
+            .share()
             .eraseToAnyPublisher()
     }
     

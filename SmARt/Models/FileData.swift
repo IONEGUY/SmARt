@@ -7,16 +7,13 @@
 
 import Foundation
 
-struct FileData: Codable {
-    var name: String?
-    var description: String?
-    var size: Int64?
-    var url: String?
+struct FileData: FileProtocol, Codable {
+    var id: String = .empty
+    var url: String = .empty
+    var fileExtension = "usdz"
     
     enum CodingKeys: String, CodingKey {
-        case name
-        case description
-        case size
+        case id
         case url
     }
 }

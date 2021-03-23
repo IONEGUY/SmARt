@@ -13,7 +13,7 @@ struct URLRequestBuilder: URLRequestConvertible {
     var path: String
     var parameters: Parameters?
 
-    init(_ method: HTTPMethod, _ path: String, _ parameters: Parameters?) {
+    init(_ method: HTTPMethod, _ path: String, _ parameters: Parameters? = nil) {
         self.method = method
         self.path = path
         self.parameters = parameters
