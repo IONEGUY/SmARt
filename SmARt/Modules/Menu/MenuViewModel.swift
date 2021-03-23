@@ -92,7 +92,7 @@ class MenuViewModel: ObservableObject {
         let object3DImages = objects3D.compactMap(\.icon)
         let complexDescriptionImages: [FileProtocol] =
             sections.compactMap(\.complexDescription?.items).flatMap { $0 }.map(\.icon)
-        let logo3dImages: [FileProtocol] = sections.compactMap(\.logo2d)
+        let logo3dImages: [FileProtocol] = sections.map(\.logo2d)
         
         let logo3dFiles: [FileProtocol] = sections.map(\.logo3d)
         let object3DFiles = objects3D.compactMap(\.files).flatMap { $0 }

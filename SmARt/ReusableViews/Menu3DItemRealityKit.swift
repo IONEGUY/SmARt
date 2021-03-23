@@ -44,9 +44,7 @@ class Menu3DItem: Entity {
 
         try? FileManager.default.removeItem(atPath: filePath.absoluteString)
         
-        let model = ModelEntity(mesh: .generatePlane(width: 0.8,
-                                                     height: 0.2,
-                                                     cornerRadius: 0.08),
+        let model = ModelEntity(mesh: .generatePlane(width: 0.8, height: 0.2, cornerRadius: 0.08),
                                 materials: [material])
         model.generateCollisionShapes(recursive: true)
         return model

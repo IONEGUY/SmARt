@@ -9,15 +9,15 @@ import SwiftUI
 import Combine
 
 struct SmartTourismView: View {
-    var objects: [ObjectData]
-    var objectSelected: (ObjectData) -> Void
-    var sectionDescription: String
-    
+    var viewModel: SectionDetailBaseViewModel
+
     var body: some View {
+        let objects = viewModel.section.objects ?? []
+        
         VStack {
             VStack(spacing: 0) {
                 HStack {
-                    Text(sectionDescription)
+                    Text(viewModel.sectionDescription)
                         .frame(width: UIScreen.width - UIScreen.width / 2)
                         .lineLimit(nil)
                         .foregroundColor(.white)
@@ -60,7 +60,7 @@ struct SmartTourismView: View {
                 ForEach(objects) { object in
                     ImageFromFile(name: object.icon.id)
                         .frame(width: UIScreen.width - 40, height: 140)
-                        .onTapGesture { objectSelected(object) }
+                        .onTapGesture { viewModel.handleObjectSelected(object) }
                 }
             }.padding()
         }

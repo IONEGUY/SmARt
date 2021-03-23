@@ -45,14 +45,11 @@ struct OnboardingSectionListView: View {
                     .resizable()
                     .zIndex(2)
             }
-            .frame(width: imageSize, height: imageSize, alignment: .center)
+            .frame(width: imageSize, height: imageSize)
             
-            Text(sectionsConfig[currentIndex].title)
-                .frame(width: UIScreen.width - 100, height: 70)
-                .lineLimit(nil)
-                .foregroundColor(Color.white)
-                .font(.system(size: 22, weight: .bold))
-                .multilineTextAlignment(.center)
+            SectionDescription(text: sectionsConfig[currentIndex].title,
+                               color: .white,
+                               font: .system(size: 22, weight: .bold))
             
             HStack(spacing: 6) {
                 ForEach(0..<sectionsConfig.count) { index in

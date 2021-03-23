@@ -12,7 +12,7 @@ struct Section: Codable {
     var name: String
     var description: String
     var complexDescription: ComplexDescription?
-    var logo2d: ImageData?
+    var logo2d: ImageData
     var logo3d: FileData
     var typeSection: String
     var sections: [Section]?

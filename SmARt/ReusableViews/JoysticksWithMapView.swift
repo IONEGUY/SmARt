@@ -13,7 +13,7 @@ struct JoysticksWithMapView: View {
     @State var leftJoystickAction: (JoystickDirection) -> Void
     @State var rightJoystickAction: (JoystickDirection) -> Void
     
-    @ObservedObject fileprivate var viewModel = JoysticksWithMapViewModel()
+    @ObservedObject private var viewModel = JoysticksWithMapViewModel()
     
     var body: some View {
         HStack {
@@ -32,7 +32,7 @@ struct JoysticksWithMapView: View {
     }
 }
 
-fileprivate class JoysticksWithMapViewModel: ObservableObject {
+private class JoysticksWithMapViewModel: ObservableObject {
     private var cancellabes = Set<AnyCancellable>()
     
     @Published var currentRegion = MKCoordinateRegion()

@@ -10,13 +10,14 @@ import ARKit
 import RealityKit
 import Alamofire
 import Combine
+import FocusEntity
 
 class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayViewDelegate {
-    var delegate: ExtendedRealityKitViewDelegate?
-    var focusEntity: FocusEntity?
-    var cancellables = Set<AnyCancellable>()
-    var videoPlayers: [AVPlayer] = []
+    private var focusEntity: FocusEntity?
+    private var cancellables = Set<AnyCancellable>()
+    private var resources: [Disposable] = []
     
+    var delegate: ExtendedRealityKitViewDelegate?
     static var shared = ExtendedRealityKitView()
     
     func setup() {
@@ -26,6 +27,11 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
         addCoaching()
         addGestureRecognizers()
         createLightingAnchor()
+    }
+    
+    func releaseResources() {
+        resources.forEach { $0.dispose() }
+        resources = []
     }
     
     func addToGroup(withName name: String, anchor: HasAnchoring) {
@@ -63,6 +69,43 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
         scene.anchors.append(lightAnchor)
     }
     
+    func appendVideo(_ id: String, _ transform: simd_float4x4, groupName: String? = nil) -> AnyPublisher<ModelEntity, Never> {
+        AnyPublisher.create { [unowned self] observer in
+            if scene.findEntity(named: id) != nil { return .init(dispose: {}) }
+            
+            let url = URL.constructFilePath(withName: "\(id).mp4")
+            
+            let videoPlayer = AVPlayer(playerItem: AVPlayerItem(url: url))
+            resources.append(Disposable(dispose: { videoPlayer.pause() }))
+
+            let videoPlane = ModelEntity(mesh: .generatePlane(width: 1.6, height: 0.9),
+                                         materials: [VideoMaterial(avPlayer: videoPlayer)])
+            
+            addAnchorToARView(transform, videoPlane, id, groupName)
+            
+            observer.onNext(videoPlane)
+            
+            videoPlayer.play()
+            return .init(dispose: {})
+        }
+    }
+    
+    func append3DModel(_ id: String, _ transform: simd_float4x4, groupName: String? = nil) -> AnyPublisher<ModelEntity, Never> {
+        AnyPublisher.create { [unowned self] observer in
+            if scene.findEntity(named: id) != nil { return .init(dispose: {}) }
+            
+            let filePath = URL.constructFilePath(withName: "\(id).usdz")
+            Entity.loadModelAsync(contentsOf: filePath).sink {_ in}
+                receiveValue: { [unowned self] model in
+                    addAnchorToARView(transform, model, id, groupName)
+                    model.availableAnimations.forEach { model.playAnimation($0.repeat()) }
+                    observer.onNext(model)
+                }
+                .store(in: &cancellables)
+            return .init(dispose: {})
+        }
+    }
+    
     private func getGroupAnchor(_ name: String) -> HasAnchoring? {
         return scene.anchors.first(where: { $0.name == name })
     }
@@ -95,43 +138,6 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
         addGestureRecognizer(tapRecognizer)
     }
     
-    func appendVideo(_ id: String, _ transform: simd_float4x4, groupName: String? = nil) -> AnyPublisher<ModelEntity, Never> {
-        AnyPublisher.create { [unowned self] observer in
-            if scene.findEntity(named: id) != nil { return .init(dispose: {}) }
-            
-            let url = URL.constructFilePath(withName: "\(id).mp4")
-            
-            let videoPlayer = AVPlayer(playerItem: AVPlayerItem(url: url))
-            videoPlayers.append(videoPlayer)
-
-            let videoPlane = ModelEntity(mesh: .generatePlane(width: 1.6, height: 0.9),
-                                         materials: [VideoMaterial(avPlayer: videoPlayer)])
-            
-            addAnchorToARView(transform, videoPlane, id, groupName)
-            
-            observer.onNext(videoPlane)
-            
-            videoPlayer.play()
-            return .init(dispose: {})
-        }
-    }
-    
-    func append3DModel(_ id: String, _ transform: simd_float4x4, groupName: String? = nil) -> AnyPublisher<ModelEntity, Never> {
-        AnyPublisher.create { [unowned self] observer in
-            if scene.findEntity(named: id) != nil { return .init(dispose: {}) }
-            
-            let filePath = URL.constructFilePath(withName: "\(id).usdz")
-            Entity.loadModelAsync(contentsOf: filePath).sink {_ in}
-                receiveValue: { [unowned self] model in
-                    addAnchorToARView(transform, model, id, groupName)
-                    model.availableAnimations.forEach { model.playAnimation($0.repeat()) }
-                    observer.onNext(model)
-                }
-                .store(in: &cancellables)
-            return .init(dispose: {})
-        }
-    }
-    
     private func addAnchorToARView(_ transform: simd_float4x4, _ model: ModelEntity, _ name: String, _ groupName: String? = nil) {
         let anchor = AnchorEntity(.world(transform: transform))
         model.name = name
@@ -162,12 +168,7 @@ class ExtendedRealityKitView: ARView, FocusEntityDelegate, ARCoachingOverlayView
     }
 }
 
-protocol ExtendedRealityKitViewDelegate {
-    func doOnTap(_ sender: ExtendedRealityKitView, _ transform: simd_float4x4)
-    func entitySelected(_ entity: Entity)
-}
-
-class DefaultLightingEntity: Entity, HasPointLight {
+private class DefaultLightingEntity: Entity, HasPointLight {
     required init() {
         super.init()
   

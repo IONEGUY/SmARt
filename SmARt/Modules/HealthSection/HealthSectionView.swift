@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct HealthSectionView: View {
-    var objects: [ObjectData]
-    var getStartedButtonText: String
-    var objectSelected: (ObjectData) -> Void
-    var getStartedButtonAction: () -> Void
+    var viewModel: SectionDetailBaseViewModel
     
     var body: some View {
+        let objects = viewModel.section.objects ?? []
         let videos = objects.filter { $0.video != nil }
         let charts = objects.filter { $0.video == nil }
             
@@ -32,7 +30,7 @@ struct HealthSectionView: View {
                                 .font(.system(size: 10))
                         }
                         Spacer()
-                        Button(action: { objectSelected(video) }) {
+                        Button(action: { viewModel.handleObjectSelected(video) }) {
                             Text("VIEW")
                                 .accentColor(Color.white)
                                 .font(.system(size: 10))
@@ -47,15 +45,15 @@ struct HealthSectionView: View {
             .padding(.top)
             
             Spacer()
-            GetStartedButton(action: getStartedButtonAction,
-                             text: getStartedButtonText)
+            GetStartedButton(action: viewModel.handleGetStartedButtonPressed,
+                             text: viewModel.getStartedButtonText)
             Spacer()
             
             VStack(spacing: 14) {
                 ForEach(charts) { chart in
                     ImageFromFile(name: chart.icon.id)
                         .frame(width: UIScreen.width - 40, height: 120)
-                        .onTapGesture { objectSelected(chart) }
+                        .onTapGesture { viewModel.handleObjectSelected(chart) }
                 }
             }.padding()
         }

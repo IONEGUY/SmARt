@@ -8,32 +8,30 @@
 import SwiftUI
 
 struct SectionWithComplexDescriptionView: View {
-    var section: Section?
-    var getStartedButtonText: String
-    var objectSelected: (ObjectData) -> Void
-    var getStartedButtonAction: () -> Void
+    var viewModel: SectionDetailBaseViewModel
     
     var body: some View {
         VStack {
-            ImageFromFile(name: section?.logo2d?.id ?? .empty)
+            ImageFromFile(name: viewModel.section.logo2d.id)
                 .scaledToFit()
                 .frame(width: UIScreen.width - 20, height: 300)
             
-            if section?.complexDescription != nil {
-                ComplexDescriptionView(data: section?.complexDescription?.items ?? [],
+            if viewModel.section.complexDescription != nil {
+                ComplexDescriptionView(data: viewModel.section.complexDescription?.items ?? [],
                                        chunkValue: 2)
                     .padding(.top, 30)
                 Spacer()
             } else {
                 Spacer()
-                SectionObjectsView(objects: section?.objects ?? [],
-                                   objectSelected: objectSelected)
+                SectionObjectsView(objects: viewModel.section.objects ?? [],
+                                   objectSelected: viewModel.handleObjectSelected)
             }
             
-            SectionDescription(text: section?.description ?? .empty)
+            SectionDescription(text: viewModel.section.description)
                 .padding(.bottom, 40)
             
-            GetStartedButton(action: getStartedButtonAction, text: getStartedButtonText)
+            GetStartedButton(action: viewModel.handleGetStartedButtonPressed,
+                             text: viewModel.getStartedButtonText)
                 .padding(.bottom, 60)
         }
     }

@@ -8,8 +8,7 @@
 import Foundation
 
 extension Array {
-    func chunked(into size: Int) -> [[Element]] {
-        
+    func chunked(into size: Int) -> [[Element]] {        
         var chunkedArray = [[Element]]()
         
         for index in 0...self.count {

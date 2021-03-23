@@ -12,12 +12,12 @@ import SwiftUI
 import Combine
 
 class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
-    var viewModel: MenuViewModel
-    var menuAdded = false
-    var arView: ExtendedRealityKitView
-    var cancellables = Set<AnyCancellable>()
-    var loadingView = LoadingViewWithProgressBar()
-    var loadingViewContainer = UIView()
+    private var viewModel: MenuViewModel
+    private var menuAdded = false
+    private var arView: ExtendedRealityKitView
+    private var cancellables = Set<AnyCancellable>()
+    private var loadingView = LoadingViewWithProgressBar()
+    private var loadingViewContainer = UIView()
     
     init(viewModel: MenuViewModel) {
         self.viewModel = viewModel
@@ -89,11 +89,12 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
     }
     
     func entitySelected(_ entity: Entity) {
-        guard let entityName = entity.parent?.name else { return }
+        guard let entityName = entity.parent?.name,
+              let section = viewModel.sections.first(where: { $0.id == entityName }) 
+        else { return }
         
-        let section = viewModel.sections.first { $0.id == entityName }
         let vc = SectionDetailBaseViewController(
-            viewModel: SectionDetailBaseViewModel(sectionInfo: section))
+            viewModel: SectionDetailBaseViewModel(section: section))
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false, completion: nil)
     }

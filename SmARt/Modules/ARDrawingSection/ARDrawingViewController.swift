@@ -11,7 +11,7 @@ import SwiftUI
 import SceneKit
 import ARKit
 
-class ARDrawingViewController: UIViewController, ARSCNViewDelegate, ARCoachingOverlayViewDelegate {
+class ARDrawingViewController: BaseViewController, ARSCNViewDelegate, ARCoachingOverlayViewDelegate {
     private lazy var drawingPlaneNode = SCNNode()
     private lazy var sceneView = ARSCNView()
     private var previousPoint: SCNVector3?
@@ -21,16 +21,11 @@ class ARDrawingViewController: UIViewController, ARSCNViewDelegate, ARCoachingOv
         
         ExtendedRealityKitView.shared.session.pause()
         
-        createNavBar()
         configureSceneView()
         configueDrawingPlaneNode()
         addCoaching()
         
         sceneView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture)))
-    }
-    
-    deinit {
-        print("ARDrawingViewController released")
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -120,19 +115,5 @@ class ARDrawingViewController: UIViewController, ARSCNViewDelegate, ARCoachingOv
         sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.white
         sphereNode.position = position
         sceneView.scene.rootNode.addChildNode(sphereNode)
-    }
-    
-    private func createNavBar() {
-        let navBar = UIHostingController(rootView: NavBar(backButtonAction: { [unowned self] in
-            dismiss(animated: false, completion: nil)
-        }))
-        navBar.view.backgroundColor = .clear
-        addChild(navBar)
-        view.addSubview(navBar.view)
-        navBar.view.translatesAutoresizingMaskIntoConstraints = false
-        navBar.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
-        navBar.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        navBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        navBar.view.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
 }

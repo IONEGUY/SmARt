@@ -65,7 +65,7 @@ class FileLoader: NSObject, URLSessionDownloadDelegate {
         taskProgresses[url] = progressForTask
         let taskProgressesCount = Float(taskProgresses.values.count == 0 ? 1 : taskProgresses.values.count)
         let progress = Float(taskProgresses.values.reduce(0, +)) / taskProgressesCount
-        progress > 0.999
+        progress > Constants.completeProgressValue
             ? self.progress.send(completion: .finished)
             : self.progress.send(progress)
         lock.unlock()
