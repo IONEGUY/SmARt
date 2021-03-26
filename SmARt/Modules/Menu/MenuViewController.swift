@@ -34,22 +34,17 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.$contentLoadingProgress
+        viewModel.contentLoadingProgress
             .dropFirst()
             .first()
             .receive(on: RunLoop.main)
             .sink { [unowned self] _ in addLoadingView() }
             .store(in: &cancellables)
         
-        viewModel.$contentLoadingProgress
+        viewModel.contentLoadingProgress
             .receive(on: RunLoop.main)
-            .sink { [unowned self] in loadingView.updateProgress(CGFloat($0)) }
-            .store(in: &cancellables)
-        
-        viewModel.$contentLoadingProgress
-            .filter { $0 >= Constants.completeProgressValue }
-            .receive(on: RunLoop.main)
-            .sink { [unowned self] _ in loadingViewContainer.removeFromSuperview() }
+            .sink(receiveCompletion: { [unowned self] _ in loadingViewContainer.removeFromSuperview() },
+                  receiveValue: { [unowned self] in loadingView.updateProgress(CGFloat($0)) })
             .store(in: &cancellables)
     }
     
@@ -103,23 +98,24 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
         if viewModel.menuItems.isEmpty || menuAdded { return }
         menuAdded.toggle()
         
-        var menuItems: [Menu3DItem] = []
+        var menuItemEntities: [Menu3DItem] = []
         let dispatchGroup = DispatchGroup()
+        let menuItems: [MenuItemData] = viewModel.menuItems.reversed()
         
         for index in 0...viewModel.menuItems.count - 1 {
             dispatchGroup.enter()
             
-            let menuItem = Menu3DItem()
-            menuItem.initData(viewModel.menuItems[index]) {
-                menuItem.transform = Transform(matrix: transform)
-                menuItem.position.y += (Float(index) * 0.2) + (Float(index) * 0.04) + 0.1
-                menuItems.append(menuItem)
+            let menuItemEntity = Menu3DItem()
+            menuItemEntity.initData(menuItems[index]) {
+                menuItemEntity.transform = Transform(matrix: transform)
+                menuItemEntity.position.y += (Float(index) * 0.2) + (Float(index) * 0.04) + 0.1
+                menuItemEntities.append(menuItemEntity)
                 dispatchGroup.leave()
             }
         }
         
         dispatchGroup.notify(queue: DispatchQueue.main) {
-            menuItems.forEach {
+            menuItemEntities.forEach {
                 let anchor = AnchorEntity()
                 anchor.addChild($0)
                 arView.addToGroup(withName: Self.typeName, anchor: anchor)

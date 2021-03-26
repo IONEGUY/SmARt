@@ -21,7 +21,7 @@ class MenuViewModel: ObservableObject {
     @Published var pushActive = false
     @Published var onMenuItemSelected = PassthroughSubject<String, Never>()
     @Published var section: Section?
-    @Published var contentLoadingProgress: Float = 0
+    @Published var contentLoadingProgress = PassthroughSubject<Float, Never>()
     
     init() {
         MenuService(ApiErrorLogger()).getSections()
@@ -74,12 +74,8 @@ class MenuViewModel: ObservableObject {
     
     private func performLoading(_ files: [FileProtocol]) {
         fileLoader.progress
-            .assign(to: \.contentLoadingProgress, on: self)
-            .store(in: &cancellableSet)
-        
-        fileLoader.progress
-            .sink(receiveCompletion: { _ in UserDefaults.standard.set(true, forKey: "isContentLoaded") },
-                  receiveValue: { [unowned self] in contentLoadingProgress = $0 })
+            .sink(receiveCompletion: { [unowned self] _ in contentLoadingProgress.send(completion: .finished) },
+                  receiveValue: { [unowned self] in contentLoadingProgress.send($0)})
             .store(in: &cancellableSet)
         
         fileLoader.download(files: files)

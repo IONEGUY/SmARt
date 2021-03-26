@@ -44,6 +44,7 @@ class FileLoader: NSObject, URLSessionDownloadDelegate {
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        print("task id: \(downloadTask.taskIdentifier)")
         if totalBytesExpectedToWrite > 0, let url = downloadTask.originalRequest?.url?.absoluteString {
             let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
             refreshProgress(url, progress)
