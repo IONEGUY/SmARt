@@ -45,9 +45,6 @@ struct HealthSectionView: View {
             .padding(.top)
             
             Spacer()
-            GetStartedButton(action: viewModel.handleGetStartedButtonPressed,
-                             text: viewModel.getStartedButtonText)
-            Spacer()
             
             VStack(spacing: 14) {
                 ForEach(charts) { chart in

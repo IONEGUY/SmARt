@@ -83,7 +83,7 @@ class DroneARViewController: BaseViewController, ExtendedRealityKitViewDelegate 
     func doOnTap(_ arView: ExtendedRealityKitView, _ transform: simd_float4x4) {
         arView.append3DModel(viewModel.droneModelId, transform, groupName: Self.typeName)
             .sink { [unowned self] in
-                $0.transform.rotation = simd_quatf(angle: .pi / 2, axis: [0,1,0])
+                $0.transform.rotation = simd_quatf(angle: .pi, axis: [0,1,0])
                 drone = $0
                 viewModel.objectTransform = $0.transform
             }.store(in: &cancellabes)

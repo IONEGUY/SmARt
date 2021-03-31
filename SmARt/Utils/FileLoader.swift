@@ -44,7 +44,6 @@ class FileLoader: NSObject, URLSessionDownloadDelegate {
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        print("task id: \(downloadTask.taskIdentifier)")
         if totalBytesExpectedToWrite > 0, let url = downloadTask.originalRequest?.url?.absoluteString {
             let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
             refreshProgress(url, progress)
@@ -59,14 +58,18 @@ class FileLoader: NSObject, URLSessionDownloadDelegate {
         }
     }
 
-    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {}
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if let file = files[task.originalRequest?.url?.absoluteString ?? .empty] {
+            refreshProgress(file.url, 1)
+        }
+    }
     
     func refreshProgress(_ url: String, _ progressForTask: Float) {
         lock.lock()
         taskProgresses[url] = progressForTask
         let taskProgressesCount = Float(taskProgresses.values.count == 0 ? 1 : taskProgresses.values.count)
         let progress = Float(taskProgresses.values.reduce(0, +)) / taskProgressesCount
-        progress > Constants.completeProgressValue
+        progress >= Constants.completeProgressValue
             ? self.progress.send(completion: .finished)
             : self.progress.send(progress)
         lock.unlock()

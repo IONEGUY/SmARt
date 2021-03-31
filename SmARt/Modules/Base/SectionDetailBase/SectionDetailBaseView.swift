@@ -20,17 +20,17 @@ struct SectionDetailBaseView: View {
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             
-            VStack {
-                switch viewModel.sectionType {
-                case .droneSection, .smartRoom, .section5G, .smartRetail:
-                    SectionWithComplexDescriptionView(viewModel: viewModel)
-                case .healthSection: HealthSectionView(viewModel: viewModel)
-                case .smartTourism: SmartTourismView(viewModel: viewModel)
-                case .arDrawing: ARDrawingSectionView(viewModel: viewModel)
-                default: EmptyView()
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    switch viewModel.sectionType {
+                    case .healthSection: HealthSectionView(viewModel: viewModel)
+                    case .smartTourism: SmartTourismView(viewModel: viewModel)
+                    case .arDrawing: ARDrawingSectionView(viewModel: viewModel)
+                    default: SectionWithComplexDescriptionView(viewModel: viewModel)
+                    }
                 }
+                .padding(.vertical, 60)
             }
-            .padding(.top, 50)
         }
         .navigationBarHidden(true)
     }

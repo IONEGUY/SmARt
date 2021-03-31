@@ -24,18 +24,20 @@ class MenuViewModel: ObservableObject {
     @Published var contentLoadingProgress = PassthroughSubject<Float, Never>()
     
     init() {
-        MenuService(ApiErrorLogger()).getSections()
+        let getSectionsPublisher = MenuService(ApiErrorLogger()).getSections()
+        
+        getSectionsPublisher
             .filter(isAllowedToDownloadMediaContent)
             .map(constructFilesForCaching)
             .sink(receiveCompletion: {_ in}, receiveValue: performLoading)
             .store(in: &cancellableSet)
         
-        MenuService(ApiErrorLogger()).getSections()
+        getSectionsPublisher
             .flatMap(initMenuItems)
             .sink {_ in} receiveValue: {_ in}
             .store(in: &cancellableSet)
         
-        MenuService(ApiErrorLogger()).getSections()
+        getSectionsPublisher
             .map(\.sections)
             .sink(receiveCompletion: {_ in},
                   receiveValue: { [unowned self] in sections = $0 })
@@ -76,6 +78,11 @@ class MenuViewModel: ObservableObject {
         fileLoader.progress
             .sink(receiveCompletion: { [unowned self] _ in contentLoadingProgress.send(completion: .finished) },
                   receiveValue: { [unowned self] in contentLoadingProgress.send($0)})
+            .store(in: &cancellableSet)
+        
+        contentLoadingProgress
+            .sink(receiveCompletion: { _ in UserDefaults.standard.setValue(true, forKey: "isContentLoaded") },
+                  receiveValue: {_ in})
             .store(in: &cancellableSet)
         
         fileLoader.download(files: files)

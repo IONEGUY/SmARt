@@ -10,11 +10,10 @@ import Combine
 
 struct GetStartedButton: View {
     var action: () -> Void
-    var text: String
     
     var body: some View {
         Button(action: action, label: {
-            Text(text)
+            Text("Get Started")
                 .foregroundColor(.white)
                 .fontWeight(.heavy)
                 .font(.headline)

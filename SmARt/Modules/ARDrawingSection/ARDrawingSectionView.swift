@@ -21,8 +21,7 @@ struct ARDrawingSectionView: View {
                                color: .white,
                                font: .system(size: 16))
             Spacer()
-            GetStartedButton(action: viewModel.handleGetStartedButtonPressed,
-                             text: viewModel.getStartedButtonText)
+            GetStartedButton(action: viewModel.handleGetStartedButtonPressed)
         }
     }
 }

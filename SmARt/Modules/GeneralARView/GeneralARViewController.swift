@@ -44,6 +44,10 @@ class GeneralARViewController: BaseViewController, ExtendedRealityKitViewDelegat
         arView.removeFromSuperview()
     }
     
+    override func createNavBar(title: String = .empty, rightButtons: [Object3DButton] = []) {
+        super.createNavBar(title: .empty, rightButtons: viewModel.object3DButtons)
+    }
+    
     func doOnTap(_ sender: ExtendedRealityKitView, _ transform: simd_float4x4) {
         (viewModel.augmentedObjectType == .object3D
             ? arView.append3DModel(viewModel.current3DObjectId, transform, groupName: Self.typeName)

@@ -23,8 +23,7 @@ struct OnboardingView: View {
                                           currentIndex: $viewModel.pageIndex)
                     .padding(.top, 40)
                 Spacer()
-                GetStartedButton(action: viewModel.getStartedButtonAction,
-                                 text: viewModel.getStartedButtonText)
+                GetStartedButton(action: viewModel.getStartedButtonAction)
                     .padding(.bottom, 40)
             }
         }

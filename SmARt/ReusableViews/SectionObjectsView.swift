@@ -20,6 +20,7 @@ struct SectionObjectsView: View {
                     guard let object = objects.first else { return }
                     objectSelected(object)
                 }
+                .padding(.vertical, 40)
         } else {
             MaskList(masks: objects.map(\.mask))
         }

@@ -93,7 +93,6 @@
 		FAD3B1E325D1EAC700708AE9 /* MenuItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B1E225D1EAC700708AE9 /* MenuItemData.swift */; };
 		FAD3B20825D2B05400708AE9 /* MenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B20725D2B05400708AE9 /* MenuService.swift */; };
 		FAD3B21325D2D06300708AE9 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B21225D2D06300708AE9 /* UIViewExtensions.swift */; };
-		FAF879602608DE310036AF5C /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = FAF8795F2608DE310036AF5C /* FocusEntity */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,7 +193,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAF879602608DE310036AF5C /* FocusEntity in Frameworks */,
 				28DA3C72DB1551AA5184E60F /* Pods_SmARt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,7 +531,6 @@
 			);
 			name = SmARt;
 			packageProductDependencies = (
-				FAF8795F2608DE310036AF5C /* FocusEntity */,
 			);
 			productName = SmARt;
 			productReference = FA80BF6D25CA9BC500FD78ED /* SmARt.app */;
@@ -919,14 +916,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FAF8795F2608DE310036AF5C /* FocusEntity */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FAF8795E2608DE310036AF5C /* XCRemoteSwiftPackageReference "FocusEntity" */;
-			productName = FocusEntity;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA80BF6525CA9BC500FD78ED /* Project object */;
 }

@@ -30,18 +30,6 @@ class DroneARViewModel: ObservableObject {
         
         leftJoystickAction = { [unowned self] in
             var transform = objectTransform
-            switch $0 {
-            case .up: transform.translation.z -= translationSpeed
-            case .down: transform.translation.z += translationSpeed
-            case .left: transform.translation.x -= translationSpeed
-            case .right: transform.translation.x += translationSpeed
-            }
-            
-            objectTransform = transform
-        }
-        
-        rightJoystickAction = { [unowned self] in
-            var transform = objectTransform
             var rotationAngle = transform.rotation.angle
             switch $0 {
             case .up: transform.translation.y += translationSpeed
@@ -49,7 +37,19 @@ class DroneARViewModel: ObservableObject {
             case .left: rotationAngle += rotationSpeed.toRadians()
             case .right: rotationAngle -= rotationSpeed.toRadians()
             }
-            transform.rotation = simd_quatf(angle: rotationAngle, axis: [0,1,0])
+            transform.rotation = simd_quatf(angle: rotationAngle, axis: [0, 1, 0])
+            objectTransform = transform
+        }
+        
+        rightJoystickAction = { [unowned self] in
+            var transform = objectTransform
+            switch $0 {
+            case .up: transform.translation.z -= translationSpeed
+            case .down: transform.translation.z += translationSpeed
+            case .left: transform.translation.x -= translationSpeed
+            case .right: transform.translation.x += translationSpeed
+            }
+            
             objectTransform = transform
         }
     }

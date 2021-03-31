@@ -12,7 +12,6 @@ import SwiftUI
 class SectionDetailBaseViewModel: ObservableObject {
     let section: Section
     var sectionType: SectionType = .none
-    var getStartedButtonText = "Get Started"
     
     @Published var title: String = .empty
     @Published var pushARPage = PassthroughSubject<ARPageType, Never>()
@@ -27,15 +26,6 @@ class SectionDetailBaseViewModel: ObservableObject {
         title = section.name
         sectionType = SectionType(rawValue: section.typeSection) ?? .none
         sectionDescription = section.description
-        
-        switch sectionType {
-        case .healthSection:
-            getStartedButtonText = "Get Stream"
-        case .section5G:
-            getStartedButtonText = "5G coverage"
-        default:
-            break
-        }
     }
     
     func handleGetStartedButtonPressed() {
