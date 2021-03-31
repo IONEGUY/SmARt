@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -560,7 +560,6 @@
 			);
 			mainGroup = FA80BF6425CA9BC500FD78ED;
 			packageReferences = (
-				FAF8795E2608DE310036AF5C /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = FA80BF6E25CA9BC500FD78ED /* Products */;
 			projectDirPath = "";
@@ -905,17 +904,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		FAF8795E2608DE310036AF5C /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = FA80BF6525CA9BC500FD78ED /* Project object */;
 }
