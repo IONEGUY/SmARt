@@ -11,11 +11,17 @@ import RealityKit
 import Alamofire
 import Combine
 
-class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDelegate {
+class ExtendedRealityKitView: ARView, ARSessionDelegate {
+    private let defaultZOffset: Float = 1.5
+    private let defaultYOffset: Float = 0.5
+    private let defaultContentScaleFactorMultiplier: CGFloat = 0.5
+    
     private var cancellables = Set<AnyCancellable>()
     private var resources: [Disposable] = []
     private var cameraPlane = ModelEntity(mesh: .generatePlane(width: 0.05, height: 0.05),
-                                          materials: [SimpleMaterial(color: .clear, roughness: 1.0, isMetallic: true)])
+                                          materials: [SimpleMaterial(color: .clear,
+                                                                     roughness: 1.0,
+                                                                     isMetallic: true)])
     
     var delegate: ExtendedRealityKitViewDelegate?
     static var shared = ExtendedRealityKitView()
@@ -23,7 +29,6 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDe
     func setup() {
         configueARSession()
         setupOptimizations()
-        addCoaching()
         addGestureRecognizers()
         createLightingAnchor()
         createCameraPoint()
@@ -59,9 +64,7 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDe
 
     func configueARSession() {
         session.delegate = self
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal]
-        session.run(configuration)
+        automaticallyConfigureSession = true
     }
 
     func createLightingAnchor() {
@@ -112,24 +115,16 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDe
         cameraPlane.name = "cameraPlane"
         cameraPlane.generateCollisionShapes(recursive: true)
         cameraAnchor.addChild(cameraPlane)
-        cameraAnchor.transform.translation.z -= 1.5
+        cameraAnchor.transform.translation.z -= defaultZOffset
         scene.anchors.append(cameraAnchor)
     }
     
-    private func addCoaching() {
-        let coachingOverlay = ARCoachingOverlayView()
-        addSubview(coachingOverlay)
-        coachingOverlay.fillSuperview()
-        coachingOverlay.goal = .horizontalPlane
-        coachingOverlay.session = session
-        coachingOverlay.delegate = self
-    }
     private func getGroupAnchor(_ name: String) -> HasAnchoring? {
         return scene.anchors.first(where: { $0.name == name })
     }
     
     private func setupOptimizations() {
-        contentScaleFactor = 0.50 * contentScaleFactor
+        contentScaleFactor = defaultContentScaleFactorMultiplier * contentScaleFactor
         renderOptions = [.disableMotionBlur, .disableAREnvironmentLighting,
                          .disableCameraGrain, .disableDepthOfField,
                          .disableFaceOcclusions, .disableGroundingShadows,
@@ -137,10 +132,8 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDe
     }
     
     private func addGestureRecognizers() {
-        let tapRecognizer =
-            UITapGestureRecognizer(target: self, action: #selector(handleTapAction))
-
-        addGestureRecognizer(tapRecognizer)
+        addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                    action: #selector(handleTapAction)))
     }
     
     private func addAnchorToARView(_ transform: simd_float4x4, _ model: ModelEntity, _ name: String, _ groupName: String? = nil) {
@@ -158,13 +151,14 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDe
     
     @objc private func handleTapAction(_ sender: UITapGestureRecognizer) {
         let centerHit = hitTest(center, mask: .all).first(where: { $0.entity.name == "cameraPlane" })
-        if let centerHit = centerHit {
-            let cameraTransform = Transform(matrix: session.currentFrame!.camera.transform)
+        if let centerHit = centerHit,
+           let camera = session.currentFrame?.camera {
+            let cameraTransform = Transform(matrix: camera.transform)
             var transform = Transform(scale: SIMD3<Float>(x: 1, y: 1, z: 1),
                                       rotation: cameraTransform.rotation,
                                       translation: centerHit.position)
-            transform.rotation = simd_quatf(angle: (session.currentFrame?.camera.eulerAngles.y)!, axis: SIMD3<Float>(0, 1, 0))
-            transform.translation.y -= 0.5
+            transform.rotation = simd_quatf(angle: camera.eulerAngles.y, axis: SIMD3<Float>(0, 1, 0))
+            transform.translation.y -= defaultYOffset
             delegate?.doOnTap(self, transform.matrix)
         }
 
@@ -173,11 +167,6 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDe
         if let tappedEntity = hit?.entity {
             delegate?.entitySelected(tappedEntity)
         }
-    }
-    
-    private func getPositionFromRayCast(at point: CGPoint) -> simd_float4x4 {
-        let cast = raycast(from: point, allowing: .existingPlaneInfinite, alignment: .horizontal)
-        return cast.first?.worldTransform ?? .init(0)
     }
 }
 

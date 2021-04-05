@@ -19,6 +19,12 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
     private var loadingView = LoadingViewWithProgressBar()
     private var loadingViewContainer = UIView()
     
+    private let touchOnScreenNotification: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "touch_on_screen"))
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     init(viewModel: MenuViewModel) {
         self.viewModel = viewModel
         
@@ -33,6 +39,8 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configueTouchOnScreenNotification()
         
         viewModel.contentLoadingProgress
             .dropFirst()
@@ -97,6 +105,7 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
     private func populateARView(_ arView: ExtendedRealityKitView, _ transform: simd_float4x4) {
         if viewModel.menuItems.isEmpty || menuAdded { return }
         menuAdded.toggle()
+        removeTouchOnScreenNotificationIfNeeded()
         
         var menuItemEntities: [Menu3DItem] = []
         let dispatchGroup = DispatchGroup()
@@ -120,6 +129,21 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
                 anchor.addChild($0)
                 arView.addToGroup(withName: Self.typeName, anchor: anchor)
             }
+        }
+    }
+    
+    private func configueTouchOnScreenNotification() {
+        view.addSubview(touchOnScreenNotification)
+        touchOnScreenNotification.translatesAutoresizingMaskIntoConstraints = false
+        touchOnScreenNotification.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        touchOnScreenNotification.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        touchOnScreenNotification.heightAnchor.constraint(equalToConstant: 92).isActive = true
+        touchOnScreenNotification.widthAnchor.constraint(equalToConstant: 155).isActive = true
+    }
+    
+    private func removeTouchOnScreenNotificationIfNeeded() {
+        if touchOnScreenNotification.superview != nil {
+            touchOnScreenNotification.removeFromSuperview()
         }
     }
 }
