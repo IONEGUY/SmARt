@@ -11,7 +11,7 @@ import RealityKit
 import Alamofire
 import Combine
 
-class ExtendedRealityKitView: ARView, ARSessionDelegate {
+class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDelegate {
     private let defaultZOffset: Float = 1.5
     private let defaultYOffset: Float = 0.5
     private let defaultContentScaleFactorMultiplier: CGFloat = 0.5
@@ -32,6 +32,7 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate {
         addGestureRecognizers()
         createLightingAnchor()
         createCameraPoint()
+        addCoaching()
     }
     
     func releaseResources() {
@@ -64,7 +65,8 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate {
 
     func configueARSession() {
         session.delegate = self
-        automaticallyConfigureSession = true
+        let configuration = ARWorldTrackingConfiguration()
+        session.run(configuration)
     }
 
     func createLightingAnchor() {
@@ -119,6 +121,14 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate {
         scene.anchors.append(cameraAnchor)
     }
     
+    private func addCoaching() {
+        let coachingOverlay = ARCoachingOverlayView()
+        addSubview(coachingOverlay)
+        coachingOverlay.fillSuperview()
+        coachingOverlay.goal = .anyPlane
+        coachingOverlay.session = session
+        coachingOverlay.delegate = self
+    }
     private func getGroupAnchor(_ name: String) -> HasAnchoring? {
         return scene.anchors.first(where: { $0.name == name })
     }
