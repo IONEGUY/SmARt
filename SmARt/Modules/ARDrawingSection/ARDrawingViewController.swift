@@ -15,12 +15,6 @@ class ARDrawingViewController: BaseViewController, ARSCNViewDelegate {
     private lazy var drawingPlaneNode = SCNNode()
     private lazy var sceneView = ARSCNView()
     private var previousPoint: SCNVector3?
-    
-    private let touchAndDrawNotification: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "touch_and_draw"))
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +22,7 @@ class ARDrawingViewController: BaseViewController, ARSCNViewDelegate {
         ExtendedRealityKitView.shared.session.pause()
         
         configureSceneView()
-        configueTouchAndDrawNotification()
+        addProposalForInteractionMessage(withTitle: "Touch and drow")
         configueDrawingPlaneNode()
         
         sceneView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture)))
@@ -59,21 +53,6 @@ class ARDrawingViewController: BaseViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.addChildNode(drawingPlaneNode)
     }
     
-    private func configueTouchAndDrawNotification() {
-        view.addSubview(touchAndDrawNotification)
-        touchAndDrawNotification.translatesAutoresizingMaskIntoConstraints = false
-        touchAndDrawNotification.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        touchAndDrawNotification.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        touchAndDrawNotification.heightAnchor.constraint(equalToConstant: 92).isActive = true
-        touchAndDrawNotification.widthAnchor.constraint(equalToConstant: 155).isActive = true
-    }
-    
-    private func removeTouchAndDrawNotificationIfNeeded() {
-        if touchAndDrawNotification.superview != nil {
-            touchAndDrawNotification.removeFromSuperview()
-        }
-    }
-    
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
         guard let pointOfView = sceneView.pointOfView else { return }
         
@@ -88,7 +67,7 @@ class ARDrawingViewController: BaseViewController, ARSCNViewDelegate {
     }
     
     @objc private func handlePanGesture(_ pan: UIPanGestureRecognizer) {
-        removeTouchAndDrawNotificationIfNeeded()
+        removeProposalForInteractionMessage()
         let location: CGPoint = pan.location(in: sceneView)
         let hits = self.sceneView.hitTest(location, options: nil)
         guard let hitTest = hits.last else { return }

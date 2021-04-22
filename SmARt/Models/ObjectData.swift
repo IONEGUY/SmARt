@@ -16,7 +16,7 @@ struct ObjectData: Codable, Identifiable {
     var object3d: Object3dData?
     var video: VideoData?
     var mask: Mask?
-    var trigger: ImageData
+    var trigger: ImageData?
     
     enum CodingKeys: String, CodingKey {
         case icon

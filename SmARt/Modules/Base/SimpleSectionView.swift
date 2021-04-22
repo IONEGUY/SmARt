@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ARDrawingSectionView: View {
+struct SimpleSectionView: View {
     var viewModel: SectionDetailBaseViewModel
 
     var body: some View {

@@ -61,6 +61,7 @@
 		FA8A87C425E3FED100D1BBE3 /* AugmentedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87C325E3FED100D1BBE3 /* AugmentedObjectType.swift */; };
 		FA8A87CC25E4339A00D1BBE3 /* GeneralARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CB25E4339A00D1BBE3 /* GeneralARViewModel.swift */; };
 		FA8A87CF25E4349C00D1BBE3 /* Object3DButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */; };
+		FA93BEAF26319B94009365A9 /* InteractionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93BEAE26319B94009365A9 /* InteractionMessage.swift */; };
 		FAA5C22D25DED96F00BD1B1E /* SwiftUI Color Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */; };
 		FAA5C23025DEE46D00BD1B1E /* GetStartedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */; };
 		FAA5C23325DEE72600BD1B1E /* SectionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C23225DEE72600BD1B1E /* SectionDescription.swift */; };
@@ -86,7 +87,7 @@
 		FAAF7E3125F9326D00CBDBF0 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E3025F9326D00CBDBF0 /* UIImageViewExtensions.swift */; };
 		FAAF7E3525F945F600CBDBF0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E3425F945F600CBDBF0 /* Constants.swift */; };
 		FAAF7E3E25FAA1F000CBDBF0 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E3D25FAA1F000CBDBF0 /* FileLoader.swift */; };
-		FAC04B0726038C7C00DBB692 /* ARDrawingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B0626038C7C00DBB692 /* ARDrawingSectionView.swift */; };
+		FAC04B0726038C7C00DBB692 /* SimpleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B0626038C7C00DBB692 /* SimpleSectionView.swift */; };
 		FAC04B0B2603962300DBB692 /* ARDrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B0A2603962300DBB692 /* ARDrawingViewController.swift */; };
 		FAC04B122603A73000DBB692 /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B112603A73000DBB692 /* SCNVector3Extensions.swift */; };
 		FAC04B152603AE3F00DBB692 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC04B142603AE3F00DBB692 /* art.scnassets */; };
@@ -160,6 +161,7 @@
 		FA8A87C325E3FED100D1BBE3 /* AugmentedObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AugmentedObjectType.swift; sourceTree = "<group>"; };
 		FA8A87CB25E4339A00D1BBE3 /* GeneralARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralARViewModel.swift; sourceTree = "<group>"; };
 		FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DButton.swift; sourceTree = "<group>"; };
+		FA93BEAE26319B94009365A9 /* InteractionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionMessage.swift; sourceTree = "<group>"; };
 		FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI Color Extensions.swift"; sourceTree = "<group>"; };
 		FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedButton.swift; sourceTree = "<group>"; };
 		FAA5C23225DEE72600BD1B1E /* SectionDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDescription.swift; sourceTree = "<group>"; };
@@ -185,7 +187,7 @@
 		FAAF7E3025F9326D00CBDBF0 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		FAAF7E3425F945F600CBDBF0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FAAF7E3D25FAA1F000CBDBF0 /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
-		FAC04B0626038C7C00DBB692 /* ARDrawingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDrawingSectionView.swift; sourceTree = "<group>"; };
+		FAC04B0626038C7C00DBB692 /* SimpleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSectionView.swift; sourceTree = "<group>"; };
 		FAC04B0A2603962300DBB692 /* ARDrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDrawingViewController.swift; sourceTree = "<group>"; };
 		FAC04B112603A73000DBB692 /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
 		FAC04B142603AE3F00DBB692 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				FAAF7E0425F7BD2400CBDBF0 /* ProgressBar.swift */,
 				FAAF7E2725F8EA1400CBDBF0 /* ImageFromFile.swift */,
 				FA64CD1F2628D66700CCDD47 /* TakeSnapshotButton.swift */,
+				FA93BEAE26319B94009365A9 /* InteractionMessage.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				FAA5C26525DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift */,
 				FA5280B92609476600EEBE40 /* BaseViewController.swift */,
 				FA64CD252628EDEA00CCDD47 /* BaseViewModel.swift */,
+				FAC04B0626038C7C00DBB692 /* SimpleSectionView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -522,7 +526,6 @@
 		FAC04B0526038B0F00DBB692 /* ARDrawingSection */ = {
 			isa = PBXGroup;
 			children = (
-				FAC04B0626038C7C00DBB692 /* ARDrawingSectionView.swift */,
 				FAC04B0A2603962300DBB692 /* ARDrawingViewController.swift */,
 			);
 			path = ARDrawingSection;
@@ -666,6 +669,7 @@
 				FA64CD262628EDEA00CCDD47 /* BaseViewModel.swift in Sources */,
 				FAD3B1E325D1EAC700708AE9 /* MenuItemData.swift in Sources */,
 				FA3620A525CC8B0F00DFE70E /* StringExtensions.swift in Sources */,
+				FA93BEAF26319B94009365A9 /* InteractionMessage.swift in Sources */,
 				FA36209D25CC89A700DFE70E /* StringResources.swift in Sources */,
 				FA64CD202628D66700CCDD47 /* TakeSnapshotButton.swift in Sources */,
 				FAA9C89525CD5E8E005BA9EE /* ComplexDescriptionItem.swift in Sources */,
@@ -730,7 +734,7 @@
 				FA10603925DD4A47007E6898 /* SectionDetailBaseViewModel.swift in Sources */,
 				FAC04B4B2604C4ED00DBB692 /* OnboardingView.swift in Sources */,
 				FAA5C23325DEE72600BD1B1E /* SectionDescription.swift in Sources */,
-				FAC04B0726038C7C00DBB692 /* ARDrawingSectionView.swift in Sources */,
+				FAC04B0726038C7C00DBB692 /* SimpleSectionView.swift in Sources */,
 				FAA9C89A25CD5E8E005BA9EE /* ObjectData.swift in Sources */,
 				FA8A87CC25E4339A00D1BBE3 /* GeneralARViewModel.swift in Sources */,
 				FAAF7E3525F945F600CBDBF0 /* Constants.swift in Sources */,

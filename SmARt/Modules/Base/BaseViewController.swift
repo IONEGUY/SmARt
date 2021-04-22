@@ -15,6 +15,7 @@ class BaseViewController: UIViewController {
     @Published var loadingProgress = Progress.none
     
     var loadingView = LoadingViewWithProgressBar()
+    var proposalForInteractionMessage = InteractionMessage()
     var loadingViewContainer = UIView()
     
     var isNavigationBarVisible: Bool {
@@ -36,6 +37,20 @@ class BaseViewController: UIViewController {
                 default: break
                 }})
             .store(in: &cancellables)
+    }
+    
+    func addProposalForInteractionMessage(withTitle title: String) {
+        proposalForInteractionMessage.message = title
+        view.addSubview(proposalForInteractionMessage)
+        proposalForInteractionMessage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            proposalForInteractionMessage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            proposalForInteractionMessage.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    func removeProposalForInteractionMessage() {
+        proposalForInteractionMessage.removeFromSuperview()
     }
     
     func addLoadingView() {

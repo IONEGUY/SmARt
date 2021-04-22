@@ -19,13 +19,7 @@ class MenuViewController: BaseViewController, ExtendedRealityKitViewDelegate {
     private var menuAdded = false
     private var arView: ExtendedRealityKitView
     override var isNavigationBarVisible: Bool { return false }
-    
-    private let touchOnScreenNotification: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "touch_on_screen"))
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
+
     init(viewModel: MenuViewModel) {
         self.viewModel = viewModel
         
@@ -54,7 +48,8 @@ class MenuViewController: BaseViewController, ExtendedRealityKitViewDelegate {
         view.insertSubview(arView, at: 0)
         arView.fillSuperview()
         arView.delegate = self
-        configueTouchOnScreenNotification()
+        
+        addProposalForInteractionMessage(withTitle: "Touch on screen")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,7 +79,7 @@ class MenuViewController: BaseViewController, ExtendedRealityKitViewDelegate {
         if viewModel.menuItems.count == 0 || menuAdded { return }
         
         menuAdded = true
-        hideTouchOnScreenNotificationIfNeeded()
+        removeProposalForInteractionMessage()
         
         var menuItemEntities: [Menu3DItem] = []
         let dispatchGroup = DispatchGroup()
@@ -108,25 +103,6 @@ class MenuViewController: BaseViewController, ExtendedRealityKitViewDelegate {
                 anchor.addChild($0)
                 arView.addToGroup(withName: Self.typeName, anchor: anchor)
             }
-        }
-    }
-    
-    private func configueTouchOnScreenNotification() {
-        if touchOnScreenNotification.superview != nil {
-            touchOnScreenNotification.isHidden = false
-        }
-        
-        view.addSubview(touchOnScreenNotification)
-        touchOnScreenNotification.translatesAutoresizingMaskIntoConstraints = false
-        touchOnScreenNotification.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        touchOnScreenNotification.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        touchOnScreenNotification.heightAnchor.constraint(equalToConstant: 92).isActive = true
-        touchOnScreenNotification.widthAnchor.constraint(equalToConstant: 155).isActive = true
-    }
-    
-    private func hideTouchOnScreenNotificationIfNeeded() {
-        if touchOnScreenNotification.superview != nil {
-            touchOnScreenNotification.isHidden = true
         }
     }
 }

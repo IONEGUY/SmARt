@@ -25,7 +25,7 @@ struct SectionDetailBaseView: View {
                     switch viewModel.sectionType {
                     case .healthSection: HealthSectionView(viewModel: viewModel)
                     case .smartTourism: SmartTourismView(viewModel: viewModel)
-                    case .arDrawing: ARDrawingSectionView(viewModel: viewModel)
+                    case .arDrawing, .arScanner: SimpleSectionView(viewModel: viewModel)
                     default: SectionWithComplexDescriptionView(viewModel: viewModel)
                     }
                 }
