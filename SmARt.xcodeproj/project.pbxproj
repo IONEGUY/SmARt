@@ -28,7 +28,7 @@
 		FA424D3B25EA83CE00637EB7 /* Menu3DItemRealityKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA424D3A25EA83CE00637EB7 /* Menu3DItemRealityKit.swift */; };
 		FA424D3E25EA919F00637EB7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA424D3D25EA919F00637EB7 /* MenuViewController.swift */; };
 		FA43319725F18F39008D8AC2 /* MaskFittingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA43319625F18F39008D8AC2 /* MaskFittingViewController.swift */; };
-		FA45B97625E7C263005CBC38 /* ColationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97525E7C263005CBC38 /* ColationManager.swift */; };
+		FA45B97625E7C263005CBC38 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97525E7C263005CBC38 /* LocationManager.swift */; };
 		FA45B97925E7CD0B005CBC38 /* DimentionalDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97825E7CD0B005CBC38 /* DimentionalDirection.swift */; };
 		FA45B97D25E7CE7A005CBC38 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97C25E7CE7A005CBC38 /* TransformType.swift */; };
 		FA45B98125E7DFCE005CBC38 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B98025E7DFCE005CBC38 /* DoubleExtensions.swift */; };
@@ -47,6 +47,12 @@
 		FA5CED8C25E968220089B31F /* AnyPublisherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */; };
 		FA5F087F25EFF49A004CF5D0 /* GlobalStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F087E25EFF49A004CF5D0 /* GlobalStyles.swift */; };
 		FA5F088525F008E2004CF5D0 /* SectionDetailBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F088425F008E2004CF5D0 /* SectionDetailBaseViewController.swift */; };
+		FA64CD1A26285CF300CCDD47 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64CD1926285CF300CCDD47 /* UIColorExtensions.swift */; };
+		FA64CD1D2628CEE100CCDD47 /* ARViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64CD1C2628CEE100CCDD47 /* ARViewExtensions.swift */; };
+		FA64CD202628D66700CCDD47 /* TakeSnapshotButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64CD1F2628D66700CCDD47 /* TakeSnapshotButton.swift */; };
+		FA64CD232628E3B700CCDD47 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64CD222628E3B700CCDD47 /* Progress.swift */; };
+		FA64CD262628EDEA00CCDD47 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA64CD252628EDEA00CCDD47 /* BaseViewModel.swift */; };
+		FA66CF412625E87D003A5286 /* PageDialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66CF402625E87D003A5286 /* PageDialogService.swift */; };
 		FA6B3A5725D1516200B0C3C2 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */; };
 		FA7E8E6025EFB97300F3D345 /* GeneralARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E8E5F25EFB97300F3D345 /* GeneralARViewController.swift */; };
 		FA7E8E6825EFCAF400F3D345 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E8E6725EFCAF400F3D345 /* NavBar.swift */; };
@@ -119,7 +125,7 @@
 		FA424D3A25EA83CE00637EB7 /* Menu3DItemRealityKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu3DItemRealityKit.swift; sourceTree = "<group>"; };
 		FA424D3D25EA919F00637EB7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		FA43319625F18F39008D8AC2 /* MaskFittingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskFittingViewController.swift; sourceTree = "<group>"; };
-		FA45B97525E7C263005CBC38 /* ColationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColationManager.swift; sourceTree = "<group>"; };
+		FA45B97525E7C263005CBC38 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FA45B97825E7CD0B005CBC38 /* DimentionalDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimentionalDirection.swift; sourceTree = "<group>"; };
 		FA45B97C25E7CE7A005CBC38 /* TransformType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformType.swift; sourceTree = "<group>"; };
 		FA45B98025E7DFCE005CBC38 /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
@@ -138,6 +144,12 @@
 		FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisherExtensions.swift; sourceTree = "<group>"; };
 		FA5F087E25EFF49A004CF5D0 /* GlobalStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalStyles.swift; sourceTree = "<group>"; };
 		FA5F088425F008E2004CF5D0 /* SectionDetailBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailBaseViewController.swift; sourceTree = "<group>"; };
+		FA64CD1926285CF300CCDD47 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		FA64CD1C2628CEE100CCDD47 /* ARViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewExtensions.swift; sourceTree = "<group>"; };
+		FA64CD1F2628D66700CCDD47 /* TakeSnapshotButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeSnapshotButton.swift; sourceTree = "<group>"; };
+		FA64CD222628E3B700CCDD47 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
+		FA64CD252628EDEA00CCDD47 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		FA66CF402625E87D003A5286 /* PageDialogService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDialogService.swift; sourceTree = "<group>"; };
 		FA6B3A5625D1516200B0C3C2 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		FA7E8E5F25EFB97300F3D345 /* GeneralARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralARViewController.swift; sourceTree = "<group>"; };
 		FA7E8E6725EFCAF400F3D345 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
@@ -245,8 +257,9 @@
 		FA36209125CC881200DFE70E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FA66CF402625E87D003A5286 /* PageDialogService.swift */,
 				FA3620A025CC8A8E00DFE70E /* DIContainerConfigurator.swift */,
-				FA45B97525E7C263005CBC38 /* ColationManager.swift */,
+				FA45B97525E7C263005CBC38 /* LocationManager.swift */,
 				FAAF7E3D25FAA1F000CBDBF0 /* FileLoader.swift */,
 			);
 			path = Utils;
@@ -261,6 +274,7 @@
 				FA45B97825E7CD0B005CBC38 /* DimentionalDirection.swift */,
 				FA45B97C25E7CE7A005CBC38 /* TransformType.swift */,
 				FA5280B52609334800EEBE40 /* ARPageType.swift */,
+				FA64CD222628E3B700CCDD47 /* Progress.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -279,6 +293,8 @@
 				FA5CED8B25E968220089B31F /* AnyPublisherExtensions.swift */,
 				FAAF7E2A25F8EE0F00CBDBF0 /* URLExtensions.swift */,
 				FAC04B112603A73000DBB692 /* SCNVector3Extensions.swift */,
+				FA64CD1926285CF300CCDD47 /* UIColorExtensions.swift */,
+				FA64CD1C2628CEE100CCDD47 /* ARViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -333,6 +349,7 @@
 		FA36209A25CC88D300DFE70E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				FA64CD292629A47200CCDD47 /* ARScanner */,
 				FAC04B452604C48E00DBB692 /* Onboarding */,
 				FAC04B0526038B0F00DBB692 /* ARDrawingSection */,
 				FA2656BB25E695660025ACB1 /* DroneARView */,
@@ -363,6 +380,7 @@
 				FA7E8E6725EFCAF400F3D345 /* NavBar.swift */,
 				FAAF7E0425F7BD2400CBDBF0 /* ProgressBar.swift */,
 				FAAF7E2725F8EA1400CBDBF0 /* ImageFromFile.swift */,
+				FA64CD1F2628D66700CCDD47 /* TakeSnapshotButton.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -373,6 +391,7 @@
 				FA3F72B72608F25C00F3004F /* SectionDetailBase */,
 				FAA5C26525DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift */,
 				FA5280B92609476600EEBE40 /* BaseViewController.swift */,
+				FA64CD252628EDEA00CCDD47 /* BaseViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -424,6 +443,13 @@
 				FA43319625F18F39008D8AC2 /* MaskFittingViewController.swift */,
 			);
 			path = MaskFitting;
+			sourceTree = "<group>";
+		};
+		FA64CD292629A47200CCDD47 /* ARScanner */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ARScanner;
 			sourceTree = "<group>";
 		};
 		FA6B3A5225D1506D00B0C3C2 /* Menu */ = {
@@ -637,9 +663,11 @@
 				FA2656E125E6D5550025ACB1 /* Joystick.swift in Sources */,
 				FAA5C23A25DEE98B00BD1B1E /* ArrayExtensions.swift in Sources */,
 				FAA5C26D25E043B300BD1B1E /* HealthSectionView.swift in Sources */,
+				FA64CD262628EDEA00CCDD47 /* BaseViewModel.swift in Sources */,
 				FAD3B1E325D1EAC700708AE9 /* MenuItemData.swift in Sources */,
 				FA3620A525CC8B0F00DFE70E /* StringExtensions.swift in Sources */,
 				FA36209D25CC89A700DFE70E /* StringResources.swift in Sources */,
+				FA64CD202628D66700CCDD47 /* TakeSnapshotButton.swift in Sources */,
 				FAA9C89525CD5E8E005BA9EE /* ComplexDescriptionItem.swift in Sources */,
 				FA7E8E6025EFB97300F3D345 /* GeneralARViewController.swift in Sources */,
 				FAC04B472604C4C500DBB692 /* OnboardingViewController.swift in Sources */,
@@ -668,8 +696,10 @@
 				FAA9C89925CD5E8E005BA9EE /* Mask.swift in Sources */,
 				FAAF7E2825F8EA1400CBDBF0 /* ImageFromFile.swift in Sources */,
 				FAA9C89325CD5E8E005BA9EE /* ComplexDescription.swift in Sources */,
+				FA64CD1D2628CEE100CCDD47 /* ARViewExtensions.swift in Sources */,
+				FA66CF412625E87D003A5286 /* PageDialogService.swift in Sources */,
 				FAA9C89825CD5E8E005BA9EE /* VideoData.swift in Sources */,
-				FA45B97625E7C263005CBC38 /* ColationManager.swift in Sources */,
+				FA45B97625E7C263005CBC38 /* LocationManager.swift in Sources */,
 				FA5A54EF25E573060023E448 /* MaskFittingViewModel.swift in Sources */,
 				FA43319725F18F39008D8AC2 /* MaskFittingViewController.swift in Sources */,
 				FAC04B0B2603962300DBB692 /* ARDrawingViewController.swift in Sources */,
@@ -705,7 +735,9 @@
 				FA8A87CC25E4339A00D1BBE3 /* GeneralARViewModel.swift in Sources */,
 				FAAF7E3525F945F600CBDBF0 /* Constants.swift in Sources */,
 				FA10605625DD9930007E6898 /* UIScreen.swift in Sources */,
+				FA64CD232628E3B700CCDD47 /* Progress.swift in Sources */,
 				FA2656E425E6D6FA0025ACB1 /* JoystickDirection.swift in Sources */,
+				FA64CD1A26285CF300CCDD47 /* UIColorExtensions.swift in Sources */,
 				FA4FE01625CC4C4900D1EFC6 /* URLRequestBuilder.swift in Sources */,
 				FAA9C89425CD5E8E005BA9EE /* FileData.swift in Sources */,
 				FAA9C89625CD5E8E005BA9EE /* Environment.swift in Sources */,

@@ -14,7 +14,6 @@ import Combine
 
 class MaskFittingViewController: BaseViewController, ARSCNViewDelegate {
     var viewModel: MaskFittingViewModel
-    var cancellables = Set<AnyCancellable>()
     var maskFittingView: ARSCNView
     
     private var faceNode = SCNNode()

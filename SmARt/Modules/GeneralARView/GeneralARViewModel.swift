@@ -10,16 +10,28 @@ import Combine
 import SwiftUI
 import RealityKit
 
-class GeneralARViewModel: ObservableObject {
+class GeneralARViewModel: BaseViewModel, ObservableObject {
     @Published var object3DButtons: [Object3DButton] = []
-    @Published var current3DObjectId: String
+    @Published var current3DObjectId: String = .empty
     @Published var augmentedObjectType = AugmentedObjectType.object3D
     
     init(object3DIds: [String], augmentedObjectType: AugmentedObjectType) {
+        super.init()
+        
+        downloadMediaContent(object3DIds, augmentedObjectType)
+        
         self.augmentedObjectType = augmentedObjectType
         current3DObjectId = object3DIds.first ?? .empty
         
         createObject3DButtons(object3DIds)
+    }
+    
+    private func downloadMediaContent(_ object3DIds: [String], _ augmentedObjectType: AugmentedObjectType) {
+        let baseUrl = augmentedObjectType == .object3D ? ApiConstants.modelsUrl : ApiConstants.videosUrl
+        let files = object3DIds.map { FileData(id: $0,
+                                   url: baseUrl + $0,
+                                   fileExtension: augmentedObjectType == .object3D ? "usdz" : "mp4") }
+        performFilesLoading(files: files)
     }
     
     private func createObject3DButtons(_ object3DIds: [String]) {

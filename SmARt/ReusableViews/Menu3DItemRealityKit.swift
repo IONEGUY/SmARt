@@ -63,13 +63,13 @@ class Menu3DItem: Entity {
         let sectionName =
             UILabel(frame: CGRect(x: 200, y: 10, width: 200, height: 25))
         sectionName.font = .systemFont(ofSize: 22, weight: .bold)
-        sectionName.textColor = .blue
+        sectionName.textColor = UIColor(hex: 0x0983FD)
         sectionName.text = name
 
         let sectionDescription =
             UILabel(frame: CGRect(x: 200, y: 40, width: 180, height: 40))
         sectionDescription.font = .systemFont(ofSize: 16, weight: .semibold)
-        sectionDescription.textColor = .gray
+        sectionDescription.textColor = .white
         sectionDescription.text = description
         sectionDescription.lineBreakMode = .byWordWrapping
         sectionDescription.numberOfLines = 0

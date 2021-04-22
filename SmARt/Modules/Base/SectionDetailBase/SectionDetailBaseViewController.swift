@@ -13,7 +13,6 @@ import Combine
 
 class SectionDetailBaseViewController: BaseViewController {
     var viewModel: SectionDetailBaseViewModel
-    var cancellables = Set<AnyCancellable>()
     
     init(viewModel: SectionDetailBaseViewModel) {
         self.viewModel = viewModel

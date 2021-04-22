@@ -12,13 +12,10 @@ import RealityKit
 import MapKit
 import CoreLocation
 
-class DroneARViewModel: ObservableObject {
+class DroneARViewModel: GeneralARViewModel {
     private var cancellabes = Set<AnyCancellable>()
     private let translationSpeed: Float = 0.03
     private let rotationSpeed: Float = 1
-    
-    @Published var droneModelId = String.empty
-    @Published var objectType = AugmentedObjectType.object3D
     
     @Published var leftJoystickAction: (JoystickDirection) -> Void = {_ in}
     @Published var rightJoystickAction: (JoystickDirection) -> Void = {_ in}
@@ -26,8 +23,8 @@ class DroneARViewModel: ObservableObject {
     @Published var objectTransform = Transform()
     
     init(droneModelId: String) {
-        self.droneModelId = droneModelId
-        
+        super.init(object3DIds: [droneModelId], augmentedObjectType: .object3D)
+
         leftJoystickAction = { [unowned self] in
             var transform = objectTransform
             var rotationAngle = transform.rotation.angle

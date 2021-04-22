@@ -11,24 +11,9 @@ import Combine
 import RealityKit
 import SwiftUI
 
-class DroneARViewController: BaseViewController, ExtendedRealityKitViewDelegate {
-    var viewModel: DroneARViewModel
-    
-    private var cancellabes = Set<AnyCancellable>()
+class DroneARViewController: GeneralARViewController<DroneARViewModel> {
     private var drone = ModelEntity()
-    private var arView: ExtendedRealityKitView
-    
-    init(viewModel: DroneARViewModel) {
-        self.viewModel = viewModel
-        
-        arView = ExtendedRealityKitView.shared
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     override var shouldAutorotate: Bool {
         return false
     }
@@ -46,9 +31,9 @@ class DroneARViewController: BaseViewController, ExtendedRealityKitViewDelegate 
         
         addJoysticksBar()
         
-        viewModel.$objectTransform.sink { [unowned self] in
-            drone.transform = $0
-        }.store(in: &cancellabes)
+        viewModel.$objectTransform
+            .sink { [unowned self] in drone.transform = $0 }
+            .store(in: &cancellables)
     }
     
     private func setOrientation(to orientation: UIInterfaceOrientation) {
@@ -62,35 +47,19 @@ class DroneARViewController: BaseViewController, ExtendedRealityKitViewDelegate 
         
         setOrientation(to: UIInterfaceOrientation.landscapeRight)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        view.insertSubview(arView, at: 0)
-        arView.fillSuperview()
-        arView.delegate = self
-    }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        arView.removeGroup(withName: Self.typeName)
-        arView.removeFromSuperview()
-        
+
         setOrientation(to: UIInterfaceOrientation.portrait)
     }
-    
-    func doOnTap(_ arView: ExtendedRealityKitView, _ transform: simd_float4x4) {
-        arView.append3DModel(viewModel.droneModelId, transform, groupName: Self.typeName)
-            .sink { [unowned self] in
-                $0.transform.rotation = simd_quatf(angle: .pi, axis: [0,1,0])
-                drone = $0
-                viewModel.objectTransform = $0.transform
-            }.store(in: &cancellabes)
+
+    override func handle3DObjectAdded(modelEntity: ModelEntity) {
+        modelEntity.transform.rotation = simd_quatf(angle: .pi, axis: [0,1,0])
+        drone = modelEntity
+        viewModel.objectTransform = modelEntity.transform
     }
-    
-    func entitySelected(_ entity: Entity) {}
-    
+        
     private func addJoysticksBar() {
         let joysticksBar = UIHostingController(rootView:
             JoysticksWithMapView(leftJoystickAction: viewModel.leftJoystickAction,

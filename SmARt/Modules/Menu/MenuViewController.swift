@@ -11,13 +11,14 @@ import UIKit
 import SwiftUI
 import Combine
 
-class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
+class MenuViewController: BaseViewController, ExtendedRealityKitViewDelegate {
+    let menuYOffset: Float = 0.8
+    let menuItemsSpacing: Float = 0.25
+    
     private var viewModel: MenuViewModel
     private var menuAdded = false
     private var arView: ExtendedRealityKitView
-    private var cancellables = Set<AnyCancellable>()
-    private var loadingView = LoadingViewWithProgressBar()
-    private var loadingViewContainer = UIView()
+    override var isNavigationBarVisible: Bool { return false }
     
     private let touchOnScreenNotification: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "touch_on_screen"))
@@ -39,35 +40,10 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configueTouchOnScreenNotification()
-        
-        viewModel.contentLoadingProgress
-            .dropFirst()
-            .first()
-            .receive(on: RunLoop.main)
-            .sink { [unowned self] _ in addLoadingView() }
+
+        viewModel.$contentLoadingProgress
+            .assign(to: \.loadingProgress, on: self)
             .store(in: &cancellables)
-        
-        viewModel.contentLoadingProgress
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { [unowned self] _ in loadingViewContainer.removeFromSuperview() },
-                  receiveValue: { [unowned self] in loadingView.updateProgress(CGFloat($0)) })
-            .store(in: &cancellables)
-    }
-    
-    private func addLoadingView() {
-        loadingView.text = "Fetching Media Content"
-        loadingViewContainer = UIView()
-        loadingViewContainer.backgroundColor = UIColor.black.withAlphaComponent(0.9)
-        view.addSubview(loadingViewContainer)
-        loadingViewContainer.fillSuperview()
-        loadingViewContainer.addSubview(loadingView)
-        
-        loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,13 +54,15 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
         view.insertSubview(arView, at: 0)
         arView.fillSuperview()
         arView.delegate = self
+        configueTouchOnScreenNotification()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        arView.hideGroup(withName: Self.typeName)
+        arView.removeGroup(withName: Self.typeName)
         arView.removeFromSuperview()
+        menuAdded = false
     }
         
     func doOnTap(_ sender: ExtendedRealityKitView, _ transform: simd_float4x4) {
@@ -103,9 +81,10 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
     }
     
     private func populateARView(_ arView: ExtendedRealityKitView, _ transform: simd_float4x4) {
-        if viewModel.menuItems.isEmpty || menuAdded { return }
-        menuAdded.toggle()
-        removeTouchOnScreenNotificationIfNeeded()
+        if viewModel.menuItems.count == 0 || menuAdded { return }
+        
+        menuAdded = true
+        hideTouchOnScreenNotificationIfNeeded()
         
         var menuItemEntities: [Menu3DItem] = []
         let dispatchGroup = DispatchGroup()
@@ -115,9 +94,9 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
             dispatchGroup.enter()
             
             let menuItemEntity = Menu3DItem()
-            menuItemEntity.initData(menuItems[index]) {
+            menuItemEntity.initData(menuItems[index]) { [unowned self] in
                 menuItemEntity.transform = Transform(matrix: transform)
-                menuItemEntity.position.y += (Float(index) * 0.2) + (Float(index) * 0.04) + 0.1
+                menuItemEntity.position.y += (Float(index) * menuItemsSpacing) - menuYOffset
                 menuItemEntities.append(menuItemEntity)
                 dispatchGroup.leave()
             }
@@ -133,6 +112,10 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
     }
     
     private func configueTouchOnScreenNotification() {
+        if touchOnScreenNotification.superview != nil {
+            touchOnScreenNotification.isHidden = false
+        }
+        
         view.addSubview(touchOnScreenNotification)
         touchOnScreenNotification.translatesAutoresizingMaskIntoConstraints = false
         touchOnScreenNotification.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -141,9 +124,9 @@ class MenuViewController: UIViewController, ExtendedRealityKitViewDelegate {
         touchOnScreenNotification.widthAnchor.constraint(equalToConstant: 155).isActive = true
     }
     
-    private func removeTouchOnScreenNotificationIfNeeded() {
+    private func hideTouchOnScreenNotificationIfNeeded() {
         if touchOnScreenNotification.superview != nil {
-            touchOnScreenNotification.removeFromSuperview()
+            touchOnScreenNotification.isHidden = true
         }
     }
 }

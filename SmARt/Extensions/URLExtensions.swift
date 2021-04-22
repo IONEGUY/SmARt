@@ -15,4 +15,9 @@ extension URL {
         else { fatalError("Cannot construct url") }
         return filePath
     }
+    
+    static func isFileExist(in directory: FileManager.SearchPathDirectory = .documentDirectory, withName name: String) -> Bool {
+        let url = constructFilePath(in: directory, withName: name)
+        return FileManager.default.fileExists(atPath: url.path)
+    }
 }

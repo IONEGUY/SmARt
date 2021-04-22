@@ -11,17 +11,15 @@ import RealityKit
 import Alamofire
 import Combine
 
-class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDelegate {
-    private let defaultZOffset: Float = 1.5
-    private let defaultYOffset: Float = 0.5
+class ExtendedRealityKitView: ARView, ARSessionDelegate {
+    private let defaultZOffset: Float = -1.5
     private let defaultContentScaleFactorMultiplier: CGFloat = 0.5
+    private let videoPlaneWidth: Float = 1
+    private let videoPlaneHeight: Float = 0.5
     
     private var cancellables = Set<AnyCancellable>()
-    private var resources: [Disposable] = []
-    private var cameraPlane = ModelEntity(mesh: .generatePlane(width: 0.05, height: 0.05),
-                                          materials: [SimpleMaterial(color: .clear,
-                                                                     roughness: 1.0,
-                                                                     isMetallic: true)])
+    private var disposables: [Disposable] = []
+    private var coachingOverlay = ARCoachingOverlayView()
     
     var delegate: ExtendedRealityKitViewDelegate?
     static var shared = ExtendedRealityKitView()
@@ -31,13 +29,11 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDe
         setupOptimizations()
         addGestureRecognizers()
         createLightingAnchor()
-        createCameraPoint()
-        addCoaching()
     }
     
     func releaseResources() {
-        resources.forEach { $0.dispose() }
-        resources = []
+        disposables.forEach { $0.dispose() }
+        disposables = []
     }
     
     func addToGroup(withName name: String, anchor: HasAnchoring) {
@@ -82,16 +78,17 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDe
             let url = URL.constructFilePath(withName: "\(id).mp4")
             
             let videoPlayer = AVPlayer(playerItem: AVPlayerItem(url: url))
-            resources.append(Disposable(dispose: { videoPlayer.pause() }))
+            disposables.append(Disposable(dispose: { videoPlayer.isMuted = true }))
 
-            let videoPlane = ModelEntity(mesh: .generatePlane(width: 1.6, height: 0.9),
+            let videoPlane = ModelEntity(mesh: .generatePlane(width: videoPlaneWidth,
+                                                              height: videoPlaneHeight),
                                          materials: [VideoMaterial(avPlayer: videoPlayer)])
-            
+            videoPlayer.play()
             addAnchorToARView(transform, videoPlane, id, groupName)
             
             observer.onNext(videoPlane)
+            observer.onComplete()
             
-            videoPlayer.play()
             return .init(dispose: {})
         }
     }
@@ -106,29 +103,13 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDe
                     addAnchorToARView(transform, model, id, groupName)
                     model.availableAnimations.forEach { model.playAnimation($0.repeat()) }
                     observer.onNext(model)
+                    observer.onComplete()
                 }
                 .store(in: &cancellables)
             return .init(dispose: {})
         }
     }
     
-    private func createCameraPoint() {
-        let cameraAnchor = AnchorEntity(.camera)
-        cameraPlane.name = "cameraPlane"
-        cameraPlane.generateCollisionShapes(recursive: true)
-        cameraAnchor.addChild(cameraPlane)
-        cameraAnchor.transform.translation.z -= defaultZOffset
-        scene.anchors.append(cameraAnchor)
-    }
-    
-    private func addCoaching() {
-        let coachingOverlay = ARCoachingOverlayView()
-        addSubview(coachingOverlay)
-        coachingOverlay.fillSuperview()
-        coachingOverlay.goal = .anyPlane
-        coachingOverlay.session = session
-        coachingOverlay.delegate = self
-    }
     private func getGroupAnchor(_ name: String) -> HasAnchoring? {
         return scene.anchors.first(where: { $0.name == name })
     }
@@ -160,20 +141,17 @@ class ExtendedRealityKitView: ARView, ARSessionDelegate, ARCoachingOverlayViewDe
     }
     
     @objc private func handleTapAction(_ sender: UITapGestureRecognizer) {
-        let centerHit = hitTest(center, mask: .all).first(where: { $0.entity.name == "cameraPlane" })
-        if let centerHit = centerHit,
-           let camera = session.currentFrame?.camera {
-            let cameraTransform = Transform(matrix: camera.transform)
-            var transform = Transform(scale: SIMD3<Float>(x: 1, y: 1, z: 1),
-                                      rotation: cameraTransform.rotation,
-                                      translation: centerHit.position)
-            transform.rotation = simd_quatf(angle: camera.eulerAngles.y, axis: SIMD3<Float>(0, 1, 0))
-            transform.translation.y -= defaultYOffset
+        if let currentFrame = session.currentFrame {
+            var translation = matrix_identity_float4x4
+            translation.columns.3.z = defaultZOffset
+            let transformMatrix = simd_mul(currentFrame.camera.transform, translation)
+            var transform = Transform(matrix: transformMatrix)
+            transform.rotation = simd_quatf(angle: currentFrame.camera.eulerAngles.y, axis: SIMD3<Float>(0, 1, 0))
             delegate?.doOnTap(self, transform.matrix)
         }
 
         let tapPoint = sender.location(in: self)
-        let hit = hitTest(tapPoint, mask: .all).first
+        let hit = hitTest(tapPoint).first
         if let tappedEntity = hit?.entity {
             delegate?.entitySelected(tappedEntity)
         }

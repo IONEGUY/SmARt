@@ -38,6 +38,7 @@ class ProgressBar: UIView {
     }
 
     private func setupLayers() {
+        backgroundColor = .gray
         layer.addSublayer(gradientLayer)
 
         gradientLayer.mask = progressLayer

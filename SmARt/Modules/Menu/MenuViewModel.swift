@@ -10,55 +10,62 @@ import Combine
 import Alamofire
 import SwiftUI
 import BackgroundTasks
+import ARKit
 
-class MenuViewModel: ObservableObject {
-    private var cancellableSet = Set<AnyCancellable>()
+class MenuViewModel: BaseViewModel, ObservableObject {
     private var progresses: [Float] = []
-    private var fileLoader = FileLoader()
     
-    @Published var sections = [Section]()
-    @Published var menuItems = [MenuItemData]()
+    var sections = [Section]()
+    var menuItems = [MenuItemData]()
     @Published var pushActive = false
-    @Published var onMenuItemSelected = PassthroughSubject<String, Never>()
-    @Published var section: Section?
-    @Published var contentLoadingProgress = PassthroughSubject<Float, Never>()
+    var onMenuItemSelected = PassthroughSubject<String, Never>()
+    var section: Section?
     
-    init() {
+    override init() {
+        super.init()
+        
         let getSectionsPublisher = MenuService(ApiErrorLogger()).getSections()
         
         getSectionsPublisher
             .filter(isAllowedToDownloadMediaContent)
-            .map(constructFilesForCaching)
-            .sink(receiveCompletion: {_ in}, receiveValue: performLoading)
-            .store(in: &cancellableSet)
-        
-        getSectionsPublisher
-            .flatMap(initMenuItems)
-            .sink {_ in} receiveValue: {_ in}
-            .store(in: &cancellableSet)
+            .map(\.sections)
+            .map(constructFilesForMenu)
+            .sink(receiveCompletion: {_ in}, receiveValue: performFilesLoading)
+            .store(in: &cancellables)
         
         getSectionsPublisher
             .map(\.sections)
-            .sink(receiveCompletion: {_ in},
-                  receiveValue: { [unowned self] in sections = $0 })
-            .store(in: &cancellableSet)
+            .sink {_ in}
+                receiveValue: { [unowned self] in initMenuItems($0) }
+            .store(in: &cancellables)
+        
+        $contentLoadingProgress
+            .sink(receiveCompletion: {_ in }, receiveValue: { (progress: Progress) in
+                switch progress {
+                case .finished: UserDefaults.standard.setValue(true, forKey: "isContentLoaded")
+                default: break       
+                }})
+            .store(in: &cancellables)
         
         onMenuItemSelected
             .sink { [unowned self] menuItemId in
                 section = sections.first { $0.id == menuItemId }
                 pushActive = true
             }
-            .store(in: &cancellableSet)
+            .store(in: &cancellables)
     }
     
-    private func initMenuItems(_ environment: EnvironmentOut) -> AnyPublisher<[MenuItemData], Never> {
-        AnyPublisher.create { [unowned self] observer in
-            menuItems = environment.sections.map { MenuItemData(
-                id: $0.id, logo3DId: $0.logo3d.id, sectionName: $0.menuName,
-                sectionDescription: $0.menuDescription) }
-            observer.onComplete()
-            return Disposable(dispose: {})
-        }
+    private func initMenuItems(_ section: [Section]) {
+        self.sections = section
+        menuItems = sections.compactMap {
+            if $0.typeSection == SectionType.smartRetail.rawValue && !ARFaceTrackingConfiguration.isSupported {
+                return nil
+            }
+            
+            return MenuItemData(id: $0.id,
+                                logo3DId: $0.logo3d.id,
+                                sectionName: $0.menuName,
+                                sectionDescription: $0.menuDescription) }
     }
 
     private func isAllowedToDownloadMediaContent(_ environment: EnvironmentOut) -> Bool {
@@ -74,42 +81,50 @@ class MenuViewModel: ObservableObject {
         return isVersionGreaterThatCurrent || !isContentLoaded
     }
     
-    private func performLoading(_ files: [FileProtocol]) {
-        fileLoader.progress
-            .sink(receiveCompletion: { [unowned self] _ in contentLoadingProgress.send(completion: .finished) },
-                  receiveValue: { [unowned self] in contentLoadingProgress.send($0)})
-            .store(in: &cancellableSet)
-        
-        contentLoadingProgress
-            .sink(receiveCompletion: { _ in UserDefaults.standard.setValue(true, forKey: "isContentLoaded") },
-                  receiveValue: {_ in})
-            .store(in: &cancellableSet)
-        
-        fileLoader.download(files: files)
+    override func performFilesLoading(files: [FileProtocol]) {
+        removeOutdatedMediaFiles()
+        super.performFilesLoading(files: files)
     }
     
-    private func constructFilesForCaching(_ environment: EnvironmentOut) -> [FileProtocol] {
-        let sections = environment.sections
+    private func removeOutdatedMediaFiles() {
+        let fileManager = FileManager()
+        constructAllMediaFiles(sections).forEach {
+            let fileUrl = URL.constructFilePath(in: .documentDirectory, withName: $0.nameWithExtension)
+            try? fileManager.removeItem(at: fileUrl)
+        }
+    }
+    
+    private func constructAllMediaFiles(_ sections: [Section]) -> [FileProtocol] {
         let objects3D = sections.compactMap(\.objects).flatMap { $0 }.compactMap(\.object3d)
         
+        let menuFiles = constructFilesForMenu(sections)
+        
+        //models
+        let object3DFiles = objects3D.compactMap(\.files).flatMap { $0 }
+        
+        //videos
+        let videos: [FileProtocol] = sections.compactMap(\.objects).flatMap { $0 }.compactMap(\.video)
+        
+        return [videos, object3DFiles, menuFiles].flatMap { $0 }
+    }
+    
+    private func constructFilesForMenu(_ sections: [Section]) -> [FileProtocol] {
+        let objects3D = sections.compactMap(\.objects).flatMap { $0 }.compactMap(\.object3d)
+        
+        //images
         let object3DImages = objects3D.compactMap(\.icon)
         let complexDescriptionImages: [FileProtocol] =
             sections.compactMap(\.complexDescription?.items).flatMap { $0 }.map(\.icon)
         let logo3dImages: [FileProtocol] = sections.map(\.logo2d)
-        
-        let logo3dFiles: [FileProtocol] = sections.map(\.logo3d)
-        let object3DFiles = objects3D.compactMap(\.files).flatMap { $0 }
-        
         let videoImages: [FileProtocol] =
             sections.compactMap(\.objects).flatMap { $0 }.compactMap(\.video).compactMap { $0.icon }
-        
-        let videos: [FileProtocol] =
-            sections.compactMap(\.objects).flatMap { $0 }.compactMap(\.video)
-        
         let masks: [FileProtocol] =
             sections.compactMap(\.objects).flatMap { $0 }.compactMap(\.mask).compactMap { $0.icon }
         
-        return [videos, object3DFiles, logo3dFiles, object3DImages, videoImages, logo3dImages, masks,
+        //models
+        let logo3dFiles: [FileProtocol] = sections.map(\.logo3d)
+        
+        return [logo3dFiles, object3DImages, videoImages, logo3dImages, masks,
                 complexDescriptionImages].flatMap { $0 }
     }
 }

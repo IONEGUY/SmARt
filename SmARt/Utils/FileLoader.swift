@@ -15,12 +15,12 @@ class FileLoader: NSObject, URLSessionDownloadDelegate {
     private var files: [String: FileProtocol] = [:]
     private var lock = NSLock()
     
-    var progress = PassthroughSubject<Float, Never>()
+    var progress = PassthroughSubject<Progress, Never>()
     
     override init() {
         super.init()
         
-        let config = URLSessionConfiguration.background(withIdentifier: "\(Bundle.main.bundleIdentifier!).background")
+        let config = URLSessionConfiguration.background(withIdentifier: "\(UUID().uuidString).background")
         config.timeoutIntervalForRequest = 1000
         config.timeoutIntervalForResource = 1000
         config.allowsCellularAccess = true
@@ -59,6 +59,7 @@ class FileLoader: NSObject, URLSessionDownloadDelegate {
     }
 
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if error == nil { return }
         if let file = files[task.originalRequest?.url?.absoluteString ?? .empty] {
             refreshProgress(file.url, 1)
         }
@@ -66,12 +67,19 @@ class FileLoader: NSObject, URLSessionDownloadDelegate {
     
     func refreshProgress(_ url: String, _ progressForTask: Float) {
         lock.lock()
-        taskProgresses[url] = progressForTask
+        
         let taskProgressesCount = Float(taskProgresses.values.count == 0 ? 1 : taskProgresses.values.count)
         let progress = Float(taskProgresses.values.reduce(0, +)) / taskProgressesCount
-        progress >= Constants.completeProgressValue
-            ? self.progress.send(completion: .finished)
-            : self.progress.send(progress)
+        if progress == 0 { self.progress.send(.started) }
+        taskProgresses[url] = progressForTask
+
+        if progress >= Constants.completeProgressValue {
+            self.progress.send(.finished)
+            self.progress.send(completion: .finished)
+        } else {
+            self.progress.send(.value(progress))
+        }
+
         lock.unlock()
     }
     

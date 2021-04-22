@@ -11,7 +11,7 @@ import SwiftUI
 import SceneKit
 import ARKit
 
-class ARDrawingViewController: BaseViewController, ARSCNViewDelegate, ARCoachingOverlayViewDelegate {
+class ARDrawingViewController: BaseViewController, ARSCNViewDelegate {
     private lazy var drawingPlaneNode = SCNNode()
     private lazy var sceneView = ARSCNView()
     private var previousPoint: SCNVector3?
@@ -21,7 +21,7 @@ class ARDrawingViewController: BaseViewController, ARSCNViewDelegate, ARCoaching
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +30,6 @@ class ARDrawingViewController: BaseViewController, ARSCNViewDelegate, ARCoaching
         configureSceneView()
         configueTouchAndDrawNotification()
         configueDrawingPlaneNode()
-        addCoaching()
         
         sceneView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture)))
     }
@@ -42,15 +41,6 @@ class ARDrawingViewController: BaseViewController, ARSCNViewDelegate, ARCoaching
         ExtendedRealityKitView.shared.configueARSession()
     }
 
-    private func addCoaching() {
-        let coachingOverlay = ARCoachingOverlayView()
-        view.addSubview(coachingOverlay)
-        coachingOverlay.fillSuperview()
-        coachingOverlay.goal = .horizontalPlane
-        coachingOverlay.session = sceneView.session
-        coachingOverlay.delegate = self
-    }
-    
     private func configureSceneView() {
         sceneView.delegate = self
         let scene = SCNScene(named: "art.scnassets/world.scn")!

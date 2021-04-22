@@ -16,5 +16,6 @@ enum SectionType: String {
     smartRoom = "TYPE_SMARTROOM",
     smartRetail = "TYPE_SMARTRETAIL",
     smartTourism = "TYPE_SMARTTOURISM",
-    arDrawing = "TYPE_DRAWING"
+    arDrawing = "TYPE_DRAWING",
+    arScanner = "TYPE_SCANNER"
 }
