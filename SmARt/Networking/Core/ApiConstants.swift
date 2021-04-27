@@ -13,10 +13,19 @@ struct ApiConstants {
     static let menuPath = "api/open/environment/global_ios"
     static let videosUrl = "\(baseUrl)api-video/open/video/download/"
     static let modelsUrl = "\(baseUrl)api-files/open/file/download/"
-
-    struct Parameters {
-
-    }
+    static let imagesUrl = "\(baseUrl)api-image/open/image/download/"
+    
+    static let fileUrls: [AugmentedObjectType : String] = [
+        .image: ApiConstants.imagesUrl,
+        .object3D: ApiConstants.modelsUrl,
+        .video: ApiConstants.videosUrl
+    ]
+    
+    static let fileExtensions: [AugmentedObjectType : String] = [
+        .image: "png",
+        .object3D: "usdz",
+        .video: "mp4"
+    ]
 
     enum HttpHeaderField: String {
         case authentication = "Authorization"

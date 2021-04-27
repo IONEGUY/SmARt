@@ -11,20 +11,20 @@ import UIKit
 import SwiftUI
 import Combine
 
-class MenuViewController: BaseViewController, ExtendedRealityKitViewDelegate {
-    let menuYOffset: Float = 0.8
+class MenuViewController: BaseViewController, WorldTrackingRealityKitViewDelegate {
+    let menuYOffset: Float = 1
     let menuItemsSpacing: Float = 0.25
     
     private var viewModel: MenuViewModel
     private var menuAdded = false
-    private var arView: ExtendedRealityKitView
+    private var arView: WorldTrackingRealityKitView
     override var isNavigationBarVisible: Bool { return false }
 
     init(viewModel: MenuViewModel) {
         self.viewModel = viewModel
         
-        ExtendedRealityKitView.shared.setup()
-        arView = ExtendedRealityKitView.shared
+        WorldTrackingRealityKitView.shared.setup()
+        arView = WorldTrackingRealityKitView.shared
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,7 +60,7 @@ class MenuViewController: BaseViewController, ExtendedRealityKitViewDelegate {
         menuAdded = false
     }
         
-    func doOnTap(_ sender: ExtendedRealityKitView, _ transform: simd_float4x4) {
+    func doOnTap(_ sender: WorldTrackingRealityKitView, _ transform: simd_float4x4) {
         populateARView(sender, transform)
     }
     
@@ -70,12 +70,12 @@ class MenuViewController: BaseViewController, ExtendedRealityKitViewDelegate {
         else { return }
         
         let vc = SectionDetailBaseViewController(
-            viewModel: SectionDetailBaseViewModel(section: section))
+            viewModel: SectionDetailBaseViewModel(currentSection: section, allSections: viewModel.sections))
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: false, completion: nil)
     }
     
-    private func populateARView(_ arView: ExtendedRealityKitView, _ transform: simd_float4x4) {
+    private func populateARView(_ arView: WorldTrackingRealityKitView, _ transform: simd_float4x4) {
         if viewModel.menuItems.count == 0 || menuAdded { return }
         
         menuAdded = true

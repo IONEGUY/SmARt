@@ -7,14 +7,20 @@
 
 import Foundation
 
-class Object3DButton: Identifiable {
-    init(image: String, isSelected: Bool = false) {
-        self.image = image
+class SelectableButton {
+    init(unselectedimage: String, selectedImage: String = .empty, isSelected: Bool = false) {
+        self.unselectedimage = unselectedimage
+        self.selectedImage = selectedImage
         self.isSelected = isSelected
     }
     
-    var id = UUID()
-    var image: String = .empty
+    var currentImage: String { isSelected ? selectedImage : unselectedimage }
+    var unselectedimage: String = .empty
+    var selectedImage: String = .empty
     var isSelected: Bool = false
     var action: () -> Void = {}
+    
+    func toogleSelection() {
+        isSelected.toggle()
+    }
 }

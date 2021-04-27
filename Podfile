@@ -8,5 +8,6 @@ target 'SmARt' do
   pod 'Swinject'
   pod 'SwinjectAutoregistration'
   pod 'AppCenter'
+  pod 'Closures'
 
 end

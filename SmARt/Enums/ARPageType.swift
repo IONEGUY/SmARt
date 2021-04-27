@@ -12,5 +12,7 @@ enum ARPageType {
     maskFittingPage,
     generalARViewPage,
     dronePage,
-    arDrawingPage
+    arDrawingPage,
+    arScannerPage,
+    smartRoom
 }

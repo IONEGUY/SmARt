@@ -12,7 +12,7 @@
 		FA10604025DD7629007E6898 /* MenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10603F25DD7629007E6898 /* MenuItemType.swift */; };
 		FA10604725DD8796007E6898 /* SectionDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10604625DD8796007E6898 /* SectionDetailBaseView.swift */; };
 		FA10605625DD9930007E6898 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10605525DD9930007E6898 /* UIScreen.swift */; };
-		FA2273FE25E454E300DA6FCB /* ExtendedRealityKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */; };
+		FA2273FE25E454E300DA6FCB /* WorldTrackingRealityKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2273FD25E454E300DA6FCB /* WorldTrackingRealityKitView.swift */; };
 		FA2656B525E679D60025ACB1 /* SmartTourismView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656B425E679D60025ACB1 /* SmartTourismView.swift */; };
 		FA2656CB25E695930025ACB1 /* DroneARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656CA25E695930025ACB1 /* DroneARViewModel.swift */; };
 		FA2656E125E6D5550025ACB1 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2656E025E6D5550025ACB1 /* Joystick.swift */; };
@@ -33,6 +33,9 @@
 		FA45B97D25E7CE7A005CBC38 /* TransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B97C25E7CE7A005CBC38 /* TransformType.swift */; };
 		FA45B98125E7DFCE005CBC38 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B98025E7DFCE005CBC38 /* DoubleExtensions.swift */; };
 		FA45B98425E80349005CBC38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45B98325E80349005CBC38 /* AppDelegate.swift */; };
+		FA496163263748A900EE967E /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA496162263748A900EE967E /* UIApplicationExtensions.swift */; };
+		FA4961692638247F00EE967E /* SmartRoomARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4961682638247F00EE967E /* SmartRoomARViewController.swift */; };
+		FA49616D263824C700EE967E /* SmartRoomARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA49616C263824C700EE967E /* SmartRoomARViewModel.swift */; };
 		FA4FE01625CC4C4900D1EFC6 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE01025CC4C4900D1EFC6 /* URLRequestBuilder.swift */; };
 		FA4FE01725CC4C4900D1EFC6 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE01125CC4C4900D1EFC6 /* ApiConstants.swift */; };
 		FA4FE01825CC4C4900D1EFC6 /* BaseApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4FE01225CC4C4900D1EFC6 /* BaseApiService.swift */; };
@@ -62,6 +65,8 @@
 		FA8A87CC25E4339A00D1BBE3 /* GeneralARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CB25E4339A00D1BBE3 /* GeneralARViewModel.swift */; };
 		FA8A87CF25E4349C00D1BBE3 /* Object3DButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */; };
 		FA93BEAF26319B94009365A9 /* InteractionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93BEAE26319B94009365A9 /* InteractionMessage.swift */; };
+		FA93BEB22631B62B009365A9 /* ARScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93BEB12631B62B009365A9 /* ARScannerViewController.swift */; };
+		FA93BEB52631B969009365A9 /* ARScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93BEB42631B969009365A9 /* ARScannerViewModel.swift */; };
 		FAA5C22D25DED96F00BD1B1E /* SwiftUI Color Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */; };
 		FAA5C23025DEE46D00BD1B1E /* GetStartedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */; };
 		FAA5C23325DEE72600BD1B1E /* SectionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA5C23225DEE72600BD1B1E /* SectionDescription.swift */; };
@@ -84,7 +89,7 @@
 		FAAF7E2225F817A400CBDBF0 /* FileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E2125F817A400CBDBF0 /* FileProtocol.swift */; };
 		FAAF7E2825F8EA1400CBDBF0 /* ImageFromFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E2725F8EA1400CBDBF0 /* ImageFromFile.swift */; };
 		FAAF7E2B25F8EE0F00CBDBF0 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E2A25F8EE0F00CBDBF0 /* URLExtensions.swift */; };
-		FAAF7E3125F9326D00CBDBF0 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E3025F9326D00CBDBF0 /* UIImageViewExtensions.swift */; };
+		FAAF7E3125F9326D00CBDBF0 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E3025F9326D00CBDBF0 /* UIImageExtensions.swift */; };
 		FAAF7E3525F945F600CBDBF0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E3425F945F600CBDBF0 /* Constants.swift */; };
 		FAAF7E3E25FAA1F000CBDBF0 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF7E3D25FAA1F000CBDBF0 /* FileLoader.swift */; };
 		FAC04B0726038C7C00DBB692 /* SimpleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC04B0626038C7C00DBB692 /* SimpleSectionView.swift */; };
@@ -110,7 +115,7 @@
 		FA10603F25DD7629007E6898 /* MenuItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemType.swift; sourceTree = "<group>"; };
 		FA10604625DD8796007E6898 /* SectionDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailBaseView.swift; sourceTree = "<group>"; };
 		FA10605525DD9930007E6898 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
-		FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedRealityKitView.swift; sourceTree = "<group>"; };
+		FA2273FD25E454E300DA6FCB /* WorldTrackingRealityKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTrackingRealityKitView.swift; sourceTree = "<group>"; };
 		FA2656B425E679D60025ACB1 /* SmartTourismView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartTourismView.swift; sourceTree = "<group>"; };
 		FA2656CA25E695930025ACB1 /* DroneARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneARViewModel.swift; sourceTree = "<group>"; };
 		FA2656E025E6D5550025ACB1 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
@@ -131,6 +136,9 @@
 		FA45B97C25E7CE7A005CBC38 /* TransformType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformType.swift; sourceTree = "<group>"; };
 		FA45B98025E7DFCE005CBC38 /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
 		FA45B98325E80349005CBC38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA496162263748A900EE967E /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
+		FA4961682638247F00EE967E /* SmartRoomARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRoomARViewController.swift; sourceTree = "<group>"; };
+		FA49616C263824C700EE967E /* SmartRoomARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRoomARViewModel.swift; sourceTree = "<group>"; };
 		FA4FE01025CC4C4900D1EFC6 /* URLRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		FA4FE01125CC4C4900D1EFC6 /* ApiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		FA4FE01225CC4C4900D1EFC6 /* BaseApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiService.swift; sourceTree = "<group>"; };
@@ -162,6 +170,8 @@
 		FA8A87CB25E4339A00D1BBE3 /* GeneralARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralARViewModel.swift; sourceTree = "<group>"; };
 		FA8A87CE25E4349C00D1BBE3 /* Object3DButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DButton.swift; sourceTree = "<group>"; };
 		FA93BEAE26319B94009365A9 /* InteractionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionMessage.swift; sourceTree = "<group>"; };
+		FA93BEB12631B62B009365A9 /* ARScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScannerViewController.swift; sourceTree = "<group>"; };
+		FA93BEB42631B969009365A9 /* ARScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScannerViewModel.swift; sourceTree = "<group>"; };
 		FAA5C22C25DED96F00BD1B1E /* SwiftUI Color Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI Color Extensions.swift"; sourceTree = "<group>"; };
 		FAA5C22F25DEE46D00BD1B1E /* GetStartedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedButton.swift; sourceTree = "<group>"; };
 		FAA5C23225DEE72600BD1B1E /* SectionDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDescription.swift; sourceTree = "<group>"; };
@@ -184,7 +194,7 @@
 		FAAF7E2125F817A400CBDBF0 /* FileProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProtocol.swift; sourceTree = "<group>"; };
 		FAAF7E2725F8EA1400CBDBF0 /* ImageFromFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFromFile.swift; sourceTree = "<group>"; };
 		FAAF7E2A25F8EE0F00CBDBF0 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
-		FAAF7E3025F9326D00CBDBF0 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		FAAF7E3025F9326D00CBDBF0 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		FAAF7E3425F945F600CBDBF0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FAAF7E3D25FAA1F000CBDBF0 /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 		FAC04B0626038C7C00DBB692 /* SimpleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSectionView.swift; sourceTree = "<group>"; };
@@ -231,12 +241,12 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FA10605025DD8E37007E6898 /* HealthSection */ = {
+		FA10605025DD8E37007E6898 /* Health */ = {
 			isa = PBXGroup;
 			children = (
 				FAA5C26C25E043B300BD1B1E /* HealthSectionView.swift */,
 			);
-			path = HealthSection;
+			path = Health;
 			sourceTree = "<group>";
 		};
 		FA2656B325E679B90025ACB1 /* SmartTourism */ = {
@@ -247,18 +257,19 @@
 			path = SmartTourism;
 			sourceTree = "<group>";
 		};
-		FA2656BB25E695660025ACB1 /* DroneARView */ = {
+		FA2656BB25E695660025ACB1 /* Drone */ = {
 			isa = PBXGroup;
 			children = (
 				FA2656CA25E695930025ACB1 /* DroneARViewModel.swift */,
 				FA5CED8125E95A650089B31F /* DroneARViewController.swift */,
 			);
-			path = DroneARView;
+			path = Drone;
 			sourceTree = "<group>";
 		};
 		FA36209125CC881200DFE70E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FA496162263748A900EE967E /* UIApplicationExtensions.swift */,
 				FA66CF402625E87D003A5286 /* PageDialogService.swift */,
 				FA3620A025CC8A8E00DFE70E /* DIContainerConfigurator.swift */,
 				FA45B97525E7C263005CBC38 /* LocationManager.swift */,
@@ -284,7 +295,7 @@
 		FA36209325CC885000DFE70E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FAAF7E3025F9326D00CBDBF0 /* UIImageViewExtensions.swift */,
+				FAAF7E3025F9326D00CBDBF0 /* UIImageExtensions.swift */,
 				FAD3B21225D2D06300708AE9 /* UIViewExtensions.swift */,
 				FA3620A425CC8B0F00DFE70E /* NSObjectExtensions.swift */,
 				FA3620A325CC8B0F00DFE70E /* StringExtensions.swift */,
@@ -351,14 +362,8 @@
 		FA36209A25CC88D300DFE70E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				FA64CD292629A47200CCDD47 /* ARScanner */,
+				FA49615D2636E15300EE967E /* Sections */,
 				FAC04B452604C48E00DBB692 /* Onboarding */,
-				FAC04B0526038B0F00DBB692 /* ARDrawingSection */,
-				FA2656BB25E695660025ACB1 /* DroneARView */,
-				FA2656B325E679B90025ACB1 /* SmartTourism */,
-				FA5A54E525E5708E0023E448 /* MaskFitting */,
-				FA8A87C625E427BE00D1BBE3 /* GeneralARView */,
-				FA10605025DD8E37007E6898 /* HealthSection */,
 				FA6B3A5225D1506D00B0C3C2 /* Menu */,
 				FA3620A925CC8D6800DFE70E /* Base */,
 			);
@@ -372,7 +377,7 @@
 				FAA5C23225DEE72600BD1B1E /* SectionDescription.swift */,
 				FAA5C23625DEE8C100BD1B1E /* ComplexDescriptionView.swift */,
 				FAA5C26925DFC88F00BD1B1E /* SectionObjectsView.swift */,
-				FA2273FD25E454E300DA6FCB /* ExtendedRealityKitView.swift */,
+				FA2273FD25E454E300DA6FCB /* WorldTrackingRealityKitView.swift */,
 				FA5A54F125E578300023E448 /* MaskList.swift */,
 				FA2656E025E6D5550025ACB1 /* Joystick.swift */,
 				FA2656E625E6D9DD0025ACB1 /* JoystickButton.swift */,
@@ -391,6 +396,7 @@
 		FA3620A925CC8D6800DFE70E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				FA8A87C625E427BE00D1BBE3 /* GeneralARView */,
 				FA3F72B72608F25C00F3004F /* SectionDetailBase */,
 				FAA5C26525DFB65600BD1B1E /* SectionWithComplexDescriptionView.swift */,
 				FA5280B92609476600EEBE40 /* BaseViewController.swift */,
@@ -408,6 +414,29 @@
 				FA5F088425F008E2004CF5D0 /* SectionDetailBaseViewController.swift */,
 			);
 			path = SectionDetailBase;
+			sourceTree = "<group>";
+		};
+		FA49615D2636E15300EE967E /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				FA496166263823FD00EE967E /* SmartRoom */,
+				FA10605025DD8E37007E6898 /* Health */,
+				FA5A54E525E5708E0023E448 /* SmartRetail */,
+				FA2656B325E679B90025ACB1 /* SmartTourism */,
+				FA2656BB25E695660025ACB1 /* Drone */,
+				FAC04B0526038B0F00DBB692 /* ARDrawing */,
+				FA64CD292629A47200CCDD47 /* ARScanner */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		FA496166263823FD00EE967E /* SmartRoom */ = {
+			isa = PBXGroup;
+			children = (
+				FA4961682638247F00EE967E /* SmartRoomARViewController.swift */,
+				FA49616C263824C700EE967E /* SmartRoomARViewModel.swift */,
+			);
+			path = SmartRoom;
 			sourceTree = "<group>";
 		};
 		FA4FE00E25CC4C4900D1EFC6 /* Networking */ = {
@@ -440,18 +469,20 @@
 			path = ApiServices;
 			sourceTree = "<group>";
 		};
-		FA5A54E525E5708E0023E448 /* MaskFitting */ = {
+		FA5A54E525E5708E0023E448 /* SmartRetail */ = {
 			isa = PBXGroup;
 			children = (
 				FA5A54EE25E573060023E448 /* MaskFittingViewModel.swift */,
 				FA43319625F18F39008D8AC2 /* MaskFittingViewController.swift */,
 			);
-			path = MaskFitting;
+			path = SmartRetail;
 			sourceTree = "<group>";
 		};
 		FA64CD292629A47200CCDD47 /* ARScanner */ = {
 			isa = PBXGroup;
 			children = (
+				FA93BEB12631B62B009365A9 /* ARScannerViewController.swift */,
+				FA93BEB42631B969009365A9 /* ARScannerViewModel.swift */,
 			);
 			path = ARScanner;
 			sourceTree = "<group>";
@@ -523,12 +554,12 @@
 			path = GeneralARView;
 			sourceTree = "<group>";
 		};
-		FAC04B0526038B0F00DBB692 /* ARDrawingSection */ = {
+		FAC04B0526038B0F00DBB692 /* ARDrawing */ = {
 			isa = PBXGroup;
 			children = (
 				FAC04B0A2603962300DBB692 /* ARDrawingViewController.swift */,
 			);
-			path = ARDrawingSection;
+			path = ARDrawing;
 			sourceTree = "<group>";
 		};
 		FAC04B452604C48E00DBB692 /* Onboarding */ = {
@@ -693,6 +724,7 @@
 				FA4FE01725CC4C4900D1EFC6 /* ApiConstants.swift in Sources */,
 				FA3620A125CC8A8E00DFE70E /* DIContainerConfigurator.swift in Sources */,
 				FAA9C89725CD5E8E005BA9EE /* Object3dData.swift in Sources */,
+				FA49616D263824C700EE967E /* SmartRoomARViewModel.swift in Sources */,
 				FA424D3B25EA83CE00637EB7 /* Menu3DItemRealityKit.swift in Sources */,
 				FA5F087F25EFF49A004CF5D0 /* GlobalStyles.swift in Sources */,
 				FA6B3A5725D1516200B0C3C2 /* MenuViewModel.swift in Sources */,
@@ -700,13 +732,16 @@
 				FAA9C89925CD5E8E005BA9EE /* Mask.swift in Sources */,
 				FAAF7E2825F8EA1400CBDBF0 /* ImageFromFile.swift in Sources */,
 				FAA9C89325CD5E8E005BA9EE /* ComplexDescription.swift in Sources */,
+				FA4961692638247F00EE967E /* SmartRoomARViewController.swift in Sources */,
 				FA64CD1D2628CEE100CCDD47 /* ARViewExtensions.swift in Sources */,
 				FA66CF412625E87D003A5286 /* PageDialogService.swift in Sources */,
 				FAA9C89825CD5E8E005BA9EE /* VideoData.swift in Sources */,
 				FA45B97625E7C263005CBC38 /* LocationManager.swift in Sources */,
 				FA5A54EF25E573060023E448 /* MaskFittingViewModel.swift in Sources */,
+				FA93BEB22631B62B009365A9 /* ARScannerViewController.swift in Sources */,
 				FA43319725F18F39008D8AC2 /* MaskFittingViewController.swift in Sources */,
 				FAC04B0B2603962300DBB692 /* ARDrawingViewController.swift in Sources */,
+				FA93BEB52631B969009365A9 /* ARScannerViewModel.swift in Sources */,
 				FA2656B525E679D60025ACB1 /* SmartTourismView.swift in Sources */,
 				FAA5C26A25DFC88F00BD1B1E /* SectionObjectsView.swift in Sources */,
 				FA2656CB25E695930025ACB1 /* DroneARViewModel.swift in Sources */,
@@ -716,17 +751,18 @@
 				FA45B97925E7CD0B005CBC38 /* DimentionalDirection.swift in Sources */,
 				FA3620A625CC8B0F00DFE70E /* NSObjectExtensions.swift in Sources */,
 				FAD0DCC125EE9F390033B559 /* LoadingViewWithProgressBar.swift in Sources */,
+				FA496163263748A900EE967E /* UIApplicationExtensions.swift in Sources */,
 				FAAF7E3E25FAA1F000CBDBF0 /* FileLoader.swift in Sources */,
 				FAA5C23025DEE46D00BD1B1E /* GetStartedButton.swift in Sources */,
 				FAAF7E0525F7BD2400CBDBF0 /* ProgressBar.swift in Sources */,
-				FA2273FE25E454E300DA6FCB /* ExtendedRealityKitView.swift in Sources */,
+				FA2273FE25E454E300DA6FCB /* WorldTrackingRealityKitView.swift in Sources */,
 				FAA9C89C25CD5E8E005BA9EE /* Section.swift in Sources */,
 				FA36208F25CC84D000DFE70E /* ApiError.swift in Sources */,
 				FAAF7E2225F817A400CBDBF0 /* FileProtocol.swift in Sources */,
 				FAAF7E2B25F8EE0F00CBDBF0 /* URLExtensions.swift in Sources */,
 				FAC04B4E2604D92D00DBB692 /* OnboardingViewModel.swift in Sources */,
 				FA5CED8825E95C5D0089B31F /* JoysticksWithMapView.swift in Sources */,
-				FAAF7E3125F9326D00CBDBF0 /* UIImageViewExtensions.swift in Sources */,
+				FAAF7E3125F9326D00CBDBF0 /* UIImageExtensions.swift in Sources */,
 				FAA5C22D25DED96F00BD1B1E /* SwiftUI Color Extensions.swift in Sources */,
 				FAD3B21325D2D06300708AE9 /* UIViewExtensions.swift in Sources */,
 				FA5CED8C25E968220089B31F /* AnyPublisherExtensions.swift in Sources */,

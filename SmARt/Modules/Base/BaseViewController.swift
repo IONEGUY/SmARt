@@ -11,6 +11,8 @@ import SwiftUI
 import Combine
 
 class BaseViewController: UIViewController {
+    private let navBarHorizontalMargin: CGFloat = 20
+    
     var cancellables = Set<AnyCancellable>()
     @Published var loadingProgress = Progress.none
     
@@ -18,9 +20,14 @@ class BaseViewController: UIViewController {
     var proposalForInteractionMessage = InteractionMessage()
     var loadingViewContainer = UIView()
     
-    var isNavigationBarVisible: Bool {
-        return true
-    }
+    var isNavigationBarVisible: Bool { true }
+    
+    var navBar: NavBar = {
+        let navBar = NavBar()
+        navBar.backgroundColor = .clear
+        navBar.translatesAutoresizingMaskIntoConstraints = false
+        return navBar
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,32 +74,23 @@ class BaseViewController: UIViewController {
         loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
-    func addTakeARSessionSnapshotButton(targetView: UIView) {
-        let takeARSessionSnapshotButton = TakeSnapshotButton()
-        view.insertSubview(takeARSessionSnapshotButton, at: view.subviews.count - 1)
-        takeARSessionSnapshotButton.targetView = targetView
-        NSLayoutConstraint.activate([
-            takeARSessionSnapshotButton.widthAnchor.constraint(equalToConstant: 60),
-            takeARSessionSnapshotButton.heightAnchor.constraint(equalToConstant: 50),
-            takeARSessionSnapshotButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            takeARSessionSnapshotButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
-        ])
+    func addTakeSnapshotButton(of targetView: UIView) {
+        let takeSnapshotButton = TakeSnapshotButton()
+        takeSnapshotButton.translatesAutoresizingMaskIntoConstraints = false
+        navBar.appendViewToRightSide(takeSnapshotButton)
+        takeSnapshotButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        takeSnapshotButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        takeSnapshotButton.targetView = targetView
     }
     
-    func createNavBar(title: String = .empty, rightButtons: [Object3DButton] = []) {
+    func createNavBar(title: String = .empty) {
         if !isNavigationBarVisible { return }
-        
-        let navBar = UIHostingController(rootView: NavBar(object3DButtons: rightButtons,
-                                                          title: title) { [unowned self] in
-            dismiss(animated: false, completion: nil)
-        })
-        navBar.view.backgroundColor = .clear
-        addChild(navBar)
-        view.addSubview(navBar.view)
-        navBar.view.translatesAutoresizingMaskIntoConstraints = false
-        navBar.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        navBar.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        navBar.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        navBar.view.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        navBar.title = title
+        view.addSubview(navBar)
+        NSLayoutConstraint.activate([
+            navBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: navBarHorizontalMargin),
+            navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -navBarHorizontalMargin),
+        ])
     }
 }

@@ -30,7 +30,8 @@ class MenuViewModel: BaseViewModel, ObservableObject {
             .filter(isAllowedToDownloadMediaContent)
             .map(\.sections)
             .map(constructFilesForMenu)
-            .sink(receiveCompletion: {_ in}, receiveValue: performFilesLoading)
+            .sink(receiveCompletion: {_ in},
+                  receiveValue: { [unowned self] in performFilesLoading(files: $0) })
             .store(in: &cancellables)
         
         getSectionsPublisher
@@ -55,9 +56,21 @@ class MenuViewModel: BaseViewModel, ObservableObject {
             .store(in: &cancellables)
     }
     
-    private func initMenuItems(_ section: [Section]) {
-        self.sections = section
-        menuItems = sections.compactMap {
+    private func initMenuItems(_ sections: [Section]) {
+        var temp = sections
+        temp.append(Section(id: "1",
+                               name: "AR scanner",
+                               description: "Scann bjects in AR",
+                               complexDescription: nil,
+                               logo2d: ImageData(id: "603f4188988d2653278af737", url: "http://34.105.234.21:8080/api-image/open/image/download/603f4188988d2653278af737"),
+                               logo3d: FileData(id: "603f4268988d2653278af739", url: "http://34.105.234.21:8080/api-files/open/file/download/603f4268988d2653278af739", fileExtension: "usdz"),
+                               typeSection: "TYPE_SCANNER",
+                               sections: nil,
+                               objects: nil,
+                               menuName: "AR scanner",
+                               menuDescription: "AR scanner"))
+        self.sections = temp
+        menuItems = temp.compactMap {
             if $0.typeSection == SectionType.smartRetail.rawValue && !ARFaceTrackingConfiguration.isSupported {
                 return nil
             }
@@ -81,16 +94,16 @@ class MenuViewModel: BaseViewModel, ObservableObject {
         return isVersionGreaterThatCurrent || !isContentLoaded
     }
     
-    override func performFilesLoading(files: [FileProtocol]) {
+    @discardableResult
+    override func performFilesLoading(files: [FileProtocol]) -> [FileProtocol] {
         removeOutdatedMediaFiles()
-        super.performFilesLoading(files: files)
+        return super.performFilesLoading(files: files)
     }
     
     private func removeOutdatedMediaFiles() {
-        let fileManager = FileManager()
         constructAllMediaFiles(sections).forEach {
             let fileUrl = URL.constructFilePath(in: .documentDirectory, withName: $0.nameWithExtension)
-            try? fileManager.removeItem(at: fileUrl)
+            try? FileManager.default.removeItem(at: fileUrl)
         }
     }
     

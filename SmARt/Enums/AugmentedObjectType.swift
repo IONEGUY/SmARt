@@ -7,8 +7,9 @@
 
 import Foundation
 
-enum AugmentedObjectType {
+enum AugmentedObjectType: String {
     case
-    object3D,
-    video
+    object3D = "usdz",
+    video = "mp4",
+    image = "png"
 }

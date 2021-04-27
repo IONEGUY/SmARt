@@ -16,7 +16,7 @@ class SectionDetailBaseViewController: BaseViewController {
     
     init(viewModel: SectionDetailBaseViewModel) {
         self.viewModel = viewModel
-        
+
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -24,7 +24,7 @@ class SectionDetailBaseViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func createNavBar(title: String = .empty, rightButtons: [Object3DButton] = []) {
+    override func createNavBar(title: String = .empty) {
         super.createNavBar(title: viewModel.title)
     }
         
@@ -34,16 +34,25 @@ class SectionDetailBaseViewController: BaseViewController {
         addRootView()
         
         viewModel.pushARPage
-            .sink(receiveValue: { [unowned self] (arPageType: ARPageType) in
+            .sink(receiveValue: { [unowned self] (sectionType: SectionType) in
                 var vc: UIViewController = GeneralARViewController(viewModel:
                     GeneralARViewModel(object3DIds: viewModel.object3DIds,
                                        augmentedObjectType: viewModel.augmentedObjectType))
-                switch arPageType {
-                case .maskFittingPage:
-                    vc = MaskFittingViewController(viewModel: MaskFittingViewModel(masks: viewModel.masks))
-                case .dronePage:
-                    vc = DroneARViewController(viewModel: DroneARViewModel(droneModelId: viewModel.object3DIds[0]))
-                case .arDrawingPage: vc = ARDrawingViewController()
+                switch sectionType {
+                case .smartRetail: vc = MaskFittingViewController(viewModel:
+                    MaskFittingViewModel(masks: viewModel.masks))
+                case .smartRoom: vc = SmartRoomARViewController(viewModel:
+                    SmartRoomARViewModel(object3DIds: viewModel.object3DIds,
+                                         augmentedObjectType: viewModel.augmentedObjectType))
+                case .droneSection: vc = DroneARViewController(viewModel:
+                    DroneARViewModel(droneModelId: viewModel.object3DIds[0]))
+                case .arDrawing: vc = ARDrawingViewController()
+                case .arScanner:
+                    let objects = viewModel.allSections.compactMap(\.objects).flatMap { $0 }
+                    let modelIds = objects.compactMap(\.object3d?.files?.first?.id)
+                    let imageTriggerIds = objects.compactMap(\.trigger).map(\.id)
+                    let triggers = Dictionary(uniqueKeysWithValues: zip(imageTriggerIds, modelIds))
+                    vc = ARScannerViewController(viewModel: ARScannerViewModel(triggers: triggers))
                 default: break
                 }
                 vc.modalPresentationStyle = .fullScreen

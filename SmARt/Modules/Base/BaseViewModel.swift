@@ -13,7 +13,8 @@ class BaseViewModel {
     @Published var contentLoadingProgress: Progress = .none
     var fileLoader = FileLoader()
     
-    func performFilesLoading(files: [FileProtocol]) {
+    @discardableResult
+    func performFilesLoading(files: [FileProtocol]) -> [FileProtocol] {
         let nonCachedfiles = files.filter { !URL.isFileExist(withName: $0.nameWithExtension) }
         
         fileLoader.progress
@@ -21,5 +22,7 @@ class BaseViewModel {
             .store(in: &cancellables)
         
         fileLoader.download(files: nonCachedfiles)
+        
+        return nonCachedfiles
     }
 }

@@ -24,13 +24,15 @@ class TakeSnapshotButton: UIButton {
     }
     
     private func setup() {
-        setBackgroundImage(UIImage(systemName: "camera.fill"), for: .normal)
-        contentMode = .scaleToFill
+        setImage(UIImage(named: "camera"), for: .normal)
+        tintColor = .white
+        layer.cornerRadius = 8
+        backgroundColor = UIColor(hex: "#C4C4C4", alpha: 0.7)
         translatesAutoresizingMaskIntoConstraints = false
-        addTarget(self, action: #selector(takeARSessionSnapshot), for: .touchUpInside)
+        addTarget(self, action: #selector(takeSnapshot), for: .touchUpInside)
     }
     
-    @objc func takeARSessionSnapshot() {
+    @objc func takeSnapshot() {
         guard let image = targetView?.toImage() else { return }
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
